@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adams+ | Premium Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Ensure videos maintain aspect ratio and fit properly */
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            overflow: hidden;
+        }
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Smooth scroll offset for fixed header */
+        html {
+            scroll-padding-top: 80px;
+        }
+        
+        /* Active navigation link styling */
+        .nav-link.active {
+            color: #2563eb;
+        }
+    </style>
+</head>
+<body>
+<header class="sticky top-4 z-50 px-4">
+  <nav class="max-w-4xl mx-auto">
+    <!-- Main header container as rounded rectangle -->
+    <div class="bg-white rounded-2xl shadow-lg shadow-gray-200/60 border border-gray-100">
+      <div class="flex items-center justify-between h-16 px-6">
+        <!-- Logo -->
+        <div class="flex-shrink-0">
+          <a href="#" class="flex items-center space-x-3 group">
+            <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center group-hover:from-blue-500 group-hover:to-blue-600 transition-colors duration-300">
+              <span class="text-white font-bold text-sm">A+</span>
+            </div>
+            <span class="text-lg font-bold text-gray-900">Adams<span class="text-blue-600">+</span></span>
+          </a>
+        </div>
+
+        <!-- Center Navigation - Clean and simple -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#services" class="nav-link text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 py-2 relative group">
+            Services
+            <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></div>
+          </a>
+          <a href="#portfolio" class="nav-link text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 py-2 relative group">
+            Portfolio
+            <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></div>
+          </a>
+          <a href="#pricing" class="nav-link text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 py-2 relative group">
+            Pricing
+            <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></div>
+          </a>
+          <a href="#contact" class="nav-link text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 py-2 relative group">
+            Contact
+            <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></div>
+          </a>
+        </div>
+
+        <!-- Right Side -->
+        <div class="flex items-center space-x-4">
+          <a href="signup.html" class="text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 hidden sm:block py-2 px-3 rounded-lg hover:bg-blue-50">
+            Sign in
+          </a>
+          <a href="#contact" class="bg-blue-600 text-white px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors duration-200">
+            Get started
+          </a>
+          
+          <!-- Mobile menu button -->
+          <button id="mobile-menu-button" class="md:hidden text-gray-600 p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="md:hidden border-t border-gray-100 py-4 px-6 space-y-3 hidden">
+        <a href="#services" class="mobile-nav-link flex items-center space-x-3 text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 py-2 group">
+          <div class="w-1 h-6 bg-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <span>Services</span>
+        </a>
+        <a href="#portfolio" class="mobile-nav-link flex items-center space-x-3 text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 py-2 group">
+          <div class="w-1 h-6 bg-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <span>Portfolio</span>
+        </a>
+        <a href="#pricing" class="mobile-nav-link flex items-center space-x-3 text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 py-2 group">
+          <div class="w-1 h-6 bg-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <span>Pricing</span>
+        </a>
+        <a href="#contact" class="mobile-nav-link flex items-center space-x-3 text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 py-2 group">
+          <div class="w-1 h-6 bg-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <span>Contact</span>
+        </a>
+        <div class="pt-3 border-t border-gray-100 mt-2">
+          <a href="signup.html" class="flex items-center space-x-3 text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 py-2 group">
+            <div class="w-1 h-6 bg-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <span>Sign in</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Hero Section -->
+<section id="home" class="min-h-screen bg-white flex items-center justify-center relative">
+  
+  <!-- Subtle grid pattern -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.05) 1px, transparent 0); background-size: 50px 50px;"></div>
+  </div>
+
+  <div class="relative z-10 text-center w-full max-w-3xl mx-auto px-6">
+    <!-- Tag pill -->
+    <div class="inline-flex items-center space-x-2 bg-blue-50/80 border border-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-8 backdrop-blur-sm">
+      <span class="text-blue-500">✨</span>
+      <span>Just launched v1.0</span>
+    </div>
+
+    <!-- Main heading -->
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+      Design
+      <span class="bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">beyond limits</span>
+      with us
+    </h1>
+
+    <!-- Subheading -->
+    <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-2">
+      We craft powerful digital experiences that elevate your brand.
+    </p>
+    <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+      Partner with Adams+ to bring bold ideas to life.
+    </p>
+
+    <!-- CTA buttons -->
+    <div class="flex items-center justify-center gap-4 mt-10 flex-col sm:flex-row">
+      <a href="#contact" class="bg-blue-600 text-white px-7 py-3.5 rounded-xl text-base font-semibold hover:bg-blue-700 transition-all duration-200 shadow-sm hover:shadow-md w-full sm:w-auto">
+        Start Your Project
+      </a>
+      <a href="#portfolio" class="text-gray-700 hover:text-gray-900 px-6 py-3.5 rounded-xl text-base font-semibold border border-gray-300 hover:border-gray-400 transition-all duration-200 hover:bg-gray-50 w-full sm:w-auto">
+        View Our Work
+      </a>
+    </div>
+
+    <!-- Trust badge -->
+    <div class="mt-12 pt-8 border-t border-gray-200/60">
+      <p class="text-sm text-gray-500 font-medium">Trusted by visionary brands and growing businesses worldwide</p>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="bg-white py-24 sm:py-32">
+  <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
+    <h2 class="text-base/7 font-semibold text-blue-600">Design. Develop. Deliver.</h2>
+    <p class="mt-2 max-w-lg text-4xl font-semibold tracking-tight text-pretty text-gray-950 sm:text-5xl">Everything you need to elevate your brand</p>
+    <div class="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6 lg:grid-rows-2">
+      
+      <!-- Branding -->
+      <div class="relative lg:col-span-3">
+        <div class="absolute inset-0 rounded-lg bg-white max-lg:rounded-t-4xl lg:rounded-tl-4xl"></div>
+        <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)] lg:rounded-tl-[calc(2rem+1px)]">
+          <div class="h-80 w-full overflow-hidden">
+            <img src="images/Luxury Loafers Logo 2 (with image overlay).png" alt="Branding Design" class="h-full w-full object-cover object-left" />
+          </div>
+          <div class="p-10 pt-4">
+            <h3 class="text-sm/4 font-semibold text-blue-600">Brand Identity</h3>
+            <p class="mt-2 text-lg font-medium tracking-tight text-gray-950">Build a timeless brand</p>
+            <p class="mt-2 max-w-lg text-sm/6 text-gray-600">We craft strategic brand identities that capture your purpose and connect with your audience through bold visual storytelling.</p>
+          </div>
+        </div>
+        <div class="pointer-events-none absolute inset-0 rounded-lg shadow-sm outline outline-black/5 max-lg:rounded-t-4xl lg:rounded-tl-4xl"></div>
+      </div>
+
+      <!-- Web Development -->
+      <div class="relative lg:col-span-3">
+        <div class="absolute inset-0 rounded-lg bg-white lg:rounded-tr-4xl"></div>
+        <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-tr-[calc(2rem+1px)]">
+          <div class="h-80 w-full overflow-hidden">
+            <img src="images/Patriot new web mockup.png" alt="Website Development" class="h-full w-full object-cover object-left lg:object-right" />
+          </div>
+          <div class="p-10 pt-4">
+            <h3 class="text-sm/4 font-semibold text-blue-600">Web Development</h3>
+            <p class="mt-2 text-lg font-medium tracking-tight text-gray-950">Modern & responsive websites</p>
+            <p class="mt-2 max-w-lg text-sm/6 text-gray-600">From concept to code, we design and develop custom websites that deliver performance, speed, and creativity across all devices.</p>
+          </div>
+        </div>
+        <div class="pointer-events-none absolute inset-0 rounded-lg shadow-sm outline outline-black/5 lg:rounded-tr-4xl"></div>
+      </div>
+
+      <!-- UI/UX Design -->
+      <div class="relative lg:col-span-2">
+        <div class="absolute inset-0 rounded-lg bg-white lg:rounded-bl-4xl"></div>
+        <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-bl-[calc(2rem+1px)]">
+          <div class="h-80 w-full overflow-hidden">
+            <img src="images/stockmate-mockup.png" alt="UI/UX Design" class="h-full w-full object-cover object-left" />
+          </div>
+          <div class="p-10 pt-4">
+            <h3 class="text-sm/4 font-semibold text-blue-600">UI/UX Design</h3>
+            <p class="mt-2 text-lg font-medium tracking-tight text-gray-950">Experience-driven design</p>
+            <p class="mt-2 max-w-lg text-sm/6 text-gray-600">We design user interfaces that are not only beautiful but also intuitive and conversion-focused to maximize user satisfaction.</p>
+          </div>
+        </div>
+        <div class="pointer-events-none absolute inset-0 rounded-lg shadow-sm outline outline-black/5 lg:rounded-bl-4xl"></div>
+      </div>
+
+      <!-- Motion & Media -->
+      <div class="relative lg:col-span-2">
+        <div class="absolute inset-0 rounded-lg bg-white"></div>
+        <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)]">
+          <div class="video-container">
+            <video autoplay muted loop playsinline>
+              <source src="images/motion-video.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="p-10 pt-4">
+            <h3 class="text-sm/4 font-semibold text-blue-600">Motion & Media</h3>
+            <p class="mt-2 text-lg font-medium tracking-tight text-gray-950">Bring ideas to life</p>
+            <p class="mt-2 max-w-lg text-sm/6 text-gray-600">We create cinematic visuals, motion graphics, and social content that amplify your story and engage your audience.</p>
+          </div>
+        </div>
+        <div class="pointer-events-none absolute inset-0 rounded-lg shadow-sm outline outline-black/5"></div>
+      </div>
+
+      <!-- Digital Strategy -->
+      <div class="relative lg:col-span-2">
+        <div class="absolute inset-0 rounded-lg bg-white max-lg:rounded-b-4xl lg:rounded-br-4xl"></div>
+        <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-br-[calc(2rem+1px)]">
+          <div class="video-container">
+            <video autoplay muted loop playsinline>
+              <source src="images/digital-experience.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="p-10 pt-4">
+            <h3 class="text-sm/4 font-semibold text-blue-600">Digital Strategy</h3>
+            <p class="mt-2 text-lg font-medium tracking-tight text-gray-950">Grow with purpose</p>
+            <p class="mt-2 max-w-lg text-sm/6 text-gray-600">
+              We combine data, design, and innovation to help brands scale with strategy-driven digital
+              solutions that deliver measurable results.
+            </p>
+          </div>
+        </div>
+        <div class="pointer-events-none absolute inset-0 rounded-lg shadow-sm outline outline-black/5 max-lg:rounded-b-4xl lg:rounded-br-4xl"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Portfolio Section -->
+<section id="portfolio" class="bg-white py-24 sm:py-32">
+  <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
+    <h2 class="text-base/7 font-semibold text-blue-600">Our Portfolio</h2>
+    <p class="mt-2 max-w-lg text-4xl font-semibold tracking-tight text-pretty text-gray-950 sm:text-5xl">Projects that define excellence</p>
+    
+    <div class="mt-10 grid grid-cols-1 gap-6 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2">
+      
+      <!-- Project 1 - Stockmate.shop -->
+      <a href="https://stockmate.shop" target="_blank" class="relative group overflow-hidden rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 block">
+        <div class="absolute top-4 right-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+          <span class="text-sm font-medium text-gray-700">2024</span>
+        </div>
+        <img src="images/stockmate-mockup.png" alt="Stockmate.shop WebApp" class="h-80 w-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+          <h3 class="text-xl font-semibold">Stockmate WebApp</h3>
+          <p class="text-sm text-gray-200 mt-1">E-commerce & Inventory System</p>
+        </div>
+      </a>
+      
+      <!-- Project 2 - Teva Eco Travel -->
+      <a href="https://tevaecotravel.com" target="_blank" class="relative group overflow-hidden rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 block">
+        <div class="absolute top-4 right-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+          <span class="text-sm font-medium text-gray-700">2024</span>
+        </div>
+        <img src="images/teva-mockup.png" alt="Teva Eco Travel" class="h-80 w-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+          <h3 class="text-xl font-semibold">Teva Eco Travel</h3>
+          <p class="text-sm text-gray-200 mt-1">Sustainable Tourism Website</p>
+        </div>
+      </a>
+      
+      <!-- Project 3 - Patriot Tours -->
+      <a href="https://patriot-tours.com" target="_blank" class="relative group overflow-hidden rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 block">
+        <div class="absolute top-4 right-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+          <span class="text-sm font-medium text-gray-700">2024</span>
+        </div>
+        <img src="images/Patriot new web mockup.png" alt="Patriot Tours" class="h-80 w-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+          <h3 class="text-xl font-semibold">Patriot Tours</h3>
+          <p class="text-sm text-gray-200 mt-1">Travel & Safari Website</p>
+        </div>
+      </a>
+      
+      <!-- Project 4 - MaasaiSpear Safaris -->
+      <a href="https://maasaispearsafaris.com" target="_blank" class="relative group overflow-hidden rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 block">
+        <div class="absolute top-4 right-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+          <span class="text-sm font-medium text-gray-700">2023</span>
+        </div>
+        <img src="images/maasaispear-mockup.png" alt="MaasaiSpear Safaris" class="h-80 w-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+          <h3 class="text-xl font-semibold">MaasaiSpear Safaris</h3>
+          <p class="text-sm text-gray-200 mt-1">Premium Safari Experiences</p>
+        </div>
+      </a>
+      
+      <!-- Project 5 - Tanzania Safari Adventure -->
+      <a href="https://tanzaniasafariadventure.com" target="_blank" class="relative group overflow-hidden rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 block">
+        <div class="absolute top-4 right-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+          <span class="text-sm font-medium text-gray-700">2023</span>
+        </div>
+        <img src="images/TSA-mockup.png" alt="Tanzania Safari Adventure" class="h-80 w-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+          <h3 class="text-xl font-semibold">Tanzania Safari Adventure</h3>
+          <p class="text-sm text-gray-200 mt-1">Wildlife & Adventure Tours</p>
+        </div>
+      </a>
+      
+      <!-- Project 6 - Visit Tanzania -->
+      <a href="https://visittanzaniaa.com" target="_blank" class="relative group overflow-hidden rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 block">
+        <div class="absolute top-4 right-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+          <span class="text-sm font-medium text-gray-700">2023</span>
+        </div>
+        <img src="images/visit-tanzania-mockup.png" alt="Visit Tanzania" class="h-80 w-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+          <h3 class="text-xl font-semibold">Visit Tanzania</h3>
+          <p class="text-sm text-gray-200 mt-1">Tourism Portal & Guide</p>
+        </div>
+      </a>
+    </div>
+    
+    <!-- CTA Button -->
+    <div class="mt-16 text-center">
+      <a href="#contact" class="inline-flex items-center gap-x-2 bg-blue-600 text-white px-6 py-3.5 rounded-xl text-base font-semibold hover:bg-blue-700 transition-all duration-200 shadow-sm hover:shadow-md">
+        Start Your Project
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing Section -->
+<section id="pricing" class="bg-white py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-4xl text-center">
+      <h2 class="text-base/7 font-semibold text-blue-600">Pricing</h2>
+      <p class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-950 sm:text-5xl">Affordable Web Development</p>
+      <p class="mt-6 text-lg/8 text-gray-600">Professional websites at startup-friendly prices. One-time payment, no hidden fees.</p>
+    </div>
+
+    <!-- Location & Currency Switcher -->
+    <div class="mt-16 flex flex-col items-center justify-center">
+      <div class="flex items-center gap-4 bg-blue-50 px-6 py-3 rounded-xl">
+        <i class="fas fa-globe-americas text-blue-600"></i>
+        <span class="text-sm font-medium text-blue-600" id="location-display">Detecting your location...</span>
+        <select id="currency-selector" class="bg-transparent border-none text-sm font-medium text-blue-600 focus:outline-none focus:ring-0">
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="GBP">GBP</option>
+          <option value="JPY">JPY</option>
+          <option value="CAD">CAD</option>
+          <option value="AUD">AUD</option>
+          <option value="CHF">CHF</option>
+          <option value="CNY">CNY</option>
+          <option value="INR">INR</option>
+          <option value="TZS">TZS</option>
+          <option value="KES">KES</option>
+          <option value="NGN">NGN</option>
+          <option value="ZAR">ZAR</option>
+          <option value="AED">AED</option>
+          <option value="SAR">SAR</option>
+          <option value="BRL">BRL</option>
+          <option value="MXN">MXN</option>
+        </select>
+      </div>
+      <p class="mt-4 text-sm text-gray-500" id="hosting-note">Hosting starts at $50/year after development</p>
+      <div id="exchange-rate-info" class="mt-2 text-xs text-gray-400 hidden">
+        Rates updated: <span id="rate-update-time"></span>
+      </div>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div class="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-6">
+      <!-- Basic Website -->
+      <div class="flex flex-col justify-between rounded-2xl bg-white p-8 ring-1 ring-gray-200 shadow-sm hover:shadow-md transition-shadow">
+        <div>
+          <h3 class="text-lg font-semibold leading-8 text-gray-900">Starter Website</h3>
+          <p class="mt-4 text-sm/6 text-gray-600">Perfect for small businesses and portfolios</p>
+          <div class="mt-6 flex items-baseline gap-x-1">
+            <span class="text-4xl font-bold tracking-tight text-gray-900" id="basic-price">$299</span>
+            <span class="text-sm font-semibold leading-6 text-gray-600">one-time</span>
+          </div>
+          <ul role="list" class="mt-8 space-y-3 text-sm/6 text-gray-600">
+            <li class="flex gap-x-3">
+              <i class="fas fa-check text-blue-600 mt-1"></i>
+              3-5 Page Website
+            </li>
+            <li class="flex gap-x-3">
+              <i class="fas fa-check text-blue-600 mt-1"></i>
+              Mobile Responsive
+            </li>
+            <li class="flex gap-x-3">
+              <i class="fas fa-check text-blue-600 mt-1"></i>
+              Contact Form
+            </li>
+            <li class="flex gap-x-3">
+              <i class="fas fa-check text-blue-600 mt-1"></i>
+              Basic SEO
+            </li>
+            <li class="flex gap-x-3">
+              <i class="fas fa-check text-blue-600 mt-1"></i>
+              1 Week Delivery
+            </li>
+          </ul>
+        </div>
+        <button class="choose-plan-btn mt-8 block w-full rounded-xl bg-gray-100 px-3 py-3 text-center text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-200 transition-all duration-200 group" data-plan="Starter Website">
+          Start Project
+          <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+        </button>
+      </div>
+
+      <!-- Professional Website (Featured) -->
+      <div class="flex flex-col justify-between rounded-2xl bg-gradient-to-br from-blue-600 to-blue-700 p-8 ring-1 ring-blue-600 shadow-lg relative transform scale-105">
+        <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+          <span class="inline-flex items-center rounded-full bg-blue-500 px-4 py-1.5 text-xs font-semibold text-white shadow-sm">Most Popular</span>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold leading-8 text-white">Business Website</h3>
+          <p class="mt-4 text-sm/6 text-blue-100">Complete business solution with advanced features</p>
+          <div class="mt-6 flex items-baseline gap-x-1">
+            <span class="text-4xl font-bold tracking-tight text-white" id="professional-price">$599</span>
+            <span class="text-sm font-semibold leading-6 text-blue-100">one-time</span>
+          </div>
+          <ul role="list" class="mt-8 space-y-3 text-sm/6 text-blue-100">
+            <li class="flex gap-x-3">
+              <i class="fas fa-check text-white mt-1"></i>
+              5-8 Page Website
+            </li>
+            <li class="flex gap-x-3">
+              <i class="fas fa-check text-white mt-1"></i>
+              Custom Design
+            </li>
+            <li class="flex gap-x-3">
+              <i class="fas fa-check text-white mt-1"></i>
+              CMS Integration
+            </li>
+            <li class="flex gap-x-3">
+              <i class="fas fa-check text-white mt-1"></i>
+              E-commerce Ready
+            </li>
+            <li class="flex gap-x-3">
+              <i class="fas fa-check text-white mt-1"></i>
+              Advanced SEO
+            </li>
+            <li class="flex gap-x-3">
+              <i class="fas fa-check text-white mt-1"></i>
+              2 Weeks Delivery
+            </li>
+          </ul>
+        </div>
+        <button class="choose-plan-btn mt-8 block w-full rounded-xl bg-white px-3 py-3 text-center text-sm font-semibold leading-6 text-blue-600 hover:bg-blue-50 transition-all duration-200 shadow-sm group" data-plan="Business Website">
+          Start Project
+          <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+        </button>
+      </div>
+
+      <!-- Enterprise Solution -->
+      <div class="flex flex-col justify-between rounded-2xl bg-white p-8 ring-1 ring-gray-200 shadow-sm hover:shadow-md transition-shadow">
+        <div>
+          <h3 class="text-lg font-semibold leading-8 text-gray-900">Premium Solution</h3>
+          <p class="mt-4 text-sm/6 text-gray-600">Custom features and advanced functionality</p>
+          <div class="mt-6 flex items-baseline gap-x-1">
+            <span class="text-4xl font-bold tracking-tight text-gray-900" id="enterprise-price">$999</span>
+            <span class="text-sm font-semibold leading-6 text-gray-600">one-time</span>
+          </div>
+          <ul role="list" class="mt-8 space-y-3 text-sm/6 text-gray-600">
+            <li class="flex gap-x-3">
+              <i class="fas fa-check text-blue-600 mt-1"></i>
+              8-12 Page Website
+            </li>
+            <li class="flex gap-x-3">
+              <i class="fas fa-check text-blue-600 mt-1"></i>
+              Advanced Features
+            </li>
+            <li class="flex gap-x-3">
+              <i class="fas fa-check text-blue-600 mt-1"></i>
+              Database Integration
+            </li>
+            <li class="flex gap-x-3">
+              <i class="fas fa-check text-blue-600 mt-1"></i>
+              User Management
+            </li>
+            <li class="flex gap-x-3">
+              <i class="fas fa-check text-blue-600 mt-1"></i>
+              Ongoing Support
+            </li>
+            <li class="flex gap-x-3">
+              <i class="fas fa-check text-blue-600 mt-1"></i>
+              3-4 Weeks Delivery
+            </li>
+          </ul>
+        </div>
+        <button class="choose-plan-btn mt-8 block w-full rounded-xl bg-gray-100 px-3 py-3 text-center text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-200 transition-all duration-200 group" data-plan="Premium Solution">
+          Start Project
+          <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Project Inquiry Modal -->
+<div id="project-modal" class="fixed inset-0 z-50 hidden overflow-y-auto">
+  <div class="flex min-h-full items-center justify-center p-4">
+    <div class="fixed inset-0 bg-gray-500/75 transition-opacity backdrop-blur-sm"></div>
+    
+    <div class="relative bg-white rounded-2xl shadow-xl w-full max-w-md">
+      <!-- Modal Content -->
+      <div class="p-6">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900">Start Your Project</h3>
+            <p class="text-sm text-gray-600 mt-1">Get started with <span id="selected-plan" class="font-semibold text-blue-600">Business Website</span></p>
+          </div>
+          <button type="button" class="close-modal rounded-lg bg-gray-100 p-2 text-gray-600 hover:bg-gray-200 transition-colors">
+            <i class="fas fa-times text-sm"></i>
+          </button>
+        </div>
+
+        <form id="project-form" class="space-y-4">
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div>
+              <label for="first-name" class="block text-sm font-medium text-gray-700 mb-2">First name</label>
+              <input type="text" id="first-name" class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm px-3 py-2 border" placeholder="John" required>
+            </div>
+            <div>
+              <label for="last-name" class="block text-sm font-medium text-gray-700 mb-2">Last name</label>
+              <input type="text" id="last-name" class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm px-3 py-2 border" placeholder="Doe" required>
+            </div>
+          </div>
+          
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+            <input type="email" id="email" class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm px-3 py-2 border" placeholder="john@company.com" required>
+          </div>
+          
+          <div>
+            <label for="plan" class="block text-sm font-medium text-gray-700 mb-2">Selected Package</label>
+            <div class="relative">
+              <input type="text" id="plan" class="block w-full rounded-lg border-gray-300 bg-blue-50 shadow-sm text-sm px-3 py-2 border border-blue-200 text-blue-700 font-medium" readonly>
+              <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                <i class="fas fa-tag text-blue-400 text-xs"></i>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Project Details</label>
+            <textarea id="message" rows="3" class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm px-3 py-2 border" placeholder="Brief description of your project..."></textarea>
+          </div>
+        </form>
+
+        <div class="mt-6 flex gap-3">
+          <button type="button" class="flex-1 inline-flex justify-center items-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 transition-colors submit-form gap-2">
+            <i class="fas fa-paper-plane text-xs"></i>
+            Send Inquiry
+          </button>
+          <button type="button" class="flex-1 close-modal inline-flex justify-center items-center rounded-lg bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-200 transition-colors">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Contact Section -->
+<section id="contact" class="bg-white py-16 sm:py-24">
+  <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="relative isolate flex flex-col gap-10 overflow-hidden bg-gray-900 px-6 py-24 shadow-2xl sm:rounded-3xl sm:px-24 xl:flex-row xl:items-center xl:py-32">
+      <h2 class="max-w-xl text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl xl:flex-auto">Ready to elevate your brand with premium web solutions?</h2>
+      <form class="w-full max-w-md">
+        <div class="flex gap-x-4">
+          <label for="email-address" class="sr-only">Email address</label>
+          <input id="email-address" type="email" name="email" required placeholder="Enter your email" autocomplete="email" class="min-w-0 flex-auto rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
+          <button type="submit" class="flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-xs hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Get Started</button>
+        </div>
+        <p class="mt-4 text-sm/6 text-gray-300">We care about your data. Read our <a href="#" class="font-semibold whitespace-nowrap text-white hover:text-gray-100">privacy policy</a>.</p>
+      </form>
+      <svg viewBox="0 0 1024 1024" aria-hidden="true" class="absolute top-1/2 left-1/2 -z-10 size-256 -translate-x-1/2">
+        <circle r="512" cx="512" cy="512" fill="url(#759c1415-0410-454c-8f7c-9a820de03641)" fill-opacity="0.7" />
+        <defs>
+          <radialGradient id="759c1415-0410-454c-8f7c-9a820de03641" r="1" cx="0" cy="0" gradientUnits="userSpaceOnUse" gradientTransform="translate(512 512) rotate(90) scale(512)">
+            <stop stop-color="#7775D6" />
+            <stop offset="1" stop-color="#E935C1" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-white border-t border-gray-100 py-8">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="flex flex-col items-center justify-between space-y-6 md:flex-row md:space-y-0">
+      <!-- Left: Copyright -->
+      <div class="text-center md:text-left">
+        <p class="text-sm text-gray-600">
+          &copy; <span id="current-year">2024</span> Adams+ Digital Solutions. All rights reserved.
+        </p>
+      </div>
+
+      <!-- Center: Contact Info -->
+      <div class="flex flex-col items-center space-y-2 sm:flex-row sm:space-y-0 sm:space-x-8">
+        <div class="flex items-center space-x-2">
+          <i class="fas fa-envelope text-gray-400 text-sm"></i>
+          <a href="mailto:hello@adamsplus.com" class="text-sm text-gray-600 hover:text-blue-600 transition-colors">
+            hello@adamsplus.com
+          </a>
+        </div>
+        <div class="flex items-center space-x-2">
+          <i class="fas fa-phone text-gray-400 text-sm"></i>
+          <a href="tel:+255123456789" class="text-sm text-gray-600 hover:text-blue-600 transition-colors">
+            +255 123 456 789
+          </a>
+        </div>
+        <div class="flex items-center space-x-2">
+          <i class="fas fa-map-marker-alt text-gray-400 text-sm"></i>
+          <span class="text-sm text-gray-600">Dar es Salaam, Tanzania</span>
+        </div>
+      </div>
+
+      <!-- Right: Social Media -->
+      <div class="flex items-center space-x-4">
+        <a href="#" class="text-gray-400 hover:text-blue-600 transition-colors" aria-label="Facebook">
+          <i class="fab fa-facebook-f text-lg"></i>
+        </a>
+        <a href="#" class="text-gray-400 hover:text-blue-600 transition-colors" aria-label="Instagram">
+          <i class="fab fa-instagram text-lg"></i>
+        </a>
+        <a href="#" class="text-gray-400 hover:text-blue-600 transition-colors" aria-label="Twitter">
+          <i class="fab fa-twitter text-lg"></i>
+        </a>
+        <a href="#" class="text-gray-400 hover:text-blue-600 transition-colors" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in text-lg"></i>
+        </a>
+        <a href="#" class="text-gray-400 hover:text-blue-600 transition-colors" aria-label="GitHub">
+          <i class="fab fa-github text-lg"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Base prices in USD
+const basePrices = {
+  basic: 299,
+  professional: 599,
+  enterprise: 999,
+  hosting: 60
+};
+
+// Currency symbols and formatting
+const currencyInfo = {
+  USD: { symbol: '$', decimal: 2 },
+  EUR: { symbol: '€', decimal: 2 },
+  GBP: { symbol: '£', decimal: 2 },
+  JPY: { symbol: '¥', decimal: 0 },
+  CAD: { symbol: 'CA$', decimal: 2 },
+  AUD: { symbol: 'AU$', decimal: 2 },
+  CHF: { symbol: 'CHF ', decimal: 2 },
+  CNY: { symbol: 'CN¥', decimal: 2 },
+  INR: { symbol: '₹', decimal: 2 },
+  TZS: { symbol: 'TZS ', decimal: 0 },
+  KES: { symbol: 'KES ', decimal: 0 },
+  NGN: { symbol: '₦', decimal: 0 },
+  ZAR: { symbol: 'R', decimal: 2 },
+  AED: { symbol: 'AED ', decimal: 2 },
+  SAR: { symbol: 'SAR ', decimal: 2 },
+  BRL: { symbol: 'R$', decimal: 2 },
+  MXN: { symbol: 'MX$', decimal: 2 }
+};
+
+// Country to currency mapping
+const countryCurrency = {
+  // North America
+  'US': 'USD', 'CA': 'CAD', 'MX': 'MXN',
+  
+  // Europe
+  'GB': 'GBP', 'FR': 'EUR', 'DE': 'EUR', 'IT': 'EUR', 'ES': 'EUR',
+  'PT': 'EUR', 'NL': 'EUR', 'BE': 'EUR', 'CH': 'CHF', 'AT': 'EUR',
+  'IE': 'EUR', 'SE': 'EUR', 'NO': 'EUR', 'DK': 'EUR', 'FI': 'EUR',
+  
+  // Asia
+  'IN': 'INR', 'CN': 'CNY', 'JP': 'JPY', 'KR': 'KRW', 'SG': 'SGD',
+  'MY': 'MYR', 'TH': 'THB', 'ID': 'IDR', 'PH': 'PHP', 'VN': 'VND',
+  
+  // Africa
+  'TZ': 'TZS', 'KE': 'KES', 'NG': 'NGN', 'ZA': 'ZAR', 'GH': 'GHS',
+  'EG': 'EGP', 'ET': 'ETB',
+  
+  // Oceania
+  'AU': 'AUD', 'NZ': 'NZD',
+  
+  // Middle East
+  'AE': 'AED', 'SA': 'SAR', 'QA': 'QAR',
+  
+  // South America
+  'BR': 'BRL', 'AR': 'ARS', 'CL': 'CLP', 'CO': 'COP'
+};
+
+let currentCurrency = 'USD';
+let exchangeRates = {};
+let lastUpdateTime = null;
+
+// Fetch real-time exchange rates
+async function fetchExchangeRates() {
+  try {
+    // Using ExchangeRate-API (free tier)
+    const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+    const data = await response.json();
+    
+    if (data && data.rates) {
+      exchangeRates = data.rates;
+      lastUpdateTime = new Date();
+      return true;
+    }
+  } catch (error) {
+    console.warn('Failed to fetch exchange rates, using fallback rates:', error);
+    // Fallback rates (approximate)
+    exchangeRates = {
+      USD: 1, EUR: 0.85, GBP: 0.73, JPY: 110, CAD: 1.25, AUD: 1.35,
+      CHF: 0.92, CNY: 6.45, INR: 75, TZS: 2300, KES: 110, NGN: 410,
+      ZAR: 14.5, AED: 3.67, SAR: 3.75, BRL: 5.2, MXN: 20
+    };
+    lastUpdateTime = new Date();
+    return true;
+  }
+}
+
+// Convert price from USD to target currency
+function convertPrice(usdPrice, targetCurrency) {
+  const rate = exchangeRates[targetCurrency];
+  if (!rate) return usdPrice; // Fallback to USD if rate not available
+  
+  const converted = usdPrice * rate;
+  const info = currencyInfo[targetCurrency] || currencyInfo.USD;
+  
+  // Round based on currency (no decimals for some currencies)
+  const rounded = info.decimal === 0 ? Math.round(converted) : Math.round(converted * 100) / 100;
+  
+  return rounded;
+}
+
+// Format price for display
+function formatPrice(price, currency) {
+  const info = currencyInfo[currency] || currencyInfo.USD;
+  
+  if (info.decimal === 0) {
+    return `${info.symbol}${price.toLocaleString()}`;
+  } else {
+    return `${info.symbol}${price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+  }
+}
+
+// Location detection and pricing update
+async function detectLocation() {
+  const locationDisplay = document.getElementById('location-display');
+  const currencySelector = document.getElementById('currency-selector');
+  
+  try {
+    const response = await fetch('https://ipapi.co/json/');
+    const data = await response.json();
+    const country = data.country_code;
+    const countryName = data.country_name;
+    
+    // Get currency based on country
+    const detectedCurrency = countryCurrency[country] || 'USD';
+    
+    locationDisplay.textContent = `Pricing for ${countryName}`;
+    currencySelector.value = detectedCurrency;
+    currentCurrency = detectedCurrency;
+    
+    // Fetch exchange rates and update prices
+    await fetchExchangeRates();
+    updatePrices();
+  } catch (error) {
+    console.warn('Location detection failed:', error);
+    locationDisplay.textContent = 'Pricing for International';
+    currencySelector.value = 'USD';
+    currentCurrency = 'USD';
+    
+    // Still try to fetch exchange rates
+    await fetchExchangeRates();
+    updatePrices();
+  }
+}
+
+function updatePrices() {
+  const hostingNote = document.getElementById('hosting-note');
+  const exchangeInfo = document.getElementById('exchange-rate-info');
+  const rateUpdateTime = document.getElementById('rate-update-time');
+  
+  // Convert prices
+  const basicPrice = convertPrice(basePrices.basic, currentCurrency);
+  const professionalPrice = convertPrice(basePrices.professional, currentCurrency);
+  const enterprisePrice = convertPrice(basePrices.enterprise, currentCurrency);
+  const hostingPrice = convertPrice(basePrices.hosting, currentCurrency);
+  
+  // Update prices
+  document.getElementById('basic-price').textContent = formatPrice(basicPrice, currentCurrency);
+  document.getElementById('professional-price').textContent = formatPrice(professionalPrice, currentCurrency);
+  document.getElementById('enterprise-price').textContent = formatPrice(enterprisePrice, currentCurrency);
+  
+  // Update hosting note
+  hostingNote.textContent = `Hosting starts at ${formatPrice(hostingPrice, currentCurrency)}/year after development`;
+  
+  // Show exchange rate info
+  if (lastUpdateTime) {
+    exchangeInfo.classList.remove('hidden');
+    rateUpdateTime.textContent = lastUpdateTime.toLocaleTimeString();
+  }
+}
+
+// Modal functionality
+function openModal(plan) {
+  const modal = document.getElementById('project-modal');
+  const selectedPlan = document.getElementById('selected-plan');
+  const planInput = document.getElementById('plan');
+  
+  selectedPlan.textContent = plan;
+  planInput.value = plan;
+  modal.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  const modal = document.getElementById('project-modal');
+  modal.classList.add('hidden');
+  document.body.style.overflow = 'auto';
+}
+
+// Smooth scroll functionality
+function smoothScrollTo(targetId) {
+  const targetElement = document.getElementById(targetId);
+  if (targetElement) {
+    const headerHeight = 80; // Approximate height of the fixed header
+    const targetPosition = targetElement.offsetTop - headerHeight;
+    
+    window.scrollTo({
+      top: targetPosition,
+      behavior: 'smooth'
+    });
+  }
+}
+
+// Update active navigation link based on scroll position
+function updateActiveNavLink() {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+  
+  let currentSection = '';
+  
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100;
+    const sectionHeight = section.clientHeight;
+    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+      currentSection = section.getAttribute('id');
+    }
+  });
+  
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === `#${currentSection}`) {
+      link.classList.add('active');
+    }
+  });
+}
+
+// Event Listeners
+document.addEventListener('DOMContentLoaded', async function() {
+  await detectLocation();
+  
+  // Currency selector
+  document.getElementById('currency-selector').addEventListener('change', async function(e) {
+    currentCurrency = e.target.value;
+    // Refresh rates when changing currency manually
+    await fetchExchangeRates();
+    updatePrices();
+  });
+  
+  // Plan selection buttons
+  document.querySelectorAll('.choose-plan-btn').forEach(button => {
+    button.addEventListener('click', function() {
+      const plan = this.getAttribute('data-plan');
+      openModal(plan);
+    });
+  });
+  
+  // Modal controls
+  document.querySelectorAll('.close-modal').forEach(button => {
+    button.addEventListener('click', closeModal);
+  });
+  
+  // Form submission
+  document.querySelector('.submit-form').addEventListener('click', function() {
+    const form = document.getElementById('project-form');
+    if (form.checkValidity()) {
+      alert('Thank you for your inquiry! We will contact you within 24 hours.');
+      closeModal();
+      form.reset();
+    } else {
+      form.reportValidity();
+    }
+  });
+  
+  // Modal backdrop click
+  document.getElementById('project-modal').addEventListener('click', function(e) {
+    if (e.target === this) {
+      closeModal();
+    }
+  });
+  
+  // Navigation click handlers
+  document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      smoothScrollTo(targetId);
+      
+      // Close mobile menu if open
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileMenu.classList.add('hidden');
+    });
+  });
+  
+  // Update active nav on scroll
+  window.addEventListener('scroll', updateActiveNavLink);
+  
+  // Auto year updater
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+});
+
+// Mobile menu toggle functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  mobileMenuButton.addEventListener('click', function() {
+    mobileMenu.classList.toggle('hidden');
+  });
+  
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', function(event) {
+    if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+      mobileMenu.classList.add('hidden');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
