@@ -6,14 +6,34 @@
     <title>Adams+ | Premium Website Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Include Supabase -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         body {
             font-family: 'Inter', sans-serif;
         }
+        .error-message {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+        .success-message {
+            color: #10b981;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+        .input-error {
+            border-color: #ef4444 !important;
+        }
+        .input-success {
+            border-color: #10b981 !important;
+        }
     </style>
 </head>
-<div class="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50/30 flex">
+<body class="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50/30 flex">
   <div class="flex flex-col lg:flex-row w-full">
     <!-- Left Side - Form -->
     <div class="w-full lg:w-1/2 flex items-center justify-center p-8 lg:p-12 xl:p-20">
@@ -37,52 +57,95 @@
           <p id="form-subtitle" class="text-gray-600 mt-2">Sign in to your account to continue</p>
         </div>
 
+        <!-- Status Messages -->
+        <div id="status-message" class="hidden mb-4 p-3 rounded-lg text-sm"></div>
+
         <!-- Sign In Form -->
         <form id="signin-form" class="space-y-5">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Email address</label>
-            <input type="email" class="w-full px-4 py-3.5 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 outline-none" placeholder="Enter your email">
+            <label for="signin-email" class="block text-sm font-medium text-gray-700 mb-2">Email address</label>
+            <input type="email" id="signin-email" class="w-full px-4 py-3.5 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 outline-none" placeholder="Enter your email" required>
+            <div id="signin-email-error" class="error-message">Please enter a valid email address</div>
           </div>
           
           <div>
             <div class="flex items-center justify-between mb-2">
-              <label class="block text-sm font-medium text-gray-700">Password</label>
-              <a href="#" class="text-sm text-blue-600 hover:text-blue-700 font-medium">Forgot password?</a>
+              <label for="signin-password" class="block text-sm font-medium text-gray-700">Password</label>
+              <a href="#" class="text-sm text-blue-600 hover:text-blue-700 font-medium" id="forgot-password">Forgot password?</a>
             </div>
-            <input type="password" class="w-full px-4 py-3.5 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 outline-none" placeholder="Enter your password">
+            <input type="password" id="signin-password" class="w-full px-4 py-3.5 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 outline-none" placeholder="Enter your password" required>
+            <div id="signin-password-error" class="error-message">Please enter your password</div>
           </div>
 
-          <button type="submit" class="w-full bg-blue-600 text-white py-3.5 px-4 rounded-xl font-semibold shadow-lg hover:shadow-xl hover:bg-blue-700 transform hover:scale-[1.02] transition-all duration-200">
-            Sign in to your account
+          <button type="submit" id="signin-submit" class="w-full bg-blue-600 text-white py-3.5 px-4 rounded-xl font-semibold shadow-lg hover:shadow-xl hover:bg-blue-700 transform hover:scale-[1.02] transition-all duration-200 flex items-center justify-center">
+            <span id="signin-btn-text">Sign in to your account</span>
+            <i id="signin-spinner" class="fas fa-spinner fa-spin ml-2 hidden"></i>
           </button>
         </form>
 
         <!-- Sign Up Form (Hidden by default) -->
         <form id="signup-form" class="space-y-5 hidden">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Full name</label>
-            <input type="text" class="w-full px-4 py-3.5 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 outline-none" placeholder="Enter your full name">
+            <label for="signup-name" class="block text-sm font-medium text-gray-700 mb-2">Full name</label>
+            <input type="text" id="signup-name" class="w-full px-4 py-3.5 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 outline-none" placeholder="Enter your full name" required>
+            <div id="signup-name-error" class="error-message">Please enter your full name</div>
           </div>
           
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Email address</label>
-            <input type="email" class="w-full px-4 py-3.5 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 outline-none" placeholder="Enter your email">
+            <label for="signup-email" class="block text-sm font-medium text-gray-700 mb-2">Email address</label>
+            <input type="email" id="signup-email" class="w-full px-4 py-3.5 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 outline-none" placeholder="Enter your email" required>
+            <div id="signup-email-error" class="error-message">Please enter a valid email address</div>
           </div>
           
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
-            <input type="password" class="w-full px-4 py-3.5 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 outline-none" placeholder="Create a password">
+            <label for="signup-password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+            <input type="password" id="signup-password" class="w-full px-4 py-3.5 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 outline-none" placeholder="Create a password" required minlength="6">
+            <div id="signup-password-error" class="error-message">Password must be at least 6 characters</div>
+          </div>
+
+          <div>
+            <label for="signup-confirm-password" class="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
+            <input type="password" id="signup-confirm-password" class="w-full px-4 py-3.5 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 outline-none" placeholder="Confirm your password" required>
+            <div id="signup-confirm-error" class="error-message">Passwords do not match</div>
           </div>
 
           <div class="flex items-center space-x-3">
-            <input type="checkbox" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
-            <label class="text-sm text-gray-600">
+            <input type="checkbox" id="signup-terms" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" required>
+            <label for="signup-terms" class="text-sm text-gray-600">
               I agree to the <a href="#" class="text-blue-600 hover:text-blue-700 font-medium">Terms</a> and <a href="#" class="text-blue-600 hover:text-blue-700 font-medium">Privacy Policy</a>
             </label>
           </div>
+          <div id="signup-terms-error" class="error-message">You must agree to the terms and conditions</div>
 
-          <button type="submit" class="w-full bg-blue-600 text-white py-3.5 px-4 rounded-xl font-semibold shadow-lg hover:shadow-xl hover:bg-blue-700 transform hover:scale-[1.02] transition-all duration-200">
-            Create your account
+          <button type="submit" id="signup-submit" class="w-full bg-blue-600 text-white py-3.5 px-4 rounded-xl font-semibold shadow-lg hover:shadow-xl hover:bg-blue-700 transform hover:scale-[1.02] transition-all duration-200 flex items-center justify-center">
+            <span id="signup-btn-text">Create your account</span>
+            <i id="signup-spinner" class="fas fa-spinner fa-spin ml-2 hidden"></i>
+          </button>
+        </form>
+
+        <!-- Forgot Password Form (Hidden by default) -->
+        <form id="forgot-form" class="space-y-5 hidden">
+          <div class="mb-6">
+            <div class="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl shadow-lg mb-4">
+              <i class="fas fa-key text-white text-lg"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-900">Reset Password</h2>
+            <p class="text-gray-600 mt-2">Enter your email to receive a password reset link</p>
+          </div>
+          
+          <div>
+            <label for="forgot-email" class="block text-sm font-medium text-gray-700 mb-2">Email address</label>
+            <input type="email" id="forgot-email" class="w-full px-4 py-3.5 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200 outline-none" placeholder="Enter your email" required>
+            <div id="forgot-email-error" class="error-message">Please enter a valid email address</div>
+          </div>
+
+          <button type="submit" id="forgot-submit" class="w-full bg-blue-600 text-white py-3.5 px-4 rounded-xl font-semibold shadow-lg hover:shadow-xl hover:bg-blue-700 transform hover:scale-[1.02] transition-all duration-200 flex items-center justify-center">
+            <span id="forgot-btn-text">Send Reset Link</span>
+            <i id="forgot-spinner" class="fas fa-spinner fa-spin ml-2 hidden"></i>
+          </button>
+
+          <button type="button" id="back-to-signin" class="w-full text-gray-600 hover:text-gray-800 py-3 px-4 rounded-xl font-medium hover:bg-gray-50 transition-all duration-200">
+            ← Back to Sign In
           </button>
         </form>
 
@@ -92,7 +155,7 @@
             Or continue with
           </p>
           <div class="grid grid-cols-2 gap-3">
-            <button class="google-btn flex items-center justify-center px-4 py-3 border border-gray-300 rounded-xl hover:border-red-500 transition-colors duration-200">
+            <button id="google-login" class="google-btn flex items-center justify-center px-4 py-3 border border-gray-300 rounded-xl hover:border-red-500 transition-colors duration-200">
               <svg class="w-5 h-5 text-red-500" viewBox="0 0 24 24">
                 <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                 <path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -101,7 +164,7 @@
               </svg>
               <span class="ml-2 text-sm font-medium text-gray-700">Google</span>
             </button>
-            <button class="twitter-btn flex items-center justify-center px-4 py-3 border border-gray-300 rounded-xl hover:border-blue-400 transition-colors duration-200">
+            <button id="twitter-login" class="twitter-btn flex items-center justify-center px-4 py-3 border border-gray-300 rounded-xl hover:border-blue-400 transition-colors duration-200">
               <svg class="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
               </svg>
@@ -143,39 +206,464 @@
 </div>
 
 <script>
-  const signinBtn = document.getElementById('signin-btn');
-  const signupBtn = document.getElementById('signup-btn');
-  const signinForm = document.getElementById('signin-form');
-  const signupForm = document.getElementById('signup-form');
-  const title = document.getElementById('form-title');
-  const subtitle = document.getElementById('form-subtitle');
+// Supabase Configuration - REPLACE WITH YOUR SUPABASE CREDENTIALS
+const SUPABASE_URL = 'https://aarljzjspmzpweggmbbo.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFhcmxqempzcG16cHdlZ2dtYmJvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ1Njk5MjIsImV4cCI6MjA4MDE0NTkyMn0.FnqWelxneHlurDrEGICI9dNdcXhrpoUKGxUwHfkzH7s';
 
-  function switchToSignIn() {
-    signinBtn.classList.add('bg-blue-600', 'text-white', 'shadow-sm');
-    signinBtn.classList.remove('text-gray-500', 'hover:text-gray-700');
-    signupBtn.classList.remove('bg-blue-600', 'text-white', 'shadow-sm');
-    signupBtn.classList.add('text-gray-500', 'hover:text-gray-700');
-    
-    signinForm.classList.remove('hidden');
-    signupForm.classList.add('hidden');
-    
-    title.textContent = 'Welcome back';
-    subtitle.textContent = 'Sign in to your account to continue';
+// Initialize Supabase
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// DOM Elements
+const signinBtn = document.getElementById('signin-btn');
+const signupBtn = document.getElementById('signup-btn');
+const signinForm = document.getElementById('signin-form');
+const signupForm = document.getElementById('signup-form');
+const forgotForm = document.getElementById('forgot-form');
+const title = document.getElementById('form-title');
+const subtitle = document.getElementById('form-subtitle');
+const statusMessage = document.getElementById('status-message');
+const forgotPasswordLink = document.getElementById('forgot-password');
+const backToSigninBtn = document.getElementById('back-to-signin');
+
+// Form switch functions
+function switchToSignIn() {
+  signinBtn.classList.add('bg-blue-600', 'text-white', 'shadow-sm');
+  signinBtn.classList.remove('text-gray-500', 'hover:text-gray-700');
+  signupBtn.classList.remove('bg-blue-600', 'text-white', 'shadow-sm');
+  signupBtn.classList.add('text-gray-500', 'hover:text-gray-700');
+  
+  signinForm.classList.remove('hidden');
+  signupForm.classList.add('hidden');
+  forgotForm.classList.add('hidden');
+  statusMessage.classList.add('hidden');
+  
+  title.textContent = 'Welcome back';
+  subtitle.textContent = 'Sign in to your account to continue';
+  
+  clearErrors();
+  clearFormInputs();
+}
+
+function switchToSignUp() {
+  signupBtn.classList.add('bg-blue-600', 'text-white', 'shadow-sm');
+  signupBtn.classList.remove('text-gray-500', 'hover:text-gray-700');
+  signinBtn.classList.remove('bg-blue-600', 'text-white', 'shadow-sm');
+  signinBtn.classList.add('text-gray-500', 'hover:text-gray-700');
+  
+  signupForm.classList.remove('hidden');
+  signinForm.classList.add('hidden');
+  forgotForm.classList.add('hidden');
+  statusMessage.classList.add('hidden');
+  
+  title.textContent = 'Create account';
+  subtitle.textContent = 'Get started with your free account';
+  
+  clearErrors();
+  clearFormInputs();
+}
+
+function switchToForgotPassword() {
+  signinForm.classList.add('hidden');
+  signupForm.classList.add('hidden');
+  forgotForm.classList.remove('hidden');
+  statusMessage.classList.add('hidden');
+  
+  title.textContent = '';
+  subtitle.textContent = '';
+  
+  clearErrors();
+}
+
+// Helper functions
+function showError(elementId, message) {
+  const errorElement = document.getElementById(elementId);
+  errorElement.textContent = message;
+  errorElement.style.display = 'block';
+  
+  const inputElement = document.getElementById(elementId.replace('-error', ''));
+  inputElement.classList.add('input-error');
+  inputElement.classList.remove('input-success');
+}
+
+function hideError(elementId) {
+  const errorElement = document.getElementById(elementId);
+  errorElement.style.display = 'none';
+  
+  const inputElement = document.getElementById(elementId.replace('-error', ''));
+  inputElement.classList.remove('input-error');
+}
+
+function clearErrors() {
+  document.querySelectorAll('.error-message').forEach(el => {
+    el.style.display = 'none';
+  });
+  
+  document.querySelectorAll('input').forEach(input => {
+    input.classList.remove('input-error', 'input-success');
+  });
+}
+
+function clearFormInputs() {
+  document.querySelectorAll('input').forEach(input => {
+    input.value = '';
+  });
+}
+
+function showStatusMessage(message, type = 'error') {
+  statusMessage.textContent = message;
+  statusMessage.className = 'mb-4 p-3 rounded-lg text-sm';
+  
+  if (type === 'success') {
+    statusMessage.classList.add('bg-green-50', 'text-green-800', 'border', 'border-green-200');
+  } else {
+    statusMessage.classList.add('bg-red-50', 'text-red-800', 'border', 'border-red-200');
   }
+  
+  statusMessage.classList.remove('hidden');
+}
 
-  function switchToSignUp() {
-    signupBtn.classList.add('bg-blue-600', 'text-white', 'shadow-sm');
-    signupBtn.classList.remove('text-gray-500', 'hover:text-gray-700');
-    signinBtn.classList.remove('bg-blue-600', 'text-white', 'shadow-sm');
-    signinBtn.classList.add('text-gray-500', 'hover:text-gray-700');
-    
-    signupForm.classList.remove('hidden');
-    signinForm.classList.add('hidden');
-    
-    title.textContent = 'Create account';
-    subtitle.textContent = 'Get started with your free account';
+function showLoading(buttonId, spinnerId, buttonTextId) {
+  document.getElementById(buttonId).disabled = true;
+  document.getElementById(spinnerId).classList.remove('hidden');
+  document.getElementById(buttonTextId).textContent = 'Processing...';
+}
+
+function hideLoading(buttonId, spinnerId, buttonTextId, originalText) {
+  document.getElementById(buttonId).disabled = false;
+  document.getElementById(spinnerId).classList.add('hidden');
+  document.getElementById(buttonTextId).textContent = originalText;
+}
+
+// Validation functions
+function validateEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email);
+}
+
+function validatePassword(password) {
+  return password.length >= 6;
+}
+
+function validateName(name) {
+  return name.trim().length >= 2;
+}
+
+// Form submission handlers
+async function handleSignIn(e) {
+  e.preventDefault();
+  
+  clearErrors();
+  
+  const email = document.getElementById('signin-email').value.trim();
+  const password = document.getElementById('signin-password').value;
+  
+  // Validation
+  let isValid = true;
+  
+  if (!validateEmail(email)) {
+    showError('signin-email-error', 'Please enter a valid email address');
+    isValid = false;
   }
+  
+  if (!password) {
+    showError('signin-password-error', 'Please enter your password');
+    isValid = false;
+  }
+  
+  if (!isValid) return;
+  
+  // Show loading state
+  showLoading('signin-submit', 'signin-spinner', 'signin-btn-text');
+  
+  try {
+    // Sign in with Supabase
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password
+    });
+    
+    if (error) throw error;
+    
+    // Successful login
+    showStatusMessage('Successfully signed in! Redirecting...', 'success');
+    
+    // Redirect to index.html after 1.5 seconds
+    setTimeout(() => {
+      window.location.href = 'index.html';
+    }, 1500);
+    
+  } catch (error) {
+    console.error('Sign in error:', error);
+    showStatusMessage(error.message || 'Failed to sign in. Please check your credentials.');
+  } finally {
+    hideLoading('signin-submit', 'signin-spinner', 'signin-btn-text', 'Sign in to your account');
+  }
+}
 
+async function handleSignUp(e) {
+  e.preventDefault();
+  
+  clearErrors();
+  
+  const name = document.getElementById('signup-name').value.trim();
+  const email = document.getElementById('signup-email').value.trim();
+  const password = document.getElementById('signup-password').value;
+  const confirmPassword = document.getElementById('signup-confirm-password').value;
+  const terms = document.getElementById('signup-terms').checked;
+  
+  // Validation
+  let isValid = true;
+  
+  if (!validateName(name)) {
+    showError('signup-name-error', 'Please enter your full name (min 2 characters)');
+    isValid = false;
+  }
+  
+  if (!validateEmail(email)) {
+    showError('signup-email-error', 'Please enter a valid email address');
+    isValid = false;
+  }
+  
+  if (!validatePassword(password)) {
+    showError('signup-password-error', 'Password must be at least 6 characters');
+    isValid = false;
+  }
+  
+  if (password !== confirmPassword) {
+    showError('signup-confirm-error', 'Passwords do not match');
+    isValid = false;
+  }
+  
+  if (!terms) {
+    showError('signup-terms-error', 'You must agree to the terms and conditions');
+    isValid = false;
+  }
+  
+  if (!isValid) return;
+  
+  // Show loading state
+  showLoading('signup-submit', 'signup-spinner', 'signup-btn-text');
+  
+  try {
+    // Sign up with Supabase
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          full_name: name
+        }
+      }
+    });
+    
+    if (error) throw error;
+    
+    if (data.user) {
+      if (data.user.identities && data.user.identities.length === 0) {
+        // User already exists
+        showStatusMessage('An account with this email already exists. Please sign in instead.', 'error');
+      } else {
+        // New user created
+        showStatusMessage('Account created successfully! Please check your email to confirm your account.', 'success');
+        
+        // Clear form
+        clearFormInputs();
+        
+        // Switch to sign in after 3 seconds
+        setTimeout(() => {
+          switchToSignIn();
+        }, 3000);
+      }
+    }
+    
+  } catch (error) {
+    console.error('Sign up error:', error);
+    showStatusMessage(error.message || 'Failed to create account. Please try again.');
+  } finally {
+    hideLoading('signup-submit', 'signup-spinner', 'signup-btn-text', 'Create your account');
+  }
+}
+
+async function handleForgotPassword(e) {
+  e.preventDefault();
+  
+  clearErrors();
+  
+  const email = document.getElementById('forgot-email').value.trim();
+  
+  // Validation
+  if (!validateEmail(email)) {
+    showError('forgot-email-error', 'Please enter a valid email address');
+    return;
+  }
+  
+  // Show loading state
+  showLoading('forgot-submit', 'forgot-spinner', 'forgot-btn-text');
+  
+  try {
+    // Send password reset email
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/signup.html`
+    });
+    
+    if (error) throw error;
+    
+    showStatusMessage('Password reset link sent to your email! Please check your inbox.', 'success');
+    
+    // Clear form
+    document.getElementById('forgot-email').value = '';
+    
+  } catch (error) {
+    console.error('Forgot password error:', error);
+    showStatusMessage(error.message || 'Failed to send reset link. Please try again.');
+  } finally {
+    hideLoading('forgot-submit', 'forgot-spinner', 'forgot-btn-text', 'Send Reset Link');
+  }
+}
+
+// Social login handlers
+async function handleGoogleLogin() {
+  try {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: `${window.location.origin}/index.html`
+      }
+    });
+    
+    if (error) throw error;
+  } catch (error) {
+    console.error('Google login error:', error);
+    showStatusMessage('Failed to sign in with Google. Please try again.');
+  }
+}
+
+async function handleTwitterLogin() {
+  try {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'twitter',
+      options: {
+        redirectTo: `${window.location.origin}/index.html`
+      }
+    });
+    
+    if (error) throw error;
+  } catch (error) {
+    console.error('Twitter login error:', error);
+    showStatusMessage('Failed to sign in with Twitter. Please try again.');
+  }
+}
+
+// Real-time input validation
+function setupRealTimeValidation() {
+  // Sign in email
+  document.getElementById('signin-email').addEventListener('input', function() {
+    if (validateEmail(this.value)) {
+      hideError('signin-email-error');
+      this.classList.add('input-success');
+    } else {
+      this.classList.remove('input-success');
+    }
+  });
+  
+  // Sign up name
+  document.getElementById('signup-name').addEventListener('input', function() {
+    if (validateName(this.value)) {
+      hideError('signup-name-error');
+      this.classList.add('input-success');
+    } else {
+      this.classList.remove('input-success');
+    }
+  });
+  
+  // Sign up email
+  document.getElementById('signup-email').addEventListener('input', function() {
+    if (validateEmail(this.value)) {
+      hideError('signup-email-error');
+      this.classList.add('input-success');
+    } else {
+      this.classList.remove('input-success');
+    }
+  });
+  
+  // Sign up password
+  document.getElementById('signup-password').addEventListener('input', function() {
+    if (validatePassword(this.value)) {
+      hideError('signup-password-error');
+      this.classList.add('input-success');
+    } else {
+      this.classList.remove('input-success');
+    }
+  });
+  
+  // Sign up confirm password
+  document.getElementById('signup-confirm-password').addEventListener('input', function() {
+    const password = document.getElementById('signup-password').value;
+    if (this.value === password && password.length >= 6) {
+      hideError('signup-confirm-error');
+      this.classList.add('input-success');
+    } else {
+      this.classList.remove('input-success');
+    }
+  });
+  
+  // Forgot email
+  document.getElementById('forgot-email').addEventListener('input', function() {
+    if (validateEmail(this.value)) {
+      hideError('forgot-email-error');
+      this.classList.add('input-success');
+    } else {
+      this.classList.remove('input-success');
+    }
+  });
+}
+
+// Event Listeners
+document.addEventListener('DOMContentLoaded', function() {
+  // Setup real-time validation
+  setupRealTimeValidation();
+  
+  // Form switch buttons
   signinBtn.addEventListener('click', switchToSignIn);
   signupBtn.addEventListener('click', switchToSignUp);
+  
+  // Forgot password
+  forgotPasswordLink.addEventListener('click', function(e) {
+    e.preventDefault();
+    switchToForgotPassword();
+  });
+  
+  backToSigninBtn.addEventListener('click', switchToSignIn);
+  
+  // Form submissions
+  signinForm.addEventListener('submit', handleSignIn);
+  signupForm.addEventListener('submit', handleSignUp);
+  forgotForm.addEventListener('submit', handleForgotPassword);
+  
+  // Social logins
+  document.getElementById('google-login').addEventListener('click', handleGoogleLogin);
+  document.getElementById('twitter-login').addEventListener('click', handleTwitterLogin);
+  
+  // Check if user is already logged in
+  supabase.auth.getSession().then(({ data: { session } }) => {
+    if (session) {
+      // Redirect to index.html if already logged in
+      window.location.href = 'index.html';
+    }
+  });
+});
+
+// Handle auth state changes
+supabase.auth.onAuthStateChange((event, session) => {
+  if (event === 'SIGNED_IN' && session) {
+    // Already handled in form submission
+  } else if (event === 'PASSWORD_RECOVERY') {
+    // Handle password recovery
+    switchToSignIn();
+    showStatusMessage('You can now reset your password. Please check your email for instructions.', 'success');
+  }
+});
 </script>
+
+</body>
+</html>

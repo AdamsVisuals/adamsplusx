@@ -6,6 +6,8 @@
     <title>Adams+ | Premium Website Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Include Supabase -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         body {
@@ -33,6 +35,38 @@
         /* Active navigation link styling */
         .nav-link.active {
             color: #2563eb;
+        }
+
+        /* Testimonial slider styles */
+        .testimonial-slide {
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        }
+        .testimonial-slide.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .testimonial-slide.prev {
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+        .testimonial-slide.next {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+
+        /* Avatar styles */
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: uppercase;
         }
     </style>
 </head>
@@ -62,6 +96,10 @@
             Portfolio
             <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></div>
           </a>
+          <a href="#testimonials" class="nav-link text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 py-2 relative group">
+            Testimonials
+            <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></div>
+          </a>
           <a href="#pricing" class="nav-link text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 py-2 relative group">
             Pricing
             <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></div>
@@ -74,12 +112,20 @@
 
         <!-- Right Side -->
         <div class="flex items-center space-x-4">
-          <a href="signup.html" class="text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 hidden sm:block py-2 px-3 rounded-lg hover:bg-blue-50">
-            Sign in
-          </a>
-          <a href="#contact" class="bg-blue-600 text-white px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors duration-200">
-            Get started
-          </a>
+          <!-- User Avatar (hidden by default, shown when logged in) -->
+          <div id="user-avatar" class="hidden">
+            <div class="avatar cursor-pointer" id="avatar-initials"></div>
+          </div>
+          
+          <!-- Login/Signup Button (shown when not logged in) -->
+          <div id="auth-buttons">
+            <a href="signup.html" class="text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 hidden sm:block py-2 px-3 rounded-lg hover:bg-blue-50">
+              Sign in
+            </a>
+            <a href="#contact" class="bg-blue-600 text-white px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors duration-200">
+              Get started
+            </a>
+          </div>
           
           <!-- Mobile menu button -->
           <button id="mobile-menu-button" class="md:hidden text-gray-600 p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200">
@@ -100,6 +146,10 @@
           <div class="w-1 h-6 bg-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           <span>Portfolio</span>
         </a>
+        <a href="#testimonials" class="mobile-nav-link flex items-center space-x-3 text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 py-2 group">
+          <div class="w-1 h-6 bg-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <span>Testimonials</span>
+        </a>
         <a href="#pricing" class="mobile-nav-link flex items-center space-x-3 text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 py-2 group">
           <div class="w-1 h-6 bg-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           <span>Pricing</span>
@@ -108,7 +158,7 @@
           <div class="w-1 h-6 bg-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           <span>Contact</span>
         </a>
-        <div class="pt-3 border-t border-gray-100 mt-2">
+        <div class="pt-3 border-t border-gray-100 mt-2" id="mobile-auth-section">
           <a href="signup.html" class="flex items-center space-x-3 text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 py-2 group">
             <div class="w-1 h-6 bg-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             <span>Sign in</span>
@@ -376,6 +426,180 @@
   </div>
 </section>
 
+<!-- Testimonials Section -->
+<section id="testimonials" class="bg-gradient-to-b from-white to-blue-50 py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-base/7 font-semibold text-blue-600">Client Stories</h2>
+      <p class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-950 sm:text-5xl">What our clients say</p>
+      <p class="mt-6 text-lg/8 text-gray-600 max-w-3xl mx-auto">Hear from businesses and individuals who have transformed their digital presence with Adams+.</p>
+    </div>
+
+    <div class="relative">
+      <!-- Testimonial Slider Container -->
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-white to-blue-50/30 border border-gray-200/50 shadow-xl">
+        <div id="testimonial-slider" class="relative h-[400px] sm:h-[350px]">
+          <!-- Testimonial Slides -->
+          <div class="testimonial-slide absolute inset-0 p-8 sm:p-12 flex flex-col justify-center transition-all duration-500 active" data-index="0">
+            <div class="max-w-3xl mx-auto">
+              <div class="flex items-center mb-6">
+                <div class="flex -space-x-2">
+                  <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold">S</div>
+                  <div class="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center text-white font-bold">T</div>
+                  <div class="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center text-white font-bold">M</div>
+                </div>
+                <div class="ml-4">
+                  <h4 class="text-lg font-semibold text-gray-900">Stockmate.shop Team</h4>
+                  <p class="text-sm text-gray-600">E-commerce Platform</p>
+                </div>
+              </div>
+              <div class="relative">
+                <div class="absolute -top-4 -left-4 text-4xl text-blue-200">"</div>
+                <p class="text-lg sm:text-xl text-gray-700 italic leading-relaxed pl-4">
+                  Adams+ transformed our inventory management system completely. The web app they built is not only beautiful but incredibly functional. Our team can now manage stock across multiple locations seamlessly.
+                </p>
+                <div class="flex items-center mt-6">
+                  <div class="flex text-yellow-400">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <span class="ml-3 text-sm font-medium text-gray-900">5.0 rating</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-slide absolute inset-0 p-8 sm:p-12 flex flex-col justify-center transition-all duration-500 next" data-index="1">
+            <div class="max-w-3xl mx-auto">
+              <div class="flex items-center mb-6">
+                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white font-bold text-xl">T</div>
+                <div class="ml-6">
+                  <h4 class="text-lg font-semibold text-gray-900">Thomas Greenfield</h4>
+                  <p class="text-sm text-gray-600">CEO, Teva Eco Travel</p>
+                </div>
+              </div>
+              <div class="relative">
+                <div class="absolute -top-4 -left-4 text-4xl text-blue-200">"</div>
+                <p class="text-lg sm:text-xl text-gray-700 italic leading-relaxed pl-4">
+                  The sustainable tourism website Adams+ created for us exceeded all expectations. It's not just a website—it's a complete digital experience that tells our story beautifully. Our bookings have increased by 300% since launch.
+                </p>
+                <div class="flex items-center mt-6">
+                  <div class="flex text-yellow-400">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                  </div>
+                  <span class="ml-3 text-sm font-medium text-gray-900">4.8 rating</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-slide absolute inset-0 p-8 sm:p-12 flex flex-col justify-center transition-all duration-500 next" data-index="2">
+            <div class="max-w-3xl mx-auto">
+              <div class="flex items-center mb-6">
+                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white font-bold text-xl">P</div>
+                <div class="ml-6">
+                  <h4 class="text-lg font-semibold text-gray-900">Patricia Wilson</h4>
+                  <p class="text-sm text-gray-600">Founder, Patriot Tours</p>
+                </div>
+              </div>
+              <div class="relative">
+                <div class="absolute -top-4 -left-4 text-4xl text-blue-200">"</div>
+                <p class="text-lg sm:text-xl text-gray-700 italic leading-relaxed pl-4">
+                  Working with Adams+ was a game-changer for our safari business. Their attention to detail and understanding of the tourism industry helped create a website that truly captures the spirit of adventure. The booking system is flawless.
+                </p>
+                <div class="flex items-center mt-6">
+                  <div class="flex text-yellow-400">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <span class="ml-3 text-sm font-medium text-gray-900">5.0 rating</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-slide absolute inset-0 p-8 sm:p-12 flex flex-col justify-center transition-all duration-500 next" data-index="3">
+            <div class="max-w-3xl mx-auto">
+              <div class="flex items-center mb-6">
+                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-white font-bold text-xl">M</div>
+                <div class="ml-6">
+                  <h4 class="text-lg font-semibold text-gray-900">Michael Olotu</h4>
+                  <p class="text-sm text-gray-600">Director, MaasaiSpear Safaris</p>
+                </div>
+              </div>
+              <div class="relative">
+                <div class="absolute -top-4 -left-4 text-4xl text-blue-200">"</div>
+                <p class="text-lg sm:text-xl text-gray-700 italic leading-relaxed pl-4">
+                  The premium safari experience website Adams+ delivered is nothing short of spectacular. The video integrations, smooth animations, and intuitive design have elevated our brand to luxury status. We're getting inquiries from all over the world.
+                </p>
+                <div class="flex items-center mt-6">
+                  <div class="flex text-yellow-400">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <span class="ml-3 text-sm font-medium text-gray-900">5.0 rating</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slider Controls -->
+        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex items-center space-x-4">
+          <button id="prev-testimonial" class="p-2 rounded-full bg-white/80 hover:bg-white shadow-lg hover:shadow-xl transition-all duration-200">
+            <i class="fas fa-chevron-left text-gray-700"></i>
+          </button>
+          
+          <!-- Dots Indicator -->
+          <div class="flex space-x-2">
+            <button class="testimonial-dot w-2 h-2 rounded-full bg-blue-300 transition-all duration-300 active" data-index="0"></button>
+            <button class="testimonial-dot w-2 h-2 rounded-full bg-blue-300 transition-all duration-300" data-index="1"></button>
+            <button class="testimonial-dot w-2 h-2 rounded-full bg-blue-300 transition-all duration-300" data-index="2"></button>
+            <button class="testimonial-dot w-2 h-2 rounded-full bg-blue-300 transition-all duration-300" data-index="3"></button>
+          </div>
+          
+          <button id="next-testimonial" class="p-2 rounded-full bg-white/80 hover:bg-white shadow-lg hover:shadow-xl transition-all duration-200">
+            <i class="fas fa-chevron-right text-gray-700"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Testimonial Stats -->
+      <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="text-center p-6 rounded-2xl bg-white/50 backdrop-blur-sm border border-gray-200/50">
+          <div class="text-3xl font-bold text-blue-600">98%</div>
+          <div class="text-sm text-gray-600 mt-2">Client Satisfaction</div>
+        </div>
+        <div class="text-center p-6 rounded-2xl bg-white/50 backdrop-blur-sm border border-gray-200/50">
+          <div class="text-3xl font-bold text-blue-600">150+</div>
+          <div class="text-sm text-gray-600 mt-2">Projects Delivered</div>
+        </div>
+        <div class="text-center p-6 rounded-2xl bg-white/50 backdrop-blur-sm border border-gray-200/50">
+          <div class="text-3xl font-bold text-blue-600">40+</div>
+          <div class="text-sm text-gray-600 mt-2">Countries Reached</div>
+        </div>
+        <div class="text-center p-6 rounded-2xl bg-white/50 backdrop-blur-sm border border-gray-200/50">
+          <div class="text-3xl font-bold text-blue-600">24/7</div>
+          <div class="text-sm text-gray-600 mt-2">Support Available</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Pricing Section -->
 <section id="pricing" class="bg-white py-24 sm:py-32">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
@@ -418,7 +642,6 @@
 
     <!-- Pricing Cards -->
     <div class="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-6">
-
       <!-- Starter Website -->
       <div class="flex flex-col justify-between rounded-2xl bg-white p-8 ring-1 ring-gray-200 shadow-sm hover:shadow-md transition-shadow">
         <div>
@@ -634,6 +857,13 @@
 </footer>
 
 <script>
+// Supabase Configuration - REPLACE WITH YOUR SUPABASE CREDENTIALS
+const SUPABASE_URL = 'https://aarljzjspmzpweggmbbo.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFhcmxqempzcG16cHdlZ2dtYmJvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ1Njk5MjIsImV4cCI6MjA4MDE0NTkyMn0.FnqWelxneHlurDrEGICI9dNdcXhrpoUKGxUwHfkzH7s';
+
+// Initialize Supabase
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
 // Base prices in USD
 const basePrices = {
   basic: 399,
@@ -695,10 +925,228 @@ let currentCurrency = 'USD';
 let exchangeRates = {};
 let lastUpdateTime = null;
 
+// Testimonial Slider
+let currentTestimonial = 0;
+const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+const testimonialDots = document.querySelectorAll('.testimonial-dot');
+let testimonialInterval;
+
+// Initialize testimonial slider
+function initTestimonialSlider() {
+  testimonialInterval = setInterval(nextTestimonial, 5000);
+  
+  // Add event listeners for controls
+  document.getElementById('prev-testimonial').addEventListener('click', prevTestimonial);
+  document.getElementById('next-testimonial').addEventListener('click', nextTestimonial);
+  
+  // Add event listeners for dots
+  testimonialDots.forEach(dot => {
+    dot.addEventListener('click', function() {
+      const index = parseInt(this.getAttribute('data-index'));
+      goToTestimonial(index);
+    });
+  });
+  
+  // Pause on hover
+  const sliderContainer = document.getElementById('testimonial-slider');
+  sliderContainer.addEventListener('mouseenter', () => {
+    clearInterval(testimonialInterval);
+  });
+  
+  sliderContainer.addEventListener('mouseleave', () => {
+    testimonialInterval = setInterval(nextTestimonial, 5000);
+  });
+}
+
+function updateTestimonialSlider() {
+  // Update slides
+  testimonialSlides.forEach((slide, index) => {
+    slide.classList.remove('active', 'prev', 'next');
+    
+    if (index === currentTestimonial) {
+      slide.classList.add('active');
+    } else if (index === (currentTestimonial - 1 + testimonialSlides.length) % testimonialSlides.length) {
+      slide.classList.add('prev');
+    } else if (index === (currentTestimonial + 1) % testimonialSlides.length) {
+      slide.classList.add('next');
+    } else {
+      slide.classList.add('next');
+    }
+  });
+  
+  // Update dots
+  testimonialDots.forEach((dot, index) => {
+    dot.classList.remove('active');
+    if (index === currentTestimonial) {
+      dot.classList.add('active');
+      dot.classList.add('w-4', 'bg-blue-600');
+      dot.classList.remove('w-2', 'bg-blue-300');
+    } else {
+      dot.classList.remove('active');
+      dot.classList.add('w-2', 'bg-blue-300');
+      dot.classList.remove('w-4', 'bg-blue-600');
+    }
+  });
+}
+
+function nextTestimonial() {
+  currentTestimonial = (currentTestimonial + 1) % testimonialSlides.length;
+  updateTestimonialSlider();
+}
+
+function prevTestimonial() {
+  currentTestimonial = (currentTestimonial - 1 + testimonialSlides.length) % testimonialSlides.length;
+  updateTestimonialSlider();
+}
+
+function goToTestimonial(index) {
+  currentTestimonial = index;
+  updateTestimonialSlider();
+  // Reset interval when manually navigating
+  clearInterval(testimonialInterval);
+  testimonialInterval = setInterval(nextTestimonial, 5000);
+}
+
+// Authentication Functions
+async function checkAuthStatus() {
+  try {
+    const { data: { session }, error } = await supabase.auth.getSession();
+    
+    if (error) {
+      console.error('Auth error:', error);
+      return;
+    }
+    
+    if (session) {
+      // User is logged in
+      showUserAvatar(session.user);
+    } else {
+      // User is not logged in
+      showAuthButtons();
+    }
+  } catch (error) {
+    console.error('Error checking auth status:', error);
+    showAuthButtons();
+  }
+}
+
+function showUserAvatar(user) {
+  const avatarContainer = document.getElementById('user-avatar');
+  const authButtons = document.getElementById('auth-buttons');
+  const mobileAuthSection = document.getElementById('mobile-auth-section');
+  
+  // Show avatar, hide auth buttons
+  avatarContainer.classList.remove('hidden');
+  authButtons.classList.add('hidden');
+  
+  if (mobileAuthSection) {
+    mobileAuthSection.innerHTML = `
+      <div class="flex items-center space-x-3 text-gray-600 text-sm font-medium py-2">
+        <div class="avatar">${getInitials(user.email)}</div>
+        <span>${user.email}</span>
+      </div>
+      <button id="logout-btn" class="w-full mt-2 text-left text-red-600 hover:text-red-700 text-sm font-medium py-2 px-3 rounded-lg hover:bg-red-50 transition-colors">
+        <i class="fas fa-sign-out-alt mr-2"></i>Sign out
+      </button>
+    `;
+    
+    // Add logout event listener for mobile
+    document.getElementById('logout-btn').addEventListener('click', logout);
+  }
+  
+  // Set avatar initials
+  const avatarInitials = document.getElementById('avatar-initials');
+  avatarInitials.textContent = getInitials(user.email);
+  
+  // Add logout functionality to avatar
+  avatarContainer.addEventListener('click', function(e) {
+    e.stopPropagation();
+    showUserMenu(user);
+  });
+}
+
+function getInitials(email) {
+  if (!email) return 'U';
+  return email.charAt(0).toUpperCase();
+}
+
+function showAuthButtons() {
+  const avatarContainer = document.getElementById('user-avatar');
+  const authButtons = document.getElementById('auth-buttons');
+  
+  avatarContainer.classList.add('hidden');
+  authButtons.classList.remove('hidden');
+  
+  // Reset mobile auth section
+  const mobileAuthSection = document.getElementById('mobile-auth-section');
+  if (mobileAuthSection) {
+    mobileAuthSection.innerHTML = `
+      <a href="signup.html" class="flex items-center space-x-3 text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 py-2 group">
+        <div class="w-1 h-6 bg-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <span>Sign in</span>
+      </a>
+    `;
+  }
+}
+
+function showUserMenu(user) {
+  // Remove any existing menu
+  const existingMenu = document.querySelector('.user-menu');
+  if (existingMenu) existingMenu.remove();
+  
+  // Create user menu
+  const menu = document.createElement('div');
+  menu.className = 'user-menu absolute top-16 right-4 bg-white rounded-xl shadow-lg border border-gray-200 py-2 min-w-48 z-50';
+  menu.innerHTML = `
+    <div class="px-4 py-3 border-b border-gray-100">
+      <div class="font-medium text-gray-900">${user.email}</div>
+      <div class="text-sm text-gray-500">Signed in</div>
+    </div>
+    <button id="logout-menu-btn" class="w-full text-left px-4 py-3 text-sm text-red-600 hover:bg-red-50 transition-colors">
+      <i class="fas fa-sign-out-alt mr-2"></i>Sign out
+    </button>
+  `;
+  
+  // Add to DOM
+  document.body.appendChild(menu);
+  
+  // Add event listener
+  document.getElementById('logout-menu-btn').addEventListener('click', logout);
+  
+  // Close menu when clicking outside
+  setTimeout(() => {
+    document.addEventListener('click', function closeMenu(e) {
+      if (!menu.contains(e.target) && !document.getElementById('user-avatar').contains(e.target)) {
+        menu.remove();
+        document.removeEventListener('click', closeMenu);
+      }
+    });
+  }, 10);
+}
+
+async function logout() {
+  try {
+    const { error } = await supabase.auth.signOut();
+    if (error) throw error;
+    
+    // Remove user menu if exists
+    const userMenu = document.querySelector('.user-menu');
+    if (userMenu) userMenu.remove();
+    
+    // Show auth buttons
+    showAuthButtons();
+    
+    // Clear any stored session
+    localStorage.removeItem('supabase.auth.token');
+  } catch (error) {
+    console.error('Error signing out:', error);
+    alert('Error signing out. Please try again.');
+  }
+}
+
 // Fetch real-time exchange rates
 async function fetchExchangeRates() {
   try {
-    // Using ExchangeRate-API (free tier)
     const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
     const data = await response.json();
     
@@ -709,10 +1157,9 @@ async function fetchExchangeRates() {
     }
   } catch (error) {
     console.warn('Failed to fetch exchange rates, using fallback rates:', error);
-    // Fallback rates (approximate)
     exchangeRates = {
       USD: 1, EUR: 0.85, GBP: 0.73, JPY: 110, CAD: 1.25, AUD: 1.35,
-      CHF: 0.92, CNY: 6.45, INR: 75, TZS: 2300, KES: 110, NGN: 410,
+      CHF: 0.92, CNY: 6.45, INR: 75, TZS: 2450, KES: 110, NGN: 410,
       ZAR: 14.5, AED: 3.67, SAR: 3.75, BRL: 5.2, MXN: 20
     };
     lastUpdateTime = new Date();
@@ -723,12 +1170,11 @@ async function fetchExchangeRates() {
 // Convert price from USD to target currency
 function convertPrice(usdPrice, targetCurrency) {
   const rate = exchangeRates[targetCurrency];
-  if (!rate) return usdPrice; // Fallback to USD if rate not available
+  if (!rate) return usdPrice;
   
   const converted = usdPrice * rate;
   const info = currencyInfo[targetCurrency] || currencyInfo.USD;
   
-  // Round based on currency (no decimals for some currencies)
   const rounded = info.decimal === 0 ? Math.round(converted) : Math.round(converted * 100) / 100;
   
   return rounded;
@@ -756,14 +1202,12 @@ async function detectLocation() {
     const country = data.country_code;
     const countryName = data.country_name;
     
-    // Get currency based on country
     const detectedCurrency = countryCurrency[country] || 'USD';
     
     locationDisplay.textContent = `Pricing for ${countryName}`;
     currencySelector.value = detectedCurrency;
     currentCurrency = detectedCurrency;
     
-    // Fetch exchange rates and update prices
     await fetchExchangeRates();
     updatePrices();
   } catch (error) {
@@ -772,7 +1216,6 @@ async function detectLocation() {
     currencySelector.value = 'USD';
     currentCurrency = 'USD';
     
-    // Still try to fetch exchange rates
     await fetchExchangeRates();
     updatePrices();
   }
@@ -783,21 +1226,17 @@ function updatePrices() {
   const exchangeInfo = document.getElementById('exchange-rate-info');
   const rateUpdateTime = document.getElementById('rate-update-time');
   
-  // Convert prices
   const basicPrice = convertPrice(basePrices.basic, currentCurrency);
   const professionalPrice = convertPrice(basePrices.professional, currentCurrency);
   const enterprisePrice = convertPrice(basePrices.enterprise, currentCurrency);
   const hostingPrice = convertPrice(basePrices.hosting, currentCurrency);
   
-  // Update prices
   document.getElementById('basic-price').textContent = formatPrice(basicPrice, currentCurrency);
   document.getElementById('professional-price').textContent = formatPrice(professionalPrice, currentCurrency);
   document.getElementById('enterprise-price').textContent = formatPrice(enterprisePrice, currentCurrency);
   
-  // Update hosting note
   hostingNote.textContent = `Hosting starts at ${formatPrice(hostingPrice, currentCurrency)}/year after development`;
   
-  // Show exchange rate info
   if (lastUpdateTime) {
     exchangeInfo.classList.remove('hidden');
     rateUpdateTime.textContent = lastUpdateTime.toLocaleTimeString();
@@ -826,7 +1265,7 @@ function closeModal() {
 function smoothScrollTo(targetId) {
   const targetElement = document.getElementById(targetId);
   if (targetElement) {
-    const headerHeight = 80; // Approximate height of the fixed header
+    const headerHeight = 80;
     const targetPosition = targetElement.offsetTop - headerHeight;
     
     window.scrollTo({
@@ -861,12 +1300,17 @@ function updateActiveNavLink() {
 
 // Event Listeners
 document.addEventListener('DOMContentLoaded', async function() {
+  // Initialize testimonial slider
+  initTestimonialSlider();
+  
+  // Check auth status
+  await checkAuthStatus();
+  
   await detectLocation();
   
   // Currency selector
   document.getElementById('currency-selector').addEventListener('change', async function(e) {
     currentCurrency = e.target.value;
-    // Refresh rates when changing currency manually
     await fetchExchangeRates();
     updatePrices();
   });
@@ -938,6 +1382,15 @@ document.addEventListener('DOMContentLoaded', function() {
       mobileMenu.classList.add('hidden');
     }
   });
+});
+
+// Handle auth state changes
+supabase.auth.onAuthStateChange((event, session) => {
+  if (event === 'SIGNED_IN') {
+    showUserAvatar(session.user);
+  } else if (event === 'SIGNED_OUT') {
+    showAuthButtons();
+  }
 });
 </script>
 
