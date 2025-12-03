@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Adams+ | Premium Website Solutions</title>
+    <meta name="description" content="Adams+ provides premium website solutions including web development, UI/UX design, branding, and digital strategy services.">
+    <meta name="keywords" content="web development, website design, branding, UI/UX, Tanzania web services, web agency, digital solutions">
+    <meta name="author" content="Adams+ Digital Solutions">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Adams+ | Premium Website Solutions">
+    <meta property="og:description" content="Craft powerful digital experiences that elevate your brand.">
+    <meta property="og:image" content="https://adamsplusx.com/images/og-image.jpg">
+    <meta property="og:url" content="https://adamsplusx.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Adams+ Digital Solutions">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Adams+ | Premium Website Solutions">
+    <meta name="twitter:description" content="Craft powerful digital experiences that elevate your brand.">
+    <meta name="twitter:image" content="https://adamsplus.com/images/twitter-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    <!-- External Resources -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        /* Video containers */
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            overflow: hidden;
+            background: #f5f5f5; /* Placeholder color */
+        }
+        
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .video-container video.loaded {
+            opacity: 1;
+        }
+        
+        /* Smooth scroll offset for fixed header */
+        html {
+            scroll-padding-top: 80px;
+        }
+        
+        /* Active navigation link styling */
+        .nav-link.active {
+            color: #2563eb;
+        }
+        
+        /* Focus styles for accessibility */
+        a:focus-visible, 
+        button:focus-visible,
+        input:focus-visible,
+        select:focus-visible {
+            outline: 2px solid #2563eb;
+            outline-offset: 2px;
+            border-radius: 0.25rem;
+        }
+        
+        /* Reduced motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            
+            .video-container video {
+                display: none;
+            }
+        }
+        
+        /* Loading animation */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        /* Mobile touch target improvements */
+        @media (max-width: 640px) {
+            button,
+            .nav-link,
+            .mobile-nav-link,
+            .choose-plan-btn {
+                min-height: 44px;
+                min-width: 44px;
+            }
+            
+            /* Mobile font size adjustments */
+            .text-4xl {
+                font-size: 2rem;
+            }
+            
+            .text-5xl {
+                font-size: 2.5rem;
+            }
+            
+            .text-6xl {
+                font-size: 3rem;
+            }
+        }
+        
+        /* Print styles */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            
+            body {
+                font-size: 12pt;
+                line-height: 1.5;
+            }
+            
+            a {
+                text-decoration: underline;
+                color: #000;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="text-center">
+            <h1 class="text-9xl font-bold text-blue-600">404</h1>
+            <p class="text-2xl mt-4">Page not found</p>
+            <a href="/" class="mt-8 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg">Go back home</a>
+        </div>
+    </div>
+</body>
+</html>
