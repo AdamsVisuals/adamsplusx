@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Server Error | Adams+ Digital Solutions</title>
+    <meta name="description" content="Server error - Adams+ Digital Solutions website is temporarily unavailable.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="Adams+ Digital Solutions">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Server Error | Adams+ Digital Solutions">
+    <meta property="og:description" content="We're experiencing technical difficulties. Please try again shortly.">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- External Resources -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: white;
+            min-height: 100vh;
+        }
+        
+        /* Focus styles for accessibility */
+        a:focus-visible, 
+        button:focus-visible {
+            outline: 2px solid #2563eb;
+            outline-offset: 2px;
+            border-radius: 0.25rem;
+        }
+        
+        /* Reduced motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        /* Minimal animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center px-4">
+    <div class="max-w-md w-full text-center fade-in">
+
+        
+        <!-- Error Code -->
+        <div class="mb-6">
+            <h1 class="text-6xl font-bold text-red-600 mb-2">500</h1>
+            <p class="text-sm text-gray-500 font-medium tracking-wide">SERVER ERROR</p>
+        </div>
+        
+        <!-- Message -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-3">Service Temporarily Unavailable</h2>
+            <p class="text-gray-600">
+                Our server is currently experiencing technical difficulties. 
+                Our team has been notified and is working to resolve the issue.
+            </p>
+        </div>
+        
+        <!-- Actions -->
+        <div class="space-y-3 mb-8">
+            <button onclick="location.reload()" class="w-full bg-blue-600 text-white px-5 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200 shadow-sm hover:shadow-md flex items-center justify-center gap-2">
+                <i class="fas fa-redo text-sm"></i>
+                Try Again
+            </button>
+            
+            <a href="index.html" class="block w-full border border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors duration-200 flex items-center justify-center gap-2">
+                <i class="fas fa-home text-sm"></i>
+                Return to Homepage
+            </a>
+        </div>
+        
+        <!-- Contact Info -->
+        <div class="border-t border-gray-200 pt-6">
+            <p class="text-sm text-gray-600 mb-3">Need immediate assistance?</p>
+            <div class="flex items-center justify-center gap-4">
+                <a href="mailto:hello@adamsplusx.com" class="text-sm text-blue-600 hover:text-blue-700 font-medium">
+                    <i class="fas fa-envelope mr-1"></i>
+                    Email Us
+                </a>
+                <a href="tel:+255746692640" class="text-sm text-blue-600 hover:text-blue-700 font-medium">
+                    <i class="fas fa-phone mr-1"></i>
+                    Call Us
+                </a>
+            </div>
+        </div>
+        
+        <!-- Status Indicator -->
+        <div class="mt-8 pt-6 border-t border-gray-200">
+            <div class="inline-flex items-center gap-2 text-xs text-gray-500">
+                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span>Team notified • Fix in progress</span>
+            </div>
+        </div>
+
+    <script>
+        // Set current year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Auto-refresh after 30 seconds
+        setTimeout(() => {
+            location.reload();
+        }, 30000);
+        
+        // Cancel auto-refresh if user interacts
+        document.addEventListener('click', () => {
+            clearTimeout(window.refreshTimeout);
+        });
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // R to refresh
+            if (e.key === 'r' || e.key === 'R') {
+                location.reload();
+            }
+            // Escape to go home
+            if (e.key === 'Escape') {
+                window.location.href = 'index.html';
+            }
+        });
+        
+        // Simple console message
+        console.log('Adams+ 500 Error - Our team is working on a fix.');
+    </script>
+</body>
+</html>

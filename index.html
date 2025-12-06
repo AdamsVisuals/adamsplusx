@@ -23,7 +23,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Adams+ | Premium Website Solutions">
     <meta name="twitter:description" content="Craft powerful digital experiences that elevate your brand.">
-    <meta name="twitter:image" content="https://adamsplus.com/images/twitter-image.jpg">
+    <meta name="twitter:image" content="https://adamsplusx.com/images/twitter-image.jpg">
     
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -82,6 +82,85 @@
             border-radius: 0.25rem;
         }
         
+        /* Toast notifications */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 400px;
+        }
+        
+        .toast {
+            background: #3b82f6;
+            color: white;
+            padding: 16px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: slideIn 0.3s ease-out;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .toast-success {
+            background: #10b981;
+        }
+        
+        .toast-error {
+            background: #ef4444;
+        }
+        
+        .toast-warning {
+            background: #f59e0b;
+        }
+        
+        .toast-info {
+            background: #3b82f6;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+        
+        /* Loading spinner */
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
         /* Reduced motion preferences */
         @media (prefers-reduced-motion: reduce) {
             *,
@@ -95,6 +174,10 @@
             
             .video-container video {
                 display: none;
+            }
+            
+            .toast {
+                animation: none;
             }
         }
         
@@ -130,6 +213,16 @@
             .text-6xl {
                 font-size: 3rem;
             }
+            
+            .toast-container {
+                left: 20px;
+                right: 20px;
+                max-width: none;
+            }
+            
+            .toast {
+                padding: 14px 16px;
+            }
         }
         
         /* Print styles */
@@ -147,6 +240,36 @@
                 text-decoration: underline;
                 color: #000;
             }
+            
+            .toast-container {
+                display: none !important;
+            }
+        }
+        
+        /* Modal styles */
+        .modal-backdrop {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+        }
+        
+        /* Form validation styles */
+        .form-input.error {
+            border-color: #ef4444;
+        }
+        
+        .form-input.success {
+            border-color: #10b981;
+        }
+        
+        .error-message {
+            color: #ef4444;
+            font-size: 12px;
+            margin-top: 4px;
+            display: none;
+        }
+        
+        .error-message.show {
+            display: block;
         }
     </style>
 </head>
@@ -569,7 +692,29 @@
     <div class="mx-auto max-w-4xl text-center">
       <h2 class="text-base/7 font-semibold text-blue-600">Pricing</h2>
       <p class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-950 sm:text-5xl">Affordable Web Development</p>
-      <p class="mt-6 text-lg/8 text-gray-600">Professional websites at startup-friendly prices. One-time payment, no hidden fees.</p>
+      <p class="mt-6 text-lg/8 text-gray-600">Professional websites that deliver ROI. One-time payment, lifetime value.</p>
+    </div>
+
+    <!-- Trust Indicators -->
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-6">
+      <div class="flex items-center gap-2">
+        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+          <i class="fas fa-check-circle text-green-600"></i>
+        </div>
+        <span class="text-sm font-medium text-gray-700">No Hidden Fees</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+          <i class="fas fa-shield-alt text-blue-600"></i>
+        </div>
+        <span class="text-sm font-medium text-gray-700">30-Day Support</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+          <i class="fas fa-rocket text-purple-600"></i>
+        </div>
+        <span class="text-sm font-medium text-gray-700">Fast Delivery</span>
+      </div>
     </div>
 
     <!-- Location & Currency Switcher -->
@@ -686,65 +831,110 @@
 <!-- Project Inquiry Modal -->
 <div id="project-modal" class="fixed inset-0 z-50 hidden overflow-y-auto no-print" aria-labelledby="modal-title" role="dialog" aria-modal="true">
   <div class="flex min-h-full items-center justify-center p-4">
-    <div class="fixed inset-0 bg-gray-500/75 transition-opacity backdrop-blur-sm" aria-hidden="true"></div>
+    <div class="fixed inset-0 bg-gray-500/75 transition-opacity backdrop-blur-sm modal-backdrop" aria-hidden="true"></div>
     
-    <div class="relative bg-white rounded-2xl shadow-xl w-full max-w-md">
-      <!-- Modal Content -->
-      <div class="p-6">
-        <div class="flex items-center justify-between mb-6">
-          <div>
-            <h3 id="modal-title" class="text-lg font-semibold text-gray-900">Start Your Project</h3>
-            <p class="text-sm text-gray-600 mt-1">Get started with <span id="selected-plan" class="font-semibold text-blue-600">Business Website</span></p>
+    <div class="relative bg-white rounded-2xl shadow-xl w-full max-w-2xl overflow-hidden">
+      <div class="flex">
+        <!-- Left side - Form content -->
+        <div class="w-full md:w-2/3 p-6">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <h3 id="modal-title" class="text-lg font-semibold text-gray-900">Start Your Project</h3>
+              <p class="text-sm text-gray-600 mt-1">Get started with <span id="selected-plan" class="font-semibold text-blue-600">Business Website</span></p>
+            </div>
+            <button type="button" class="close-modal rounded-lg bg-gray-100 p-2 text-gray-600 hover:bg-gray-200 transition-colors" aria-label="Close modal">
+              <i class="fas fa-times text-sm" aria-hidden="true"></i>
+            </button>
           </div>
-          <button type="button" class="close-modal rounded-lg bg-gray-100 p-2 text-gray-600 hover:bg-gray-200 transition-colors" aria-label="Close modal">
-            <i class="fas fa-times text-sm" aria-hidden="true"></i>
-          </button>
+
+          <form id="project-form" class="space-y-4">
+            <!-- Honeypot field for spam protection -->
+            <input type="text" name="website" style="display:none;" tabindex="-1" autocomplete="off" class="hp-field">
+            
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div>
+                <label for="first-name" class="block text-sm font-medium text-gray-700 mb-2">First name *</label>
+                <input type="text" id="first-name" name="first-name" class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm px-3 py-2 border" placeholder="John" required>
+                <div class="error-message" id="first-name-error"></div>
+              </div>
+              <div>
+                <label for="last-name" class="block text-sm font-medium text-gray-700 mb-2">Last name *</label>
+                <input type="text" id="last-name" name="last-name" class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm px-3 py-2 border" placeholder="Doe" required>
+                <div class="error-message" id="last-name-error"></div>
+              </div>
+            </div>
+            
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+              <input type="email" id="email" name="email" class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm px-3 py-2 border" placeholder="john@company.com" required>
+              <div class="error-message" id="email-error"></div>
+            </div>
+            
+            <div>
+              <label for="plan" class="block text-sm font-medium text-gray-700 mb-2">Selected Package *</label>
+              <div class="relative">
+                <input type="text" id="plan" name="plan" class="form-input block w-full rounded-lg border-gray-300 bg-blue-50 shadow-sm text-sm px-3 py-2 border border-blue-200 text-blue-700 font-medium" readonly required>
+                <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                  <i class="fas fa-tag text-blue-400 text-xs" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="error-message" id="plan-error"></div>
+            </div>
+            
+            <div>
+              <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Project Details</label>
+              <textarea id="message" name="message" rows="3" class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm px-3 py-2 border" placeholder="Brief description of your project... (Optional)"></textarea>
+              <div class="error-message" id="message-error"></div>
+            </div>
+            
+            <div class="text-xs text-gray-500">
+              * Required fields
+            </div>
+          </form>
+
+          <div class="mt-6 flex gap-3">
+            <button type="button" id="submit-form-btn" class="flex-1 inline-flex justify-center items-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 transition-colors gap-2" aria-label="Send project inquiry">
+              <span id="submit-text">
+                <i class="fas fa-paper-plane text-xs" aria-hidden="true"></i>
+                Send Inquiry
+              </span>
+              <div id="submit-spinner" class="spinner hidden"></div>
+            </button>
+            <button type="button" class="flex-1 close-modal inline-flex justify-center items-center rounded-lg bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-200 transition-colors" aria-label="Cancel project inquiry">
+              Cancel
+            </button>
+          </div>
         </div>
 
-        <form id="project-form" class="space-y-4">
-          <!-- Honeypot field for spam protection -->
-          <input type="text" name="website" style="display:none;" tabindex="-1" autocomplete="off">
-          
-          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div>
-              <label for="first-name" class="block text-sm font-medium text-gray-700 mb-2">First name</label>
-              <input type="text" id="first-name" class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm px-3 py-2 border" placeholder="John" required>
-            </div>
-            <div>
-              <label for="last-name" class="block text-sm font-medium text-gray-700 mb-2">Last name</label>
-              <input type="text" id="last-name" class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm px-3 py-2 border" placeholder="Doe" required>
-            </div>
+        <!-- Right side - Image with overlay -->
+        <div class="hidden md:block md:w-1/3 relative">
+          <!-- Background Image -->
+          <div class="absolute inset-0">
+            <img 
+              src="images/High five teamwork and working together with a team or group of colleagues standing together in their corporate office motivation success and achievement through unity solidarity a.jpeg" 
+              alt="Team collaboration and project planning" 
+              class="w-full h-full object-cover"
+            >
+            <!-- Dark overlay for better text readability -->
+            <div class="absolute inset-0 bg-blue-900/40"></div>
           </div>
           
-          <div>
-            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-            <input type="email" id="email" class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm px-3 py-2 border" placeholder="john@company.com" required>
-          </div>
-          
-          <div>
-            <label for="plan" class="block text-sm font-medium text-gray-700 mb-2">Selected Package</label>
-            <div class="relative">
-              <input type="text" id="plan" class="block w-full rounded-lg border-gray-300 bg-blue-50 shadow-sm text-sm px-3 py-2 border border-blue-200 text-blue-700 font-medium" readonly>
-              <div class="absolute inset-y-0 right-0 flex items-center pr-3">
-                <i class="fas fa-tag text-blue-400 text-xs" aria-hidden="true"></i>
+          <!-- Content overlay on image -->
+          <div class="relative h-full flex flex-col items-center justify-center p-6 text-white">
+            <div class="mb-4">
+              <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mx-auto border border-white/30">
+                <i class="fas fa-rocket text-white text-xl" aria-hidden="true"></i>
+              </div>
+            </div>
+            <h4 class="text-lg font-semibold text-center mb-2">Let's Build Together</h4>
+            <p class="text-sm text-white/90 text-center mb-6">Share your vision and we'll bring it to life with expert craftsmanship.</p>
+            <div class="mt-auto w-full">
+              <div class="flex items-center justify-center gap-2 text-sm text-white/80">
+                <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                <span>Secure & Confidential</span>
               </div>
             </div>
           </div>
-          
-          <div>
-            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Project Details</label>
-            <textarea id="message" rows="3" class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm px-3 py-2 border" placeholder="Brief description of your project..."></textarea>
-          </div>
-        </form>
-
-        <div class="mt-6 flex gap-3">
-          <button type="button" class="flex-1 inline-flex justify-center items-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 transition-colors submit-form gap-2" aria-label="Send project inquiry">
-            <i class="fas fa-paper-plane text-xs" aria-hidden="true"></i>
-            Send Inquiry
-          </button>
-          <button type="button" class="flex-1 close-modal inline-flex justify-center items-center rounded-lg bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-200 transition-colors" aria-label="Cancel project inquiry">
-            Cancel
-          </button>
         </div>
       </div>
     </div>
@@ -756,13 +946,16 @@
   <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
     <div class="relative isolate flex flex-col gap-10 overflow-hidden bg-gray-900 px-6 py-24 shadow-2xl sm:rounded-3xl sm:px-24 xl:flex-row xl:items-center xl:py-32">
       <h2 class="max-w-xl text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl xl:flex-auto">Ready to elevate your brand with premium web solutions?</h2>
-      <form class="w-full max-w-md">
+      <form id="newsletter-form" class="w-full max-w-md">
         <div class="flex gap-x-4">
-          <label for="email-address" class="sr-only">Email address</label>
-          <input id="email-address" type="email" name="email" required placeholder="Enter your email" autocomplete="email" class="min-w-0 flex-auto rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
-          <button type="submit" class="flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-xs hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Get Started</button>
+          <label for="newsletter-email" class="sr-only">Email address</label>
+          <input id="newsletter-email" type="email" name="email" required placeholder="Enter your email" autocomplete="email" class="min-w-0 flex-auto rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
+          <button type="submit" id="newsletter-submit" class="flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-xs hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+            <span id="newsletter-text">Get Started</span>
+            <div id="newsletter-spinner" class="spinner hidden" style="border: 2px solid rgba(0,0,0,0.3); border-top-color: #000; width: 16px; height: 16px;"></div>
+          </button>
         </div>
-        <p class="mt-4 text-sm/6 text-gray-300">We care about your data. Read our <a href="/privacy.html" class="font-semibold whitespace-nowrap text-white hover:text-gray-100">privacy policy</a>.</p>
+        <p class="mt-4 text-sm/6 text-gray-300" id="newsletter-message">We care about your data. Read our <a href="privacy-policy.html" class="font-semibold whitespace-nowrap text-white hover:text-gray-100">privacy policy</a>.</p>
       </form>
       <svg viewBox="0 0 1024 1024" aria-hidden="true" class="absolute top-1/2 left-1/2 -z-10 size-256 -translate-x-1/2">
         <circle r="512" cx="512" cy="512" fill="url(#759c1415-0410-454c-8f7c-9a820de03641)" fill-opacity="0.7" />
@@ -779,6 +972,56 @@
 
 <footer class="bg-white border-t border-gray-100 py-8">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <!-- Top Row: Contact Info - More Prominent -->
+    <div class="mb-8 border-b border-gray-200 pb-6">
+      <div class="flex flex-col items-center justify-center space-y-4 md:flex-row md:space-y-0 md:space-x-12">
+        <!-- Email -->
+        <div class="flex items-center space-x-3 group">
+          <div class="bg-blue-50 p-2 rounded-lg group-hover:bg-blue-100 transition-colors">
+            <i class="fas fa-envelope text-blue-600 text-base" aria-hidden="true"></i>
+          </div>
+          <div>
+            <p class="text-xs text-gray-500 mb-1">Email us</p>
+            <a href="mailto:hello@adamsplusx.com" 
+               class="text-gray-800 font-medium hover:text-blue-700 transition-colors text-sm md:text-base">
+              hello@adamsplusx.com
+            </a>
+          </div>
+        </div>
+
+        <!-- Phone -->
+        <div class="flex items-center space-x-3 group">
+          <div class="bg-blue-50 p-2 rounded-lg group-hover:bg-blue-100 transition-colors">
+            <i class="fas fa-phone text-blue-600 text-base" aria-hidden="true"></i>
+          </div>
+          <div>
+            <p class="text-xs text-gray-500 mb-1">Call us</p>
+            <a href="tel:+255746692640" 
+               class="text-gray-800 font-medium hover:text-blue-700 transition-colors text-sm md:text-base">
+              +255 746 692 640
+            </a>
+            <span class="text-gray-400 mx-2">|</span>
+            <a href="tel:+255744726945" 
+               class="text-gray-800 font-medium hover:text-blue-700 transition-colors text-sm md:text-base">
+              +255 744 726 945
+            </a>
+          </div>
+        </div>
+
+        <!-- Location -->
+        <div class="flex items-center space-x-3 group">
+          <div class="bg-blue-50 p-2 rounded-lg group-hover:bg-blue-100 transition-colors">
+            <i class="fas fa-map-marker-alt text-blue-600 text-base" aria-hidden="true"></i>
+          </div>
+          <div>
+            <p class="text-xs text-gray-500 mb-1">Location</p>
+            <span class="text-gray-800 font-medium text-sm md:text-base">Arusha, Tanzania</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Row: Copyright, Links, Social -->
     <div class="flex flex-col items-center justify-between space-y-6 md:flex-row md:space-y-0">
       <!-- Left: Copyright -->
       <div class="text-center md:text-left">
@@ -788,24 +1031,17 @@
         </p>
       </div>
 
-      <!-- Center: Contact Info -->
+      <!-- Center: Links -->
       <div class="flex flex-col items-center space-y-2 sm:flex-row sm:space-y-0 sm:space-x-8">
-        <div class="flex items-center space-x-2">
-          <i class="fas fa-envelope text-gray-400 text-sm" aria-hidden="true"></i>
-          <a href="mailto:hello@adamsplus.com" class="text-sm text-gray-600 hover:text-blue-600 transition-colors">
-            hello@adamsplusx.com
-          </a>
-        </div>
-        <div class="flex items-center space-x-2">
-          <i class="fas fa-phone text-gray-400 text-sm" aria-hidden="true"></i>
-          <a href="tel:+255746692640" class="text-sm text-gray-600 hover:text-blue-600 transition-colors">
-            +255 746 692 640 / +255 744 726 945
-          </a>
-        </div>
-        <div class="flex items-center space-x-2">
-          <i class="fas fa-map-marker-alt text-gray-400 text-sm" aria-hidden="true"></i>
-          <span class="text-sm text-gray-600">Arusha, Tanzania</span>
-        </div>
+        <a href="privacy-policy.html" class="text-sm text-gray-600 hover:text-blue-600 transition-colors">
+          Privacy Policy
+        </a>
+        <a href="terms.html" class="text-sm text-gray-600 hover:text-blue-600 transition-colors">
+          Terms of Service
+        </a>
+        <a href="cookies.html" class="text-sm text-gray-600 hover:text-blue-600 transition-colors">
+          Cookie Policy
+        </a>
       </div>
 
       <!-- Right: Social Media -->
@@ -886,11 +1122,104 @@ let currentCurrency = 'USD';
 let exchangeRates = {};
 let lastUpdateTime = null;
 
+// Toast Notification System
+class Toast {
+  static show(message, type = 'info', duration = 5000) {
+    // Remove existing toast container if exists
+    let container = document.querySelector('.toast-container');
+    if (!container) {
+      container = document.createElement('div');
+      container.className = 'toast-container';
+      container.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-width: 400px;
+      `;
+      document.body.appendChild(container);
+    }
+    
+    // Create toast element
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.style.cssText = `
+      background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : type === 'warning' ? '#f59e0b' : '#3b82f6'};
+      color: white;
+      padding: 16px 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      animation: slideIn 0.3s ease-out;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+    `;
+    
+    // Add icon based on type
+    const icon = document.createElement('i');
+    icon.className = type === 'success' ? 'fas fa-check-circle' : 
+                    type === 'error' ? 'fas fa-exclamation-circle' : 
+                    type === 'warning' ? 'fas fa-exclamation-triangle' : 'fas fa-info-circle';
+    
+    // Message content
+    const messageSpan = document.createElement('span');
+    messageSpan.textContent = message;
+    messageSpan.style.flex = '1';
+    
+    // Close button
+    const closeBtn = document.createElement('button');
+    closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+    closeBtn.style.cssText = `
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      opacity: 0.8;
+      padding: 4px;
+      border-radius: 4px;
+      transition: opacity 0.2s;
+    `;
+    closeBtn.onmouseover = () => closeBtn.style.opacity = '1';
+    closeBtn.onmouseout = () => closeBtn.style.opacity = '0.8';
+    closeBtn.onclick = () => toast.remove();
+    
+    // Auto remove after duration
+    const autoRemove = setTimeout(() => {
+      toast.style.animation = 'slideOut 0.3s ease-out forwards';
+      setTimeout(() => toast.remove(), 300);
+    }, duration);
+    
+    // Pause auto-remove on hover
+    toast.onmouseenter = () => clearTimeout(autoRemove);
+    toast.onmouseleave = () => {
+      setTimeout(() => {
+        toast.style.animation = 'slideOut 0.3s ease-out forwards';
+        setTimeout(() => toast.remove(), 300);
+      }, 1000);
+    };
+    
+    // Assemble toast
+    toast.appendChild(icon);
+    toast.appendChild(messageSpan);
+    toast.appendChild(closeBtn);
+    container.appendChild(toast);
+    
+    return toast;
+  }
+}
+
 // Input sanitization
 function sanitizeInput(input) {
+  if (!input) return '';
   const div = document.createElement('div');
   div.textContent = input;
-  return div.innerHTML;
+  return div.innerHTML.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
 // Email validation
@@ -910,6 +1239,75 @@ function debounce(func, wait) {
     clearTimeout(timeout);
     timeout = setTimeout(later, wait);
   };
+}
+
+// Form validation helper
+function validateForm() {
+  let isValid = true;
+  const form = document.getElementById('project-form');
+  const inputs = form.querySelectorAll('input[required], textarea[required]');
+  
+  // Clear previous errors
+  document.querySelectorAll('.error-message').forEach(el => {
+    el.classList.remove('show');
+    el.textContent = '';
+  });
+  
+  document.querySelectorAll('.form-input').forEach(el => {
+    el.classList.remove('error', 'success');
+  });
+  
+  // Validate each required field
+  inputs.forEach(input => {
+    const errorId = `${input.id}-error`;
+    const errorElement = document.getElementById(errorId);
+    
+    if (!input.value.trim()) {
+      isValid = false;
+      input.classList.add('error');
+      if (errorElement) {
+        errorElement.textContent = 'This field is required';
+        errorElement.classList.add('show');
+      }
+    } else {
+      input.classList.add('success');
+      
+      // Special validation for email
+      if (input.type === 'email' && !isValidEmail(input.value)) {
+        isValid = false;
+        input.classList.remove('success');
+        input.classList.add('error');
+        if (errorElement) {
+          errorElement.textContent = 'Please enter a valid email address';
+          errorElement.classList.add('show');
+        }
+      }
+    }
+  });
+  
+  return isValid;
+}
+
+// AJAX Request Helper
+async function makeRequest(url, data, method = 'POST') {
+  try {
+    const response = await fetch(url, {
+      method: method,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data)
+    });
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    return await response.json();
+  } catch (error) {
+    console.error('Request failed:', error);
+    throw error;
+  }
 }
 
 // Fetch real-time exchange rates with fallback endpoints
@@ -1068,6 +1466,11 @@ function openModal(plan) {
   modal.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
   
+  // Set focus to first input
+  setTimeout(() => {
+    document.getElementById('first-name').focus();
+  }, 100);
+  
   // Track modal open event
   console.log(`Modal opened for plan: ${plan}`);
 }
@@ -1076,6 +1479,19 @@ function closeModal() {
   const modal = document.getElementById('project-modal');
   modal.classList.add('hidden');
   document.body.style.overflow = 'auto';
+  
+  // Reset form
+  document.getElementById('project-form').reset();
+  
+  // Clear errors
+  document.querySelectorAll('.error-message').forEach(el => {
+    el.classList.remove('show');
+    el.textContent = '';
+  });
+  
+  document.querySelectorAll('.form-input').forEach(el => {
+    el.classList.remove('error', 'success');
+  });
 }
 
 // Smooth scroll functionality with polyfill detection
@@ -1122,6 +1538,132 @@ function updateActiveNavLink() {
   });
 }
 
+// Handle form submission with AJAX
+async function submitProjectForm() {
+  const submitBtn = document.getElementById('submit-form-btn');
+  const submitText = document.getElementById('submit-text');
+  const submitSpinner = document.getElementById('submit-spinner');
+  
+  // Validate form
+  if (!validateForm()) {
+    Toast.show('Please fill in all required fields correctly.', 'error', 4000);
+    return;
+  }
+  
+  // Check honeypot field
+  const honeypot = document.querySelector('.hp-field');
+  if (honeypot && honeypot.value.trim() !== '') {
+    console.log('Spam detected via honeypot');
+    Toast.show('Submission rejected. Please try again.', 'error', 4000);
+    return;
+  }
+  
+  // Get form data
+  const formData = {
+    firstName: document.getElementById('first-name').value.trim(),
+    lastName: document.getElementById('last-name').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    plan: document.getElementById('plan').value,
+    message: document.getElementById('message').value.trim()
+  };
+  
+  // Show loading state
+  submitBtn.disabled = true;
+  submitText.style.display = 'none';
+  submitSpinner.classList.remove('hidden');
+  
+  try {
+    // Send AJAX request to PHP backend
+    const response = await makeRequest('send_email.php', formData);
+    
+    if (response.success) {
+      // Success
+      Toast.show(response.message, 'success', 5000);
+      
+      // Reset form and close modal
+      document.getElementById('project-form').reset();
+      setTimeout(() => {
+        closeModal();
+      }, 1500);
+      
+      // Log successful submission
+      console.log('Form submitted successfully:', response.data);
+      
+    } else {
+      // Server returned error
+      Toast.show(response.message || 'Failed to send inquiry. Please try again.', 'error', 5000);
+      console.error('Server error:', response);
+    }
+    
+  } catch (error) {
+    // Network or other error
+    Toast.show('Network error. Please check your connection and try again.', 'error', 5000);
+    console.error('Submission error:', error);
+    
+  } finally {
+    // Reset button state
+    submitBtn.disabled = false;
+    submitText.style.display = 'inline-flex';
+    submitSpinner.classList.add('hidden');
+  }
+}
+
+// Handle newsletter subscription
+async function submitNewsletterForm() {
+  const emailInput = document.getElementById('newsletter-email');
+  const submitBtn = document.getElementById('newsletter-submit');
+  const submitText = document.getElementById('newsletter-text');
+  const submitSpinner = document.getElementById('newsletter-spinner');
+  const messageEl = document.getElementById('newsletter-message');
+  
+  const email = emailInput.value.trim();
+  
+  if (!email || !isValidEmail(email)) {
+    Toast.show('Please enter a valid email address.', 'error', 4000);
+    emailInput.focus();
+    return;
+  }
+  
+  // Show loading state
+  submitBtn.disabled = true;
+  submitText.style.display = 'none';
+  submitSpinner.classList.remove('hidden');
+  
+  try {
+    // Prepare data for newsletter
+    const newsletterData = {
+      email: email,
+      source: 'newsletter',
+      timestamp: new Date().toISOString()
+    };
+    
+    // Send AJAX request (you can create a separate newsletter PHP file)
+    const response = await makeRequest('send_email.php', newsletterData);
+    
+    if (response.success) {
+      // Success
+      Toast.show('Thank you for subscribing! We will keep you updated.', 'success', 5000);
+      emailInput.value = '';
+      messageEl.textContent = 'Thank you for subscribing to our newsletter!';
+      
+    } else {
+      // Error
+      Toast.show('Failed to subscribe. Please try again.', 'error', 5000);
+    }
+    
+  } catch (error) {
+    // Network error
+    Toast.show('Network error. Please try again later.', 'error', 5000);
+    console.error('Newsletter error:', error);
+    
+  } finally {
+    // Reset button state
+    submitBtn.disabled = false;
+    submitText.style.display = 'inline';
+    submitSpinner.classList.add('hidden');
+  }
+}
+
 // Event Listeners
 document.addEventListener('DOMContentLoaded', async function() {
   console.log('Adams+ website initialized');
@@ -1140,7 +1682,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     updatePrices();
   });
   
-  // Plan selection buttons with analytics tracking
+  // Plan selection buttons
   document.querySelectorAll('.choose-plan-btn').forEach(button => {
     button.addEventListener('click', function() {
       const plan = this.getAttribute('data-plan');
@@ -1154,74 +1696,25 @@ document.addEventListener('DOMContentLoaded', async function() {
     button.addEventListener('click', closeModal);
   });
   
-  // Form submission with validation
-  document.querySelector('.submit-form').addEventListener('click', async function(e) {
+  // Form submission
+  document.getElementById('submit-form-btn').addEventListener('click', submitProjectForm);
+  
+  // Newsletter form submission
+  document.getElementById('newsletter-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    const form = document.getElementById('project-form');
-    
-    // Validate form
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
-    }
-    
-    // Validate email
-    const email = document.getElementById('email').value;
-    if (!isValidEmail(email)) {
-      alert('Please enter a valid email address.');
-      return;
-    }
-    
-    // Show loading state
-    const originalHTML = this.innerHTML;
-    const originalText = this.textContent;
-    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-    this.disabled = true;
-    
-    try {
-      // Simulate API call with timeout
-      await new Promise((resolve, reject) => {
-        setTimeout(() => {
-          // Randomly simulate failure for testing
-          if (Math.random() < 0.1) {
-            reject(new Error('Network error'));
-          } else {
-            resolve();
-          }
-        }, 1500);
-      });
-      
-      // Get form data
-      const formData = {
-        firstName: sanitizeInput(document.getElementById('first-name').value),
-        lastName: sanitizeInput(document.getElementById('last-name').value),
-        email: sanitizeInput(email),
-        plan: document.getElementById('plan').value,
-        message: sanitizeInput(document.getElementById('message').value),
-        timestamp: new Date().toISOString()
-      };
-      
-      console.log('Form submitted:', formData);
-      
-      // Success message
-      alert('Thank you for your inquiry! We will contact you within 24 hours.');
-      closeModal();
-      form.reset();
-      
-    } catch (error) {
-      console.error('Form submission error:', error);
-      alert('Sorry, we encountered an error. Please try again or contact us directly at hello@adamsplusx.com');
-    } finally {
-      // Restore button state
-      this.innerHTML = originalHTML;
-      this.disabled = false;
-      this.textContent = originalText;
-    }
+    submitNewsletterForm();
   });
   
   // Modal backdrop click
   document.getElementById('project-modal').addEventListener('click', function(e) {
-    if (e.target === this) {
+    if (e.target === this || e.target.classList.contains('modal-backdrop')) {
+      closeModal();
+    }
+  });
+  
+  // Close modal on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && !document.getElementById('project-modal').classList.contains('hidden')) {
       closeModal();
     }
   });
@@ -1245,6 +1738,47 @@ document.addEventListener('DOMContentLoaded', async function() {
   
   // Initialize active nav link
   updateActiveNavLink();
+  
+  // Real-time form validation
+  document.querySelectorAll('.form-input').forEach(input => {
+    input.addEventListener('blur', function() {
+      if (this.required && !this.value.trim()) {
+        this.classList.add('error');
+        const errorId = `${this.id}-error`;
+        const errorElement = document.getElementById(errorId);
+        if (errorElement) {
+          errorElement.textContent = 'This field is required';
+          errorElement.classList.add('show');
+        }
+      } else if (this.type === 'email' && this.value.trim() && !isValidEmail(this.value)) {
+        this.classList.add('error');
+        const errorId = `${this.id}-error`;
+        const errorElement = document.getElementById(errorId);
+        if (errorElement) {
+          errorElement.textContent = 'Please enter a valid email address';
+          errorElement.classList.add('show');
+        }
+      } else if (this.value.trim()) {
+        this.classList.remove('error');
+        this.classList.add('success');
+        const errorId = `${this.id}-error`;
+        const errorElement = document.getElementById(errorId);
+        if (errorElement) {
+          errorElement.classList.remove('show');
+        }
+      }
+    });
+    
+    // Clear error on input
+    input.addEventListener('input', function() {
+      this.classList.remove('error', 'success');
+      const errorId = `${this.id}-error`;
+      const errorElement = document.getElementById(errorId);
+      if (errorElement) {
+        errorElement.classList.remove('show');
+      }
+    });
+  });
 });
 
 // Mobile menu functionality
@@ -1253,8 +1787,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const mobileMenu = document.getElementById('mobile-menu');
   
   mobileMenuButton.addEventListener('click', function() {
-    const isExpanded = mobileMenu.classList.toggle('hidden');
-    this.setAttribute('aria-expanded', !isExpanded);
+    const isHidden = mobileMenu.classList.toggle('hidden');
+    this.setAttribute('aria-expanded', !isHidden);
   });
   
   // Close mobile menu when clicking outside
@@ -1285,7 +1819,8 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Show placeholder
       const placeholder = document.createElement('div');
-      placeholder.className = 'bg-gray-200 animate-pulse rounded-lg h-full w-full';
+      placeholder.className = 'bg-gray-200 animate-pulse rounded-lg h-full w-full flex items-center justify-center';
+      placeholder.innerHTML = '<i class="fas fa-image text-gray-400 text-2xl"></i>';
       this.parentNode.insertBefore(placeholder, this);
     });
   });
@@ -1330,6 +1865,14 @@ window.addEventListener('load', function() {
       const navEntry = perfEntries[0];
       console.log(`Page load time: ${Math.round(navEntry.duration)}ms`);
     }
+  }
+});
+
+// Handle Enter key in modal
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA' && !document.getElementById('project-modal').classList.contains('hidden')) {
+    e.preventDefault();
+    submitProjectForm();
   }
 });
 </script>
