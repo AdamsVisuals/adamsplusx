@@ -16,7 +16,13 @@
     <meta property="og:type" content="website">
     
     <!-- Favicon -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="favicon_io/site.webmanifest">
+
+        <!-- COOKIE CONSENT -->
+    <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/6c325f43ce7a050291c2492382dff2d6.js"></script>
     
     <!-- External Resources -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -126,6 +132,7 @@
         }, 30000);
         
         // Cancel auto-refresh if user interacts
+        
         document.addEventListener('click', () => {
             clearTimeout(window.refreshTimeout);
         });
