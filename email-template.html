@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adams+ | Communication</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style type="text/css">
+        /* Reset for email clients */
+        body, table, td, div, p, a {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.4;
+        }
+        
+        body {
+            width: 100% !important;
+            height: 100%;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Import Inter font */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        /* Email container */
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f1f5f9;
+        }
+        
+        /* Header */
+        .email-header {
+            background-color: #ffffff;
+            padding: 40px 40px 30px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .logo-container {
+            text-align: left;
+        }
+        
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            color: #111827;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: #111827;
+        }
+        
+        .logo-plus {
+            color: #2563eb;
+        }
+        
+        /* Content */
+        .email-content {
+            padding: 40px;
+        }
+        
+        .greeting {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+        
+        .message-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        .message-body {
+            font-size: 16px;
+            color: #4b5563;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+        
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background-color: #2563eb;
+            color: #ffffff !important;
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            margin: 24px 0;
+            transition: background-color 0.2s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: #1d4ed8;
+        }
+        
+        /* Details box - matching website style */
+        .details-box {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 24px;
+            margin: 32px 0;
+        }
+        
+        .details-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .detail-item {
+            margin-bottom: 16px;
+            font-size: 14px;
+            color: #4b5563;
+            display: flex;
+            align-items: center;
+        }
+        
+        .detail-label {
+            font-weight: 500;
+            color: #374151;
+            width: 140px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .detail-value {
+            font-weight: 400;
+            color: #111827;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            background-color: #d1fae5;
+            color: #065f46;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        /* Quote/Section */
+        .quote-box {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-left: 4px solid #2563eb;
+            padding: 20px;
+            margin: 32px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .quote-text {
+            font-style: italic;
+            color: #4b5563;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        .email-footer {
+            background-color: #ffffff;
+            padding: 40px;
+            border-top: 1px solid #f1f5f9;
+            text-align: center;
+        }
+        
+        .contact-section {
+            margin-bottom: 32px;
+        }
+        
+        .contact-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #6b7280;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 32px;
+            margin: 0 auto;
+            max-width: 500px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: #4b5563;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #eff6ff;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2563eb;
+        }
+        
+        .contact-details {
+            text-align: left;
+        }
+        
+        .contact-label {
+            font-size: 12px;
+            color: #6b7280;
+            margin-bottom: 2px;
+        }
+        
+        .contact-value {
+            font-weight: 500;
+            color: #111827;
+        }
+        
+        .social-links {
+            margin: 32px 0;
+        }
+        
+        .social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #f9fafb;
+            border-radius: 10px;
+            text-align: center;
+            line-height: 40px;
+            margin: 0 8px;
+            color: #6b7280;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        .social-link:hover {
+            background-color: #2563eb;
+            color: #ffffff;
+        }
+        
+        .copyright {
+            font-size: 12px;
+            color: #9ca3af;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid #f1f5f9;
+        }
+        
+        .footer-links {
+            margin: 16px 0;
+        }
+        
+        .footer-link {
+            color: #6b7280;
+            text-decoration: none;
+            font-size: 12px;
+            margin: 0 12px;
+        }
+        
+        .footer-link:hover {
+            color: #2563eb;
+        }
+        
+        /* Responsive */
+        @media only screen and (max-width: 600px) {
+            .email-container {
+                border-radius: 0;
+                border: none;
+                box-shadow: none;
+            }
+            
+            .email-header,
+            .email-content,
+            .email-footer {
+                padding: 32px 24px;
+            }
+            
+            .message-title {
+                font-size: 24px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
+            
+            .contact-item {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .cta-button {
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .detail-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+            
+            .detail-label {
+                width: 100%;
+            }
+        }
+        
+        /* Print styles */
+        @media print {
+            .email-container {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+            
+            .cta-button {
+                background-color: #2563eb !important;
+                color: #ffffff !important;
+            }
+        }
+        
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #111827;
+            }
+            
+            .email-container {
+                background-color: #1f2937;
+                border-color: #374151;
+            }
+            
+            .email-header,
+            .email-footer {
+                background-color: #1f2937;
+                border-color: #374151;
+            }
+            
+            .logo-text {
+                color: #f9fafb;
+            }
+            
+            .message-title,
+            .detail-value,
+            .contact-value {
+                color: #f9fafb;
+            }
+            
+            .message-body,
+            .greeting,
+            .detail-item,
+            .contact-label,
+            .footer-link {
+                color: #d1d5db;
+            }
+            
+            .details-box {
+                background-color: #374151;
+                border-color: #4b5563;
+            }
+            
+            .contact-icon {
+                background-color: #374151;
+                color: #60a5fa;
+            }
+            
+            .social-link {
+                background-color: #374151;
+                color: #d1d5db;
+            }
+            
+            .social-link:hover {
+                background-color: #2563eb;
+                color: #ffffff;
+            }
+            
+            .quote-box {
+                background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <table cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+            <tr>
+                <td align="center" style="padding: 40px 20px;">
+                    <!-- Email Container -->
+                    <table cellpadding="0" cellspacing="0" width="100%" class="email-container">
+                        <!-- Header -->
+                        <tr>
+                            <td align="left" class="email-header">
+                                <div class="logo-container">
+                                    <a href="https://adamsplusx.com" class="logo" style="text-decoration: none; color: #111827;">
+                                        <div class="logo-icon" style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); border-radius: 12px; margin-right: 12px;">
+                                            <span style="color: #ffffff; font-weight: bold; font-size: 14px;">A+</span>
+                                        </div>
+                                        <span class="logo-text" style="font-size: 24px; font-weight: 700; color: #111827;">
+                                            Adams<span class="logo-plus" style="color: #2563eb;">+</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <!-- Content -->
+                        <tr>
+                            <td class="email-content" style="padding: 40px;">
+                                <!-- Greeting -->
+                                <p class="greeting" style="font-size: 16px; color: #6b7280; margin-bottom: 32px; font-weight: 400;">
+                                    Hello [Client Name],
+                                </p>
+                                
+                                <!-- Title -->
+                                <h1 class="message-title" style="font-size: 28px; font-weight: 700; color: #111827; margin-bottom: 20px; line-height: 1.3;">
+                                    Project Inquiry Received
+                                </h1>
+                                
+                                <!-- Main Message -->
+                                <div class="message-body" style="font-size: 16px; color: #4b5563; line-height: 1.6; margin-bottom: 32px;">
+                                    <p>Thank you for choosing Adams+ for your digital project. We've received your inquiry for a <strong>[Selected Package]</strong> and our team is excited to bring your vision to life.</p>
+                                    
+                                    <p style="margin-top: 20px;">We'll review your project details and get back to you within 24 hours with a comprehensive proposal, timeline, and next steps.</p>
+                                    
+                                    <p style="margin-top: 20px;">Our process begins with a discovery call to understand your goals, target audience, and specific requirements. This ensures we deliver a solution that perfectly matches your needs.</p>
+                                </div>
+                                
+                                <!-- Quote Box -->
+                                <div class="quote-box" style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-left: 4px solid #2563eb; padding: 20px; margin: 32px 0; border-radius: 0 12px 12px 0;">
+                                    <p class="quote-text" style="font-style: italic; color: #4b5563; font-size: 15px; line-height: 1.6; margin: 0;">
+                                        <i class="fas fa-quote-left" style="color: #2563eb; margin-right: 8px;"></i>
+                                        We craft powerful digital experiences that elevate your brand. Partner with Adams+ to bring bold ideas to life.
+                                        <i class="fas fa-quote-right" style="color: #2563eb; margin-left: 8px;"></i>
+                                    </p>
+                                </div>
+                                
+                                <!-- CTA Button -->
+                                <div align="center" style="margin: 24px 0;">
+                                    <a href="https://adamsplusx.com/portfolio" class="cta-button" style="display: inline-block; background-color: #2563eb; color: #ffffff; text-decoration: none; padding: 16px 32px; border-radius: 12px; font-weight: 600; font-size: 16px;">
+                                        <i class="fas fa-eye" style="margin-right: 8px;"></i> View Our Portfolio
+                                    </a>
+                                </div>
+                                
+                                <!-- Details Box -->
+                                <div class="details-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; margin: 32px 0;">
+                                    <div class="details-title" style="font-size: 16px; font-weight: 600; color: #111827; margin-bottom: 16px; display: flex; align-items: center;">
+                                        <i class="fas fa-clipboard-check" style="color: #2563eb;"></i>
+                                        Project Details
+                                    </div>
+                                    
+                                    <div class="detail-item" style="margin-bottom: 16px; font-size: 14px; color: #4b5563; display: flex; align-items: center;">
+                                        <span class="detail-label" style="font-weight: 500; color: #374151; width: 140px; display: flex; align-items: center; gap: 8px;">
+                                            <i class="fas fa-hashtag" style="color: #6b7280; font-size: 12px;"></i> Reference
+                                        </span>
+                                        <span class="detail-value" style="font-weight: 400; color: #111827;">#[Reference Number]</span>
+                                    </div>
+                                    
+                                    <div class="detail-item" style="margin-bottom: 16px; font-size: 14px; color: #4b5563; display: flex; align-items: center;">
+                                        <span class="detail-label" style="font-weight: 500; color: #374151; width: 140px; display: flex; align-items: center; gap: 8px;">
+                                            <i class="fas fa-calendar-alt" style="color: #6b7280; font-size: 12px;"></i> Submitted
+                                        </span>
+                                        <span class="detail-value" style="font-weight: 400; color: #111827;">[Submission Date]</span>
+                                    </div>
+                                    
+                                    <div class="detail-item" style="margin-bottom: 16px; font-size: 14px; color: #4b5563; display: flex; align-items: center;">
+                                        <span class="detail-label" style="font-weight: 500; color: #374151; width: 140px; display: flex; align-items: center; gap: 8px;">
+                                            <i class="fas fa-box" style="color: #6b7280; font-size: 12px;"></i> Package
+                                        </span>
+                                        <span class="detail-value" style="font-weight: 400; color: #111827;">[Selected Package]</span>
+                                    </div>
+                                    
+                                    <div class="detail-item" style="font-size: 14px; color: #4b5563; display: flex; align-items: center;">
+                                        <span class="detail-label" style="font-weight: 500; color: #374151; width: 140px; display: flex; align-items: center; gap: 8px;">
+                                            <i class="fas fa-tasks" style="color: #6b7280; font-size: 12px;"></i> Status
+                                        </span>
+                                        <span class="status-badge" style="display: inline-block; background-color: #d1fae5; color: #065f46; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;">
+                                            <i class="fas fa-check-circle" style="margin-right: 4px;"></i> Received
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Next Steps -->
+                                <div class="message-body" style="font-size: 16px; color: #4b5563; line-height: 1.6; margin-top: 32px;">
+                                    <h3 style="color: #111827; font-size: 18px; font-weight: 600; margin-bottom: 12px;">
+                                        <i class="fas fa-arrow-right" style="color: #2563eb; margin-right: 8px;"></i> What's Next?
+                                    </h3>
+                                    <ol style="padding-left: 20px; margin-top: 12px;">
+                                        <li style="margin-bottom: 8px;">Discovery call within 24-48 hours</li>
+                                        <li style="margin-bottom: 8px;">Detailed proposal & timeline</li>
+                                        <li>Project kickoff & design phase</li>
+                                    </ol>
+                                </div>
+                                
+                                <!-- Closing -->
+                                <div class="message-body" style="font-size: 16px; color: #4b5563; line-height: 1.6; margin-top: 40px;">
+                                    <p>Best regards,</p>
+                                    <p style="margin-top: 8px; font-weight: 600; color: #111827;">The Adams+ Team</p>
+                                    <p style="font-size: 14px; color: #6b7280; margin-top: 4px;">Design. Develop. Deliver.</p>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <!-- Footer -->
+                        <tr>
+                            <td class="email-footer" style="padding: 40px; background-color: #ffffff; border-top: 1px solid #f1f5f9;">
+                                <!-- Contact Section -->
+                                <div class="contact-section">
+                                    <div class="contact-title" style="font-size: 14px; font-weight: 600; color: #6b7280; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;">
+                                        Contact Information
+                                    </div>
+                                    
+                                    <div class="contact-info" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 32px; margin: 0 auto; max-width: 500px;">
+                                        <!-- Email -->
+                                        <div class="contact-item" style="display: flex; align-items: center; gap: 12px; font-size: 14px; color: #4b5563;">
+                                            <div class="contact-icon" style="width: 40px; height: 40px; background-color: #eff6ff; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #2563eb;">
+                                                <i class="fas fa-envelope"></i>
+                                            </div>
+                                            <div class="contact-details" style="text-align: left;">
+                                                <div class="contact-label" style="font-size: 12px; color: #6b7280; margin-bottom: 2px;">Email us</div>
+                                                <div class="contact-value" style="font-weight: 500; color: #111827;">hello@adamsplusx.com</div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Phone -->
+                                        <div class="contact-item" style="display: flex; align-items: center; gap: 12px; font-size: 14px; color: #4b5563;">
+                                            <div class="contact-icon" style="width: 40px; height: 40px; background-color: #eff6ff; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #2563eb;">
+                                                <i class="fas fa-phone"></i>
+                                            </div>
+                                            <div class="contact-details" style="text-align: left;">
+                                                <div class="contact-label" style="font-size: 12px; color: #6b7280; margin-bottom: 2px;">Call us</div>
+                                                <div class="contact-value" style="font-weight: 500; color: #111827;">+255 746 692 640</div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Location -->
+                                        <div class="contact-item" style="display: flex; align-items: center; gap: 12px; font-size: 14px; color: #4b5563;">
+                                            <div class="contact-icon" style="width: 40px; height: 40px; background-color: #eff6ff; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #2563eb;">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                            </div>
+                                            <div class="contact-details" style="text-align: left;">
+                                                <div class="contact-label" style="font-size: 12px; color: #6b7280; margin-bottom: 2px;">Location</div>
+                                                <div class="contact-value" style="font-weight: 500; color: #111827;">Arusha, Tanzania</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Social Links -->
+                                <div class="social-links" style="margin: 32px 0;">
+                                    <a href="#" class="social-link" style="display: inline-block; width: 40px; height: 40px; background-color: #f9fafb; border-radius: 10px; text-align: center; line-height: 40px; margin: 0 8px; color: #6b7280; text-decoration: none;">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="#" class="social-link" style="display: inline-block; width: 40px; height: 40px; background-color: #f9fafb; border-radius: 10px; text-align: center; line-height: 40px; margin: 0 8px; color: #6b7280; text-decoration: none;">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="#" class="social-link" style="display: inline-block; width: 40px; height: 40px; background-color: #f9fafb; border-radius: 10px; text-align: center; line-height: 40px; margin: 0 8px; color: #6b7280; text-decoration: none;">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                                
+                                <!-- Footer Links -->
+                                <div class="footer-links" style="margin: 16px 0;">
+                                    <a href="https://adamsplusx.com/privacy-policy" class="footer-link" style="color: #6b7280; text-decoration: none; font-size: 12px; margin: 0 12px;">Privacy Policy</a>
+                                    <a href="https://adamsplusx.com/terms" class="footer-link" style="color: #6b7280; text-decoration: none; font-size: 12px; margin: 0 12px;">Terms of Service</a>
+                                    <a href="https://adamsplusx.com/cookies" class="footer-link" style="color: #6b7280; text-decoration: none; font-size: 12px; margin: 0 12px;">Cookie Policy</a>
+                                </div>
+                                
+                                <!-- Copyright -->
+                                <div class="copyright" style="font-size: 12px; color: #9ca3af; margin-top: 32px; padding-top: 24px; border-top: 1px solid #f1f5f9;">
+                                    &copy; <span id="current-year">2025</span> Adams+ Digital Solutions. All rights reserved.
+                                    <br>
+                                    Craft powerful digital experiences that elevate your brand.
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </center>
+
+    <script type="text/javascript">
+        // Set current year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Add current date to placeholder
+        const dateElements = document.querySelectorAll('[Submission Date]');
+        if (dateElements.length > 0) {
+            const now = new Date();
+            const formattedDate = now.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            dateElements.forEach(el => {
+                if (el.textContent === '[Submission Date]') {
+                    el.textContent = formattedDate;
+                }
+            });
+        }
+    </script>
+</body>
+</html>

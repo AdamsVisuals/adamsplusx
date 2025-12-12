@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,9 +21,6 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
     <link rel="manifest" href="favicon_io/site.webmanifest">
 
-        <!-- COOKIE CONSENT -->
-    <script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/6c325f43ce7a050291c2492382dff2d6.js"></script>
-    
     <!-- External Resources -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -33,124 +30,96 @@
         
         body {
             font-family: 'Inter', sans-serif;
-            background: white;
-            min-height: 100vh;
         }
         
         /* Focus styles for accessibility */
         a:focus-visible, 
         button:focus-visible {
-            outline: 2px solid #2563eb;
-            outline-offset: 2px;
+            outline: 2px solid #ffffff;
+            outline-offset: 4px;
             border-radius: 0.25rem;
-        }
-        
-        /* Reduced motion preferences */
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-        
-        /* Minimal animation */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
         }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center px-4">
-    <div class="max-w-md w-full text-center fade-in">
 
-        
-        <!-- Error Code -->
-        <div class="mb-6">
-            <h1 class="text-6xl font-bold text-red-600 mb-2">500</h1>
-            <p class="text-sm text-gray-500 font-medium tracking-wide">SERVER ERROR</p>
-        </div>
-        
-        <!-- Message -->
-        <div class="mb-8">
-            <h2 class="text-2xl font-semibold text-gray-900 mb-3">Service Temporarily Unavailable</h2>
-            <p class="text-gray-600">
-                Our server is currently experiencing technical difficulties. 
-                Our team has been notified and is working to resolve the issue.
-            </p>
-        </div>
-        
-        <!-- Actions -->
-        <div class="space-y-3 mb-8">
-            <button onclick="location.reload()" class="w-full bg-blue-600 text-white px-5 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200 shadow-sm hover:shadow-md flex items-center justify-center gap-2">
-                <i class="fas fa-redo text-sm"></i>
-                Try Again
-            </button>
-            
-            <a href="index.html" class="block w-full border border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors duration-200 flex items-center justify-center gap-2">
-                <i class="fas fa-home text-sm"></i>
-                Return to Homepage
-            </a>
-        </div>
-        
-        <!-- Contact Info -->
-        <div class="border-t border-gray-200 pt-6">
-            <p class="text-sm text-gray-600 mb-3">Need immediate assistance?</p>
-            <div class="flex items-center justify-center gap-4">
-                <a href="mailto:hello@adamsplusx.com" class="text-sm text-blue-600 hover:text-blue-700 font-medium">
-                    <i class="fas fa-envelope mr-1"></i>
-                    Email Us
-                </a>
-                <a href="tel:+255746692640" class="text-sm text-blue-600 hover:text-blue-700 font-medium">
-                    <i class="fas fa-phone mr-1"></i>
-                    Call Us
-                </a>
-            </div>
-        </div>
-        
-        <!-- Status Indicator -->
-        <div class="mt-8 pt-6 border-t border-gray-200">
-            <div class="inline-flex items-center gap-2 text-xs text-gray-500">
-                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span>Team notified • Fix in progress</span>
-            </div>
-        </div>
+<body class="h-full">
+<main class="relative isolate min-h-full">
+  <!-- Background image with dark overlay -->
+  <div class="absolute inset-0 -z-10 size-full">
+    <img 
+      src="images/kamran-abdullayev-okkwqpKX2qw-unsplash.jpg" 
+      alt="500 Server Error Background" 
+      class="size-full object-cover object-top"
+    />
+    <div class="absolute inset-0 bg-black/60"></div>
+  </div>
+  
+  <div class="mx-auto max-w-3xl px-6 py-32 text-center sm:py-40 lg:px-8">
+    <p class="text-base font-semibold text-white">500</p>
+    <h1 class="mt-4 text-5xl font-semibold tracking-tight text-balance text-white sm:text-7xl">Server Error</h1>
+    <p class="mt-6 text-lg font-medium text-pretty text-white/80 sm:text-xl">
+      We're experiencing technical difficulties. Our team has been notified and is working to resolve the issue.
+    </p>
+    
+    <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+      <button 
+        onclick="location.reload()" 
+        class="bg-white text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200 flex items-center justify-center gap-2"
+      >
+        <i class="fas fa-redo"></i>
+        Try Again
+      </button>
+      
+      <a 
+        href="/" 
+        class="border border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors duration-200 flex items-center justify-center gap-2"
+      >
+        <i class="fas fa-home"></i>
+        Back to Home
+      </a>
+    </div>
+    
+    <div class="mt-12 pt-8 border-t border-white/20">
+      <p class="text-sm text-white/70 mb-4">Need immediate assistance?</p>
+      <div class="flex flex-wrap justify-center gap-6">
+        <a href="mailto:hello@adamsplusx.com" class="text-sm text-white hover:text-white/90 font-medium flex items-center gap-2">
+          <i class="fas fa-envelope"></i>
+          Email Us
+        </a>
+        <a href="tel:+255746692640" class="text-sm text-white hover:text-white/90 font-medium flex items-center gap-2">
+          <i class="fas fa-phone"></i>
+          +255 746 692 640
+        </a>
+      </div>
+    </div>
+  </div>
+</main>
 
-    <script>
-        // Set current year
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-        
-        // Auto-refresh after 30 seconds
-        setTimeout(() => {
+<script>
+    // Auto-refresh after 30 seconds
+    setTimeout(() => {
+        location.reload();
+    }, 30000);
+    
+    // Cancel auto-refresh if user interacts
+    document.addEventListener('click', () => {
+        clearTimeout(window.refreshTimeout);
+    });
+    
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+        // R to refresh
+        if (e.key === 'r' || e.key === 'R') {
             location.reload();
-        }, 30000);
-        
-        // Cancel auto-refresh if user interacts
-        
-        document.addEventListener('click', () => {
-            clearTimeout(window.refreshTimeout);
-        });
-        
-        // Keyboard shortcuts
-        document.addEventListener('keydown', (e) => {
-            // R to refresh
-            if (e.key === 'r' || e.key === 'R') {
-                location.reload();
-            }
-            // Escape to go home
-            if (e.key === 'Escape') {
-                window.location.href = 'index.html';
-            }
-        });
-        
-        // Simple console message
-        console.log('Adams+ 500 Error - Our team is working on a fix.');
-    </script>
+        }
+        // Escape to go home
+        if (e.key === 'Escape') {
+            window.location.href = '/';
+        }
+    });
+    
+    // Simple console message
+    console.log('Adams+ 500 Error - Our team is working on a fix.');
+</script>
 </body>
 </html>
