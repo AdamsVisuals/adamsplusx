@@ -124,7 +124,7 @@ try {
             ]
         );
         
-        // Create table if not exists
+        // Create table if not exists (updated to include selected_currency)
         $pdo->exec("
             CREATE TABLE IF NOT EXISTS form_submissions (
                 id INT AUTO_INCREMENT PRIMARY KEY,
@@ -139,21 +139,23 @@ try {
                 timeline VARCHAR(100),
                 message TEXT,
                 page_url VARCHAR(500),
+                selected_currency VARCHAR(10),
                 user_agent TEXT,
                 ip_address VARCHAR(45),
                 submitted_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                 INDEX idx_form_type (form_type),
                 INDEX idx_email (email),
-                INDEX idx_submitted_at (submitted_at)
+                INDEX idx_submitted_at (submitted_at),
+                INDEX idx_currency (selected_currency)
             )
         ");
         
-        // Prepare insert statement
+        // Prepare insert statement (updated to include selected_currency)
         $stmt = $pdo->prepare("
             INSERT INTO form_submissions 
-            (form_type, first_name, last_name, email, phone, company, plan, budget, timeline, message, page_url, user_agent, ip_address)
+            (form_type, first_name, last_name, email, phone, company, plan, budget, timeline, message, page_url, selected_currency, user_agent, ip_address)
             VALUES 
-            (:form_type, :first_name, :last_name, :email, :phone, :company, :plan, :budget, :timeline, :message, :page_url, :user_agent, :ip_address)
+            (:form_type, :first_name, :last_name, :email, :phone, :company, :plan, :budget, :timeline, :message, :page_url, :selected_currency, :user_agent, :ip_address)
         ");
         
         $data = [
@@ -168,6 +170,7 @@ try {
             ':timeline' => $input['timeline'] ?? null,
             ':message' => $input['message'] ?? null,
             ':page_url' => $input['page_url'] ?? null,
+            ':selected_currency' => $input['selected_currency'] ?? null,
             ':user_agent' => $input['user_agent'] ?? $_SERVER['HTTP_USER_AGENT'] ?? null,
             ':ip_address' => $_SERVER['REMOTE_ADDR'] ?? null
         ];
@@ -219,6 +222,9 @@ try {
     
     switch ($formType) {
         case 'project_inquiry':
+            $selectedCurrency = $input['selected_currency'] ?? 'USD';
+            $currencySymbol = getCurrencySymbol($selectedCurrency);
+            
             $subject = "New Project Inquiry: " . ($input['plan'] ?? 'Unknown Plan');
             $body = "
             <h2>New Project Inquiry</h2>
@@ -228,6 +234,7 @@ try {
             <p><strong>Phone:</strong> " . ($input['phone'] ?? 'Not provided') . "</p>
             <p><strong>Company:</strong> " . ($input['company'] ?? 'Not provided') . "</p>
             <p><strong>Budget:</strong> " . ($input['budget'] ?? 'Not specified') . "</p>
+            <p><strong>Selected Currency:</strong> " . $selectedCurrency . " (" . $currencySymbol . ")</p>
             <p><strong>Timeline:</strong> " . ($input['timeline'] ?? 'Not specified') . "</p>
             <h3>Project Details:</h3>
             <p>" . ($input['message'] ?? '') . "</p>
@@ -295,6 +302,9 @@ try {
         }
         
         if ($formType === 'project_inquiry') {
+            $selectedCurrency = $input['selected_currency'] ?? 'USD';
+            $currencySymbol = getCurrencySymbol($selectedCurrency);
+            
             $replySubject = "Thank you for your project inquiry!";
             $replyBody = "
             <h2>Thank You for Contacting Adams+</h2>
@@ -309,14 +319,17 @@ try {
                 <li>We'll schedule a discovery call to understand your vision better</li>
             </ul>
             
-            <p>In the meantime, feel free to explore our <a href='https://adamsplusx.com/#portfolio'>portfolio</a> 
-            to see examples of our work.</p>
-            
             <p><strong>Your Inquiry Details:</strong></p>
             <ul>
                 <li>Package: " . ($input['plan'] ?? 'Not specified') . "</li>
+                <li>Budget Range: " . ($input['budget'] ?? 'Not specified') . "</li>
+                <li>Selected Currency: " . $selectedCurrency . "</li>
+                <li>Timeline: " . ($input['timeline'] ?? 'Not specified') . "</li>
                 <li>Submitted: " . date('F j, Y, g:i a') . "</li>
             </ul>
+            
+            <p>In the meantime, feel free to explore our <a href='https://adamsplusx.com/#portfolio'>portfolio</a> 
+            to see examples of our work.</p>
             
             <p>Best regards,<br>
             <strong>The Adams+ Team</strong></p>
@@ -375,7 +388,7 @@ try {
     }
     
     // Log submission
-    $logMessage = date('Y-m-d H:i:s') . " - {$formType} submission from " . ($input['email'] ?? 'unknown');
+    $logMessage = date('Y-m-d H:i:s') . " - {$formType} submission from " . ($input['email'] ?? 'unknown') . " (Currency: " . ($input['selected_currency'] ?? 'N/A') . ")";
     error_log($logMessage);
     
     // Success response
@@ -385,6 +398,7 @@ try {
         'data' => [
             'form_type' => $formType,
             'stored_in_db' => $storedInDB,
+            'selected_currency' => $input['selected_currency'] ?? null,
             'timestamp' => date('Y-m-d H:i:s')
         ]
     ]);
@@ -399,5 +413,30 @@ try {
         'message' => 'Failed to send email. Please try again later.',
         'error' => $e->getMessage()
     ]);
+}
+
+// Helper function to get currency symbol
+function getCurrencySymbol($currencyCode) {
+    $currencySymbols = [
+        'USD' => '$',
+        'EUR' => '€',
+        'GBP' => '£',
+        'JPY' => '¥',
+        'CAD' => 'CA$',
+        'AUD' => 'AU$',
+        'CHF' => 'CHF ',
+        'CNY' => 'CN¥',
+        'INR' => '₹',
+        'TZS' => 'TZS ',
+        'KES' => 'KES ',
+        'NGN' => '₦',
+        'ZAR' => 'R',
+        'AED' => 'AED ',
+        'SAR' => 'SAR ',
+        'BRL' => 'R$',
+        'MXN' => 'MX$'
+    ];
+    
+    return $currencySymbols[$currencyCode] ?? $currencyCode;
 }
 ?>
