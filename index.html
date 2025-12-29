@@ -276,7 +276,57 @@
         .error-message.show {
             display: block;
         }
+
+        /* Hide horizontal scrollbar for clean mobile look */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
     </style>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Adams+ Digital Solutions",
+  "image": "https://adamsplusx.com/images/logo.png",
+  "url": "https://adamsplusx.com",
+  "telephone": "+255746692640",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Zaramo Estate, Kaloleni",
+    "addressLocality": "Arusha",
+    "addressRegion": "Arusha Region",
+    "postalCode": "23001",
+    "addressCountry": "TZ"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -3.3731, 
+    "longitude": 36.6830
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "opens": "09:00",
+    "closes": "18:00"
+  },
+  "sameAs": [
+    "https://instagram.com/adamsplusx",
+    "https://linkedin.com/company/adamsplusx"
+  ],
+  "priceRange": "$$$"
+}
+</script>
 </head>
 
 <!-- Google Tag Manager -->
@@ -291,1620 +341,1523 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N5WFBLZX"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<header class="sticky top-4 z-50 px-4 no-print">
-  <nav class="max-w-4xl mx-auto">
-    <!-- Main header container as rounded rectangle -->
-    <div class="bg-white rounded-2xl shadow-lg shadow-gray-200/60 border border-gray-100">
-      <div class="flex items-center justify-between h-16 px-6">
-        <!-- Logo -->
-        <div class="flex-shrink-0">
-          <a href="index.html" class="flex items-center space-x-3 group" aria-label="Adams+ Home">
-            <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center group-hover:from-blue-500 group-hover:to-blue-600 transition-colors duration-300">
-              <span class="text-white font-bold text-sm">A+</span>
-            </div>
-            <span class="text-lg font-bold text-gray-900">Adams<span class="text-blue-600">+</span></span>
-          </a>
-        </div>
-
-        <!-- Center Navigation - Clean and simple -->
-        <div class="hidden md:flex items-center space-x-8">
-          <a href="#services" class="nav-link text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 py-2 relative group" aria-label="View our services">
-            Services
-            <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></div>
-          </a>
-          <a href="#portfolio" class="nav-link text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 py-2 relative group" aria-label="View our portfolio">
-            Portfolio
-            <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></div>
-          </a>
-          <a href="#pricing" class="nav-link text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 py-2 relative group" aria-label="View pricing">
-            Pricing
-            <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></div>
-          </a>
-          <!-- Added About Us link -->
-          <a href="about.html" class="nav-link text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 py-2 relative group" aria-label="Learn more about us">
-            About Us
-            <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></div>
-          </a>
-          <a href="#contact" class="nav-link text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 py-2 relative group" aria-label="Contact us">
-            Contact
-            <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></div>
-          </a>
-        </div>
-
-        <!-- Right Side -->
-        <div class="flex items-center space-x-4">
-          <!-- Get Started Button Only -->
-          <a href="#contact" class="bg-blue-600 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors duration-200 shadow-sm hover:shadow-md" aria-label="Get started with your project">
-            Get started
-          </a>
-          
-          <!-- Mobile menu button -->
-          <button id="mobile-menu-button" class="md:hidden text-gray-600 p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-            </svg>
-          </button>
-        </div>
+<header class="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-6 transition-all duration-300 no-print" id="main-header">
+  <nav class="w-full max-w-5xl">
+    
+    <div class="relative flex items-center justify-between rounded-full border border-white/40 bg-white/80 px-4 py-3 shadow-lg shadow-gray-200/20 backdrop-blur-xl ring-1 ring-gray-900/5 transition-all duration-300" id="nav-container">
+      
+      <div class="flex shrink-0 items-center pl-2">
+        <a href="index.html" class="group flex items-center gap-2.5" aria-label="Adams+ Home">
+          <div class="flex h-9 w-9 items-center justify-center rounded-full bg-slate-900 text-white transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600">
+            <span class="font-bold text-sm">A+</span>
+          </div>
+          <span class="font-bold text-slate-900 tracking-tight text-lg group-hover:text-blue-600 transition-colors">Adams+</span>
+        </a>
       </div>
 
-      <!-- Mobile menu -->
-      <div id="mobile-menu" class="md:hidden border-t border-gray-100 py-4 px-6 space-y-3 hidden" role="menu" aria-label="Mobile navigation">
-        <a href="#services" class="mobile-nav-link flex items-center space-x-3 text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 py-2 group" role="menuitem">
-          <div class="w-1 h-6 bg-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <span>Services</span>
+      <div class="hidden md:flex items-center gap-1">
+        <a href="#services" class="rounded-full px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-all">Services</a>
+        <a href="#portfolio" class="rounded-full px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-all">Work</a>
+        <a href="#pricing" class="rounded-full px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-all">Pricing</a>
+        <a href="about.html" class="rounded-full px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-all">Studio</a>
+      </div>
+
+      <div class="flex items-center gap-3 pr-1">
+        
+        <a href="#contact" class="hidden sm:inline-flex items-center justify-center rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 hover:shadow-md transition-all duration-200">
+          Start Project
         </a>
-        <a href="#portfolio" class="mobile-nav-link flex items-center space-x-3 text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 py-2 group" role="menuitem">
-          <div class="w-1 h-6 bg-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <span>Portfolio</span>
-        </a>
-        <a href="#pricing" class="mobile-nav-link flex items-center space-x-3 text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 py-2 group" role="menuitem">
-          <div class="w-1 h-6 bg-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <span>Pricing</span>
-        </a>
-        <!-- Added About Us link for mobile -->
-        <a href="about.html" class="mobile-nav-link flex items-center space-x-3 text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 py-2 group" role="menuitem">
-          <div class="w-1 h-6 bg-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <span>About Us</span>
-        </a>
-        <a href="#contact" class="mobile-nav-link flex items-center space-x-3 text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200 py-2 group" role="menuitem">
-          <div class="w-1 h-6 bg-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <span>Contact</span>
-        </a>
+
+        <button id="mobile-menu-btn" class="group relative z-50 flex h-10 w-10 md:hidden items-center justify-center rounded-full bg-slate-100 text-slate-600 transition-colors hover:bg-slate-200" aria-label="Toggle menu">
+          <div class="flex flex-col gap-1">
+             <span class="block h-0.5 w-4 bg-current transition-all duration-300 group-[.menu-open]:rotate-45 group-[.menu-open]:translate-y-1.5"></span>
+             <span class="block h-0.5 w-4 bg-current transition-all duration-300 group-[.menu-open]:opacity-0"></span>
+             <span class="block h-0.5 w-4 bg-current transition-all duration-300 group-[.menu-open]:-rotate-45 group-[.menu-open]:-translate-y-1.5"></span>
+          </div>
+        </button>
+
       </div>
     </div>
+
+    <div id="mobile-menu" class="absolute top-full left-0 right-0 mt-2 origin-top scale-95 opacity-0 invisible transition-all duration-200 ease-out px-2">
+      <div class="rounded-3xl border border-gray-100 bg-white p-4 shadow-xl ring-1 ring-gray-900/5">
+        <div class="grid gap-2">
+          <a href="#services" class="flex items-center gap-4 rounded-xl p-3 hover:bg-slate-50 transition-colors">
+            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-50 text-blue-600">
+              <i class="fas fa-layer-group text-sm"></i>
+            </div>
+            <div>
+              <div class="font-semibold text-slate-900">Services</div>
+              <p class="text-xs text-slate-500">What we do best</p>
+            </div>
+          </a>
+          <a href="#portfolio" class="flex items-center gap-4 rounded-xl p-3 hover:bg-slate-50 transition-colors">
+            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-orange-50 text-orange-600">
+              <i class="fas fa-image text-sm"></i>
+            </div>
+            <div>
+              <div class="font-semibold text-slate-900">Our Work</div>
+              <p class="text-xs text-slate-500">Recent projects</p>
+            </div>
+          </a>
+           <a href="#pricing" class="flex items-center gap-4 rounded-xl p-3 hover:bg-slate-50 transition-colors">
+            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-green-50 text-green-600">
+              <i class="fas fa-tag text-sm"></i>
+            </div>
+            <div>
+              <div class="font-semibold text-slate-900">Pricing</div>
+              <p class="text-xs text-slate-500">Investment plans</p>
+            </div>
+          </a>
+          <a href="about.html" class="flex items-center gap-4 rounded-xl p-3 hover:bg-slate-50 transition-colors">
+            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-purple-50 text-purple-600">
+              <i class="fas fa-building text-sm"></i>
+            </div>
+            <div>
+              <div class="font-semibold text-slate-900">Studio</div>
+              <p class="text-xs text-slate-500">About us</p>
+            </div>
+          
+          <a href="#contact" class="mt-2 flex w-full items-center justify-center rounded-xl bg-slate-900 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800">
+            Start a Project
+          </a>
+        </div>
+      </div>
+    </div>
+
   </nav>
 </header>
 
-<!-- Hero Section -->
-<section id="home" class="min-h-screen bg-white flex items-center justify-center relative">
+<section id="home" class="relative overflow-hidden bg-stone-50 min-h-screen flex items-start pt-20 sm:pt-28 lg:pt-36">
   
-  <!-- Subtle grid pattern -->
-  <div class="absolute inset-0 opacity-10" aria-hidden="true">
-    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.05) 1px, transparent 0); background-size: 50px 50px;"></div>
-  </div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white rounded-full blur-3xl opacity-60 pointer-events-none"></div>
+  <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px); background-size: 40px 40px;"></div>
 
-  <div class="relative z-10 text-center w-full max-w-3xl mx-auto px-6">
-    <!-- Tag pill -->
-    <div class="inline-flex items-center space-x-2 bg-blue-50/80 border border-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-8 backdrop-blur-sm">
-      <span class="text-blue-500" aria-hidden="true">✨</span>
-      <span>Just launched v1.0</span>
-    </div>
-
-    <!-- Main heading -->
-    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-      Design
-      <span class="bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">beyond limits</span>
-      with us
-    </h1>
-
-    <!-- Subheading -->
-    <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-2">
-      We craft powerful digital experiences that elevate your brand.
-    </p>
-    <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-      Partner with Adams+ to bring bold ideas to life.
-    </p>
-
-    <!-- CTA buttons -->
-    <div class="flex items-center justify-center gap-4 mt-10 flex-col sm:flex-row">
-      <a href="#contact" class="bg-blue-600 text-white px-7 py-3.5 rounded-xl text-base font-semibold hover:bg-blue-700 transition-all duration-200 shadow-sm hover:shadow-md w-full sm:w-auto" aria-label="Start your project with us">
-        Start Your Project
-      </a>
-      <a href="#portfolio" class="text-gray-700 hover:text-gray-900 px-6 py-3.5 rounded-xl text-base font-semibold border border-gray-300 hover:border-gray-400 transition-all duration-200 hover:bg-gray-50 w-full sm:w-auto" aria-label="View our portfolio work">
-        View Our Work
-      </a>
-    </div>
-
-    <!-- Trust badge -->
-    <div class="mt-12 pt-8 border-t border-gray-200/60">
-      <p class="text-sm text-gray-500 font-medium">Trusted by visionary brands and growing businesses worldwide</p>
-    </div>
-  </div>
-</section>
-
-<!-- Services Section -->
-<section id="services" class="bg-white py-24 sm:py-32">
-  <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
-    <h2 class="text-base/7 font-semibold text-blue-600">Design. Develop. Deliver.</h2>
-    <p class="mt-2 max-w-lg text-4xl font-semibold tracking-tight text-pretty text-gray-950 sm:text-5xl">Everything you need to elevate your brand</p>
-    <div class="mt-10 grid grid-cols-1 gap-6 sm:mt-16 lg:grid-cols-6 lg:grid-rows-2">
+  <div class="relative z-10 w-full py-8">
+    <div class="mx-auto max-w-5xl px-6 lg:px-8 text-center">
       
-      <!-- Branding -->
-      <div class="group relative lg:col-span-3">
-        <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-white via-gray-50 to-white shadow-lg shadow-gray-200/50 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-blue-100/50 max-lg:rounded-t-2xl lg:rounded-tl-2xl"></div>
-        <div class="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-blue-50/0 via-blue-100/20 to-blue-50/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 max-lg:rounded-t-2xl lg:rounded-tl-2xl"></div>
-        <div class="relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white/80 backdrop-blur-sm transition-all duration-300 group-hover:scale-[1.005] group-hover:border-blue-100 group-hover:bg-white max-lg:rounded-t-2xl lg:rounded-tl-2xl">
-          <div class="h-80 w-full overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent z-10"></div>
-            <img 
-              src="images/Luxury Loafers Logo 2 (with image overlay).png" 
-              alt="Brand identity design example showing logo and branding elements" 
-              class="h-full w-full object-cover object-left transition-transform duration-700 group-hover:scale-105"
-              loading="lazy"
-              width="800"
-              height="600"
-              onload="this.style.opacity=1"
-              style="opacity:0; transition: opacity 0.3s"
-            >
-          </div>
-          <div class="p-10 pt-6">
-            <div class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-50 to-blue-100/50 px-4 py-1.5">
-              <span class="h-2 w-2 rounded-full bg-blue-500"></span>
-              <h3 class="text-sm/4 font-semibold text-blue-700">Brand Identity</h3>
-            </div>
-            <p class="mt-4 text-xl font-semibold tracking-tight text-gray-900">Build a timeless brand</p>
-            <p class="mt-3 text-sm/6 text-gray-600">We craft strategic brand identities that capture your purpose and connect with your audience through bold visual storytelling.</p>
-            <div class="mt-6 opacity-0 transition-all duration-300 group-hover:opacity-100">
-              <span class="inline-flex items-center gap-1 text-sm font-medium text-blue-600">
-                Explore our approach
-                <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </span>
-            </div>
-          </div>
+      <h1 class="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tighter text-stone-900 mb-6 sm:mb-8 leading-[1.1]">
+        Make your brand <br class="hidden sm:block" />
+        <span class="relative inline-block text-stone-900">
+          impossible
+          <svg class="absolute w-full h-3 -bottom-2 left-0 text-blue-600" viewBox="0 0 200 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2.00025 6.99997C25.7509 9.36111 159.638 9.36111 198 2.00005" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path>
+          </svg>
+        </span>
+        to ignore.
+      </h1>
+      
+      <p class="mx-auto max-w-2xl text-lg sm:text-xl lg:text-2xl text-stone-600 leading-relaxed mb-8 sm:mb-12 font-light">
+        We blend strategy with serendipity to build digital experiences that feel human, look beautiful, and work flawlessly.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+        <a href="#contact" class="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-sm font-bold uppercase tracking-widest text-white bg-stone-900 rounded-full overflow-hidden transition-all hover:bg-blue-600 hover:scale-105 shadow-xl">
+          <span class="relative z-10">Start a Project</span>
+        </a>
+        
+        <a href="#portfolio" class="group inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-sm font-bold uppercase tracking-widest text-stone-600 hover:text-stone-900 transition-colors">
+          View Case Studies
+          <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+        </a>
+      </div>
+
+      <div class="mt-12 sm:mt-16 pt-8 border-t border-stone-200/60 inline-flex flex-col sm:flex-row items-center gap-6 sm:gap-12 mx-auto">
+        <div class="text-center sm:text-left">
+          <div class="text-2xl font-bold text-stone-900">10+</div>
+          <div class="text-[10px] font-mono uppercase tracking-widest text-stone-500">Active Clients</div>
+        </div>
+        <div class="hidden sm:block w-px h-8 bg-stone-300"></div>
+        <div class="text-center sm:text-left">
+          <div class="text-2xl font-bold text-stone-900">5.0</div>
+          <div class="text-[10px] font-mono uppercase tracking-widest text-stone-500">Client Feedback</div>
+        </div>
+        <div class="hidden sm:block w-px h-8 bg-stone-300"></div>
+        <div class="text-center sm:text-left">
+          <div class="text-2xl font-bold text-stone-900">TRUSTED</div>
+          <div class="text-[10px] font-mono uppercase tracking-widest text-stone-500">Across TZ & USA</div>
         </div>
       </div>
 
-      <!-- Web Development -->
-      <div class="group relative lg:col-span-3">
-        <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-white via-gray-50 to-white shadow-lg shadow-gray-200/50 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-blue-100/50 lg:rounded-tr-2xl"></div>
-        <div class="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-blue-50/0 via-blue-100/20 to-blue-50/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 lg:rounded-tr-2xl"></div>
-        <div class="relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white/80 backdrop-blur-sm transition-all duration-300 group-hover:scale-[1.005] group-hover:border-blue-100 group-hover:bg-white lg:rounded-tr-2xl">
-          <div class="h-80 w-full overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent z-10"></div>
-            <img 
-              src="images/Patriot new web mockup.png" 
-              alt="Modern responsive website development example" 
-              class="h-full w-full object-cover object-left lg:object-right transition-transform duration-700 group-hover:scale-105"
-              loading="lazy"
-              width="800"
-              height="600"
-              onload="this.style.opacity=1"
-              style="opacity:0; transition: opacity 0.3s"
-            >
-          </div>
-          <div class="p-10 pt-6">
-            <div class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-50 to-blue-100/50 px-4 py-1.5">
-              <span class="h-2 w-2 rounded-full bg-blue-500"></span>
-              <h3 class="text-sm/4 font-semibold text-blue-700">Web Development</h3>
-            </div>
-            <p class="mt-4 text-xl font-semibold tracking-tight text-gray-900">Modern & responsive websites</p>
-            <p class="mt-3 text-sm/6 text-gray-600">From concept to code, we design and develop custom websites that deliver performance, speed, and creativity across all devices.</p>
-            <div class="mt-6 opacity-0 transition-all duration-300 group-hover:opacity-100">
-              <span class="inline-flex items-center gap-1 text-sm font-medium text-blue-600">
-                Explore our approach
-                <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- UI/UX Design -->
-      <div class="group relative lg:col-span-2">
-        <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-white via-gray-50 to-white shadow-lg shadow-gray-200/50 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-blue-100/50 lg:rounded-bl-2xl"></div>
-        <div class="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-blue-50/0 via-blue-100/20 to-blue-50/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 lg:rounded-bl-2xl"></div>
-        <div class="relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white/80 backdrop-blur-sm transition-all duration-300 group-hover:scale-[1.005] group-hover:border-blue-100 group-hover:bg-white lg:rounded-bl-2xl">
-          <div class="h-80 w-full overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent z-10"></div>
-            <img 
-              src="images/stockmate-mockup.png" 
-              alt="UI/UX design interface with user experience focus" 
-              class="h-full w-full object-cover object-left transition-transform duration-700 group-hover:scale-105"
-              loading="lazy"
-              width="800"
-              height="600"
-              onload="this.style.opacity=1"
-              style="opacity:0; transition: opacity 0.3s"
-            >
-          </div>
-          <div class="p-8 pt-6">
-            <div class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-50 to-blue-100/50 px-3 py-1">
-              <span class="h-1.5 w-1.5 rounded-full bg-blue-500"></span>
-              <h3 class="text-xs/4 font-semibold text-blue-700">UI/UX Design</h3>
-            </div>
-            <p class="mt-4 text-lg font-semibold tracking-tight text-gray-900">Experience-driven design</p>
-            <p class="mt-2 text-xs/6 text-gray-600">We design user interfaces that are not only beautiful but also intuitive and conversion-focused to maximize user satisfaction.</p>
-            <div class="mt-4 opacity-0 transition-all duration-300 group-hover:opacity-100">
-              <span class="inline-flex items-center gap-1 text-xs font-medium text-blue-600">
-                Learn more
-                <svg class="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Motion & Media -->
-      <div class="group relative lg:col-span-2">
-        <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-white via-gray-50 to-white shadow-lg shadow-gray-200/50 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-blue-100/50"></div>
-        <div class="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-blue-50/0 via-blue-100/20 to-blue-50/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
-        <div class="relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white/80 backdrop-blur-sm transition-all duration-300 group-hover:scale-[1.005] group-hover:border-blue-100 group-hover:bg-white">
-          <div class="h-80 w-full overflow-hidden relative">
-            <div class="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent z-10"></div>
-            <div class="video-container absolute inset-0">
-              <video autoplay muted loop playsinline oncanplay="this.classList.add('loaded')" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
-                <source src="images/motion-video.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          </div>
-          <div class="p-8 pt-6">
-            <div class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-50 to-blue-100/50 px-3 py-1">
-              <span class="h-1.5 w-1.5 rounded-full bg-blue-500"></span>
-              <h3 class="text-xs/4 font-semibold text-blue-700">Motion & Media</h3>
-            </div>
-            <p class="mt-4 text-lg font-semibold tracking-tight text-gray-900">Bring ideas to life</p>
-            <p class="mt-2 text-xs/6 text-gray-600">We create cinematic visuals, motion graphics, and social content that amplify your story and engage your audience.</p>
-            <div class="mt-4 opacity-0 transition-all duration-300 group-hover:opacity-100">
-              <span class="inline-flex items-center gap-1 text-xs font-medium text-blue-600">
-                Learn more
-                <svg class="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Digital Strategy -->
-      <div class="group relative lg:col-span-2">
-        <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-white via-gray-50 to-white shadow-lg shadow-gray-200/50 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-blue-100/50 max-lg:rounded-b-2xl lg:rounded-br-2xl"></div>
-        <div class="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-blue-50/0 via-blue-100/20 to-blue-50/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 max-lg:rounded-b-2xl lg:rounded-br-2xl"></div>
-        <div class="relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white/80 backdrop-blur-sm transition-all duration-300 group-hover:scale-[1.005] group-hover:border-blue-100 group-hover:bg-white max-lg:rounded-b-2xl lg:rounded-br-2xl">
-          <div class="h-80 w-full overflow-hidden relative">
-            <div class="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent z-10"></div>
-            <div class="video-container absolute inset-0">
-              <video autoplay muted loop playsinline oncanplay="this.classList.add('loaded')" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
-                <source src="images/digital-experience.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          </div>
-          <div class="p-8 pt-6">
-            <div class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-50 to-blue-100/50 px-3 py-1">
-              <span class="h-1.5 w-1.5 rounded-full bg-blue-500"></span>
-              <h3 class="text-xs/4 font-semibold text-blue-700">Digital Strategy</h3>
-            </div>
-            <p class="mt-4 text-lg font-semibold tracking-tight text-gray-900">Grow with purpose</p>
-            <p class="mt-2 text-xs/6 text-gray-600">We combine data, design, and innovation to help brands scale with strategy-driven digital solutions that deliver measurable results.</p>
-            <div class="mt-4 opacity-0 transition-all duration-300 group-hover:opacity-100">
-              <span class="inline-flex items-center gap-1 text-xs font-medium text-blue-600">
-                Learn more
-                <svg class="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
 
-<!-- Portfolio Section -->
-<section id="portfolio" class="bg-white py-24 sm:py-32">
-  <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
-    <!-- Left-aligned heading -->
-    <div class="text-left">
-      <h2 class="text-base/7 font-semibold text-blue-600">Our Portfolio</h2>
-      <p class="mt-2 max-w-lg text-4xl font-semibold tracking-tight text-pretty text-gray-950 sm:text-5xl">Projects that define excellence</p>
-    </div>
+<section id="services" class="relative bg-stone-50 py-24 sm:py-32 border-t border-stone-200">
+  
+  <div class="absolute inset-0 opacity-[0.05] pointer-events-none" style="background-image: linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
     
-    <!-- Portfolio Cards -->
-    <div class="mx-auto mt-16 grid max-w-2xl auto-rows-fr grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-      
-      <!-- Project 1 - Stockmate.shop -->
-      <a href="https://stockmate.shop" target="_blank" rel="noopener noreferrer" class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pt-80 pb-8 sm:pt-48 lg:pt-80 group" aria-label="View Stockmate WebApp project">
-        <img 
-          src="images/stockmate-mockup.png" 
-          alt="Stockmate.shop WebApp interface showing e-commerce features" 
-          class="absolute inset-0 -z-10 size-full object-cover group-hover:scale-105 transition-transform duration-500"
-          loading="lazy"
-          onload="this.style.opacity=1"
-          style="opacity:0; transition: opacity 0.3s"
-        />
-        <!-- Gradient overlay for text readability -->
-        <div class="absolute inset-0 -z-10 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
-        <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-black/10"></div>
-
-        <!-- Year badge -->
-        <div class="absolute top-4 right-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
-          <span class="text-sm font-medium text-gray-700">2025</span>
-        </div>
-
-        <!-- Project info -->
-        <div class="relative z-10 flex flex-col items-start text-left">
-          <h3 class="text-xl font-bold text-white drop-shadow-lg">
-            Stockmate WebApp
-          </h3>
-          <p class="text-sm font-medium text-gray-100 mt-1 drop-shadow-md">E-commerce & Inventory System</p>
-        </div>
-      </a>
-      
-      <!-- Project 2 - Teva Eco Travel -->
-      <a href="https://tevaecotravel.com" target="_blank" rel="noopener noreferrer" class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pt-80 pb-8 sm:pt-48 lg:pt-80 group" aria-label="View Teva Eco Travel project">
-        <img 
-          src="images/teva-mockup.png" 
-          alt="Teva Eco Travel sustainable tourism website design" 
-          class="absolute inset-0 -z-10 size-full object-cover group-hover:scale-105 transition-transform duration-500"
-          loading="lazy"
-          onload="this.style.opacity=1"
-          style="opacity:0; transition: opacity 0.3s"
-        />
-        <!-- Gradient overlay for text readability -->
-        <div class="absolute inset-0 -z-10 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
-        <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-black/10"></div>
-
-        <!-- Year badge -->
-        <div class="absolute top-4 right-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
-          <span class="text-sm font-medium text-gray-700">2025</span>
-        </div>
-
-        <!-- Project info -->
-        <div class="relative z-10 flex flex-col items-start text-left">
-          <h3 class="text-xl font-bold text-white drop-shadow-lg">
-            Teva Eco Travel
-          </h3>
-          <p class="text-sm font-medium text-gray-100 mt-1 drop-shadow-md">Sustainable Tourism Website</p>
-        </div>
-      </a>
-      
-      <!-- Project 3 - Patriot Tours -->
-      <a href="https://patriot-tours.com" target="_blank" rel="noopener noreferrer" class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pt-80 pb-8 sm:pt-48 lg:pt-80 group" aria-label="View Patriot Tours project">
-        <img 
-          src="images/Patriot new web mockup.png" 
-          alt="Patriot Tours travel and safari website interface" 
-          class="absolute inset-0 -z-10 size-full object-cover group-hover:scale-105 transition-transform duration-500"
-          loading="lazy"
-          onload="this.style.opacity=1"
-          style="opacity:0; transition: opacity 0.3s"
-        />
-        <!-- Gradient overlay for text readability -->
-        <div class="absolute inset-0 -z-10 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
-        <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-black/10"></div>
-
-        <!-- Year badge -->
-        <div class="absolute top-4 right-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
-          <span class="text-sm font-medium text-gray-700">2025</span>
-        </div>
-
-        <!-- Project info -->
-        <div class="relative z-10 flex flex-col items-start text-left">
-          <h3 class="text-xl font-bold text-white drop-shadow-lg">
-            Patriot Tours
-          </h3>
-          <p class="text-sm font-medium text-gray-100 mt-1 drop-shadow-md">Travel & Safari Website</p>
-        </div>
-      </a>
-      
-      <!-- Project 4 - MaasaiSpear Safaris -->
-      <a href="https://maasaispearsafaris.com" target="_blank" rel="noopener noreferrer" class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pt-80 pb-8 sm:pt-48 lg:pt-80 group" aria-label="View MaasaiSpear Safaris project">
-        <img 
-          src="images/maasaispear-mockup.png" 
-          alt="MaasaiSpear Safaris premium safari experiences website" 
-          class="absolute inset-0 -z-10 size-full object-cover group-hover:scale-105 transition-transform duration-500"
-          loading="lazy"
-          onload="this.style.opacity=1"
-          style="opacity:0; transition: opacity 0.3s"
-        />
-        <!-- Gradient overlay for text readability -->
-        <div class="absolute inset-0 -z-10 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
-        <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-black/10"></div>
-
-        <!-- Year badge -->
-        <div class="absolute top-4 right-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
-          <span class="text-sm font-medium text-gray-700">2025</span>
-        </div>
-
-        <!-- Project info -->
-        <div class="relative z-10 flex flex-col items-start text-left">
-          <h3 class="text-xl font-bold text-white drop-shadow-lg">
-            MaasaiSpear Safaris
-          </h3>
-          <p class="text-sm font-medium text-gray-100 mt-1 drop-shadow-md">Premium Safari Experiences</p>
-        </div>
-      </a>
-      
-      <!-- Project 5 - Tanzania Safari Adventure -->
-      <a href="https://tanzaniasafariadventure.com" target="_blank" rel="noopener noreferrer" class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pt-80 pb-8 sm:pt-48 lg:pt-80 group" aria-label="View Tanzania Safari Adventure project">
-        <img 
-          src="images/TSA-mockup.png" 
-          alt="Tanzania Safari Adventure wildlife and tour website" 
-          class="absolute inset-0 -z-10 size-full object-cover group-hover:scale-105 transition-transform duration-500"
-          loading="lazy"
-          onload="this.style.opacity=1"
-          style="opacity:0; transition: opacity 0.3s"
-        />
-        <!-- Gradient overlay for text readability -->
-        <div class="absolute inset-0 -z-10 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
-        <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-black/10"></div>
-
-        <!-- Year badge -->
-        <div class="absolute top-4 right-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
-          <span class="text-sm font-medium text-gray-700">2025</span>
-        </div>
-
-        <!-- Project info -->
-        <div class="relative z-10 flex flex-col items-start text-left">
-          <h3 class="text-xl font-bold text-white drop-shadow-lg">
-            Tanzania Safari Adventure
-          </h3>
-          <p class="text-sm font-medium text-gray-100 mt-1 drop-shadow-md">Wildlife & Adventure Tours</p>
-        </div>
-      </a>
-      
-      <!-- Project 6 - Visit Tanzania -->
-      <a href="https://visittanzaniaa.com" target="_blank" rel="noopener noreferrer" class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pt-80 pb-8 sm:pt-48 lg:pt-80 group" aria-label="View Visit Tanzania project">
-        <img 
-          src="images/visit-tanzania-mockup.png" 
-          alt="Visit Tanzania tourism portal and guide website" 
-          class="absolute inset-0 -z-10 size-full object-cover group-hover:scale-105 transition-transform duration-500"
-          loading="lazy"
-          onload="this.style.opacity=1"
-          style="opacity:0; transition: opacity 0.3s"
-        />
-        <!-- Gradient overlay for text readability -->
-        <div class="absolute inset-0 -z-10 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
-        <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-black/10"></div>
-
-        <!-- Year badge -->
-        <div class="absolute top-4 right-4 z-10 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
-          <span class="text-sm font-medium text-gray-700">2025</span>
-        </div>
-
-        <!-- Project info -->
-        <div class="relative z-10 flex flex-col items-start text-left">
-          <h3 class="text-xl font-bold text-white drop-shadow-lg">
-            Visit Tanzania
-          </h3>
-          <p class="text-sm font-medium text-gray-100 mt-1 drop-shadow-md">Tourism Portal & Guide</p>
-        </div>
-      </a>
-    </div>
-    
-    <!-- CTA Button -->
-    <div class="mt-16 text-center">
-      <a href="#contact" class="inline-flex items-center gap-x-2 bg-blue-600 text-white px-6 py-3.5 rounded-xl text-base font-semibold hover:bg-blue-700 transition-all duration-200 shadow-sm hover:shadow-md" aria-label="Start your own project with us">
-        Start Your Project
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-        </svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- Testimonials Section -->
-<section id="testimonials" class="bg-white py-24 sm:py-32">
-  <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
-    <!-- Section Header - Left Aligned -->
-    <div class="text-left mb-16">
-      <span class="text-sm/4 font-semibold text-blue-600 bg-blue-50 px-4 py-2 rounded-full inline-block mb-4">
-        Testimonials
-      </span>
-      <h2 class="mt-2 max-w-xl text-4xl font-semibold tracking-tight text-pretty text-gray-950 sm:text-5xl">
-        Don't just take our words
-      </h2>
-      <p class="mt-6 text-lg/8 text-gray-600 max-w-2xl">
-        Hear what our users say about us. We're always looking for ways to improve. 
-        If you have a positive experience with us, leave a review.
+    <div class="max-w-2xl mb-16">
+      <h2 class="text-blue-600 font-mono text-xs tracking-[0.2em] uppercase mb-6">/ Capabilities</h2>
+      <h3 class="text-4xl md:text-5xl font-bold text-stone-900 tracking-tight leading-none mb-6">
+        Everything you need to <br> build a legacy.
+      </h3>
+      <p class="text-lg text-stone-600 leading-relaxed">
+        We don't just launch websites; we construct digital ecosystems. From the first pixel to the final line of code, we obsess over every detail.
       </p>
     </div>
 
-    <!-- Marquee Scrolling Testimonials -->
-    <div class="relative">
-      <!-- First Row -->
-      <div class="marquee-row w-full mx-auto max-w-5xl overflow-hidden relative mb-8">
-        <div class="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none bg-gradient-to-r from-white to-transparent"></div>
-        <div class="marquee-inner flex transform-gpu min-w-[200%] pt-10 pb-5" id="row1"></div>
-        <div class="absolute right-0 top-0 h-full w-20 md:w-40 z-10 pointer-events-none bg-gradient-to-l from-white to-transparent"></div>
-      </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-stone-200 border border-stone-200 overflow-hidden rounded-2xl shadow-sm">
+      
+      <a href="branding.html" class="group relative block bg-stone-50 p-8 hover:bg-white hover:z-10 transition-all duration-300">
+        <div class="flex justify-between items-start mb-8">
+          <span class="font-mono text-xs font-bold text-stone-400 group-hover:text-blue-600 transition-colors">01</span>
+          <div class="h-12 w-12 rounded-lg bg-stone-200 overflow-hidden group-hover:scale-110 transition-transform duration-500">
+             <img src="images/Luxury Loafers Logo 2 (with image overlay).png" alt="Branding" class="h-full w-full object-cover opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all">
+          </div>
+        </div>
+        <h3 class="text-xl font-bold text-stone-900 mb-3 group-hover:text-blue-600 transition-colors">Brand Identity</h3>
+        <p class="text-sm text-stone-600 leading-relaxed mb-8">Logo design, color theory, and typography that gives your business a distinct voice in a crowded market.</p>
+        
+        <div class="absolute bottom-8 left-8 right-8 pt-6 border-t border-stone-100 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
+           <span class="text-xs font-bold uppercase tracking-widest text-stone-900">Explore</span>
+           <i class="fas fa-arrow-right text-blue-600"></i>
+        </div>
+      </a>
 
-      <!-- Second Row -->
-      <div class="marquee-row w-full mx-auto max-w-5xl overflow-hidden relative">
-        <div class="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none bg-gradient-to-r from-white to-transparent"></div>
-        <div class="marquee-inner marquee-reverse flex transform-gpu min-w-[200%] pt-5 pb-10" id="row2"></div>
-        <div class="absolute right-0 top-0 h-full w-20 md:w-40 z-10 pointer-events-none bg-gradient-to-l from-white to-transparent"></div>
+      <a href="web-development.html" class="group relative block bg-stone-50 p-8 hover:bg-white hover:z-10 transition-all duration-300">
+        <div class="flex justify-between items-start mb-8">
+          <span class="font-mono text-xs font-bold text-stone-400 group-hover:text-blue-600 transition-colors">02</span>
+          <div class="h-12 w-12 rounded-lg bg-stone-200 overflow-hidden group-hover:scale-110 transition-transform duration-500">
+             <img src="images/Patriot new web mockup.png" alt="Web Dev" class="h-full w-full object-cover opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all">
+          </div>
+        </div>
+        <h3 class="text-xl font-bold text-stone-900 mb-3 group-hover:text-blue-600 transition-colors">Web Development</h3>
+        <p class="text-sm text-stone-600 leading-relaxed mb-8">Robust, scalable coding using modern frameworks. We build sites that load fast and rank high on Google.</p>
+        
+        <div class="absolute bottom-8 left-8 right-8 pt-6 border-t border-stone-100 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
+           <span class="text-xs font-bold uppercase tracking-widest text-stone-900">Explore</span>
+           <i class="fas fa-arrow-right text-blue-600"></i>
+        </div>
+      </a>
+
+      <a href="ui-ux-design.html" class="group relative block bg-stone-50 p-8 hover:bg-white hover:z-10 transition-all duration-300">
+        <div class="flex justify-between items-start mb-8">
+          <span class="font-mono text-xs font-bold text-stone-400 group-hover:text-blue-600 transition-colors">03</span>
+          <div class="h-12 w-12 rounded-lg bg-stone-200 overflow-hidden group-hover:scale-110 transition-transform duration-500">
+             <img src="images/stockmate-mockup.png" alt="UI UX" class="h-full w-full object-cover opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all">
+          </div>
+        </div>
+        <h3 class="text-xl font-bold text-stone-900 mb-3 group-hover:text-blue-600 transition-colors">UI/UX Design</h3>
+        <p class="text-sm text-stone-600 leading-relaxed mb-8">User-centric interfaces designed to guide visitors effortlessly towards making a purchase or booking.</p>
+        
+        <div class="absolute bottom-8 left-8 right-8 pt-6 border-t border-stone-100 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
+           <span class="text-xs font-bold uppercase tracking-widest text-stone-900">Explore</span>
+           <i class="fas fa-arrow-right text-blue-600"></i>
+        </div>
+      </a>
+
+      <a href="motion-media.html" class="group relative block bg-stone-50 p-8 hover:bg-white hover:z-10 transition-all duration-300">
+        <div class="flex justify-between items-start mb-8">
+          <span class="font-mono text-xs font-bold text-stone-400 group-hover:text-blue-600 transition-colors">04</span>
+          <div class="h-12 w-12 rounded-lg bg-stone-200 overflow-hidden group-hover:scale-110 transition-transform duration-500 relative flex items-center justify-center">
+             <video autoplay muted loop playsinline class="absolute inset-0 h-full w-full object-cover opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all">
+               <source src="images/motion-video.mp4" type="video/mp4">
+             </video>
+             <i class="fas fa-play text-white text-[10px] relative z-10 drop-shadow-md"></i>
+          </div>
+        </div>
+        <h3 class="text-xl font-bold text-stone-900 mb-3 group-hover:text-blue-600 transition-colors">Motion & Media</h3>
+        <p class="text-sm text-stone-600 leading-relaxed mb-8">High-end video production and motion graphics that grab attention in the first 3 seconds.</p>
+        
+        <div class="absolute bottom-8 left-8 right-8 pt-6 border-t border-stone-100 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
+           <span class="text-xs font-bold uppercase tracking-widest text-stone-900">Explore</span>
+           <i class="fas fa-arrow-right text-blue-600"></i>
+        </div>
+      </a>
+
+      <a href="digital-strategy.html" class="group relative block bg-stone-50 p-8 hover:bg-white hover:z-10 transition-all duration-300">
+        <div class="flex justify-between items-start mb-8">
+          <span class="font-mono text-xs font-bold text-stone-400 group-hover:text-blue-600 transition-colors">05</span>
+          <div class="h-12 w-12 rounded-lg bg-stone-200 overflow-hidden group-hover:scale-110 transition-transform duration-500 relative">
+             <video autoplay muted loop playsinline class="absolute inset-0 h-full w-full object-cover opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all">
+               <source src="images/digital-experience.mp4" type="video/mp4">
+             </video>
+          </div>
+        </div>
+        <h3 class="text-xl font-bold text-stone-900 mb-3 group-hover:text-blue-600 transition-colors">Digital Strategy</h3>
+        <p class="text-sm text-stone-600 leading-relaxed mb-8">Data-driven insights to help you identify your audience, optimize your budget, and scale your growth.</p>
+        
+        <div class="absolute bottom-8 left-8 right-8 pt-6 border-t border-stone-100 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
+           <span class="text-xs font-bold uppercase tracking-widest text-stone-900">Explore</span>
+           <i class="fas fa-arrow-right text-blue-600"></i>
+        </div>
+      </a>
+
+      <a href="#contact" class="group relative block bg-stone-900 p-8 flex flex-col justify-center items-center text-center transition-all duration-300 h-full">
+         <div class="h-16 w-16 bg-blue-600 rounded-full flex items-center justify-center mb-6 shadow-lg shadow-blue-900/50 group-hover:scale-110 transition-transform duration-300">
+           <i class="fas fa-plus text-white text-2xl"></i>
+         </div>
+         <h3 class="text-xl font-bold text-white mb-2">Have a custom request?</h3>
+         <p class="text-sm text-stone-400 mb-6">We tailor our services to your specific needs.</p>
+         <span class="text-xs font-bold uppercase tracking-widest text-white border-b border-blue-600 pb-1 group-hover:text-blue-500 transition-colors">
+           Contact Us
+         </span>
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="portfolio" class="relative bg-stone-50 py-24 sm:py-32 border-t border-stone-200">
+  
+  <div class="absolute inset-0 opacity-[0.05] pointer-events-none" style="background-image: linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
+    
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20 border-b border-stone-200 pb-10">
+      <div class="max-w-2xl">
+        <h2 class="text-blue-600 font-mono text-xs tracking-[0.2em] uppercase mb-6">/ Selected Works</h2>
+        <h3 class="text-4xl md:text-5xl font-bold text-stone-900 tracking-tight leading-none">
+          Digital <br> Craftsmanship.
+        </h3>
+      </div>
+      <div class="hidden md:block pb-2">
+         <a href="#contact" class="text-xs font-bold uppercase tracking-widest text-stone-900 border-b border-stone-900 pb-1 hover:text-blue-600 hover:border-blue-600 transition-colors">
+           Start Your Project
+         </a>
       </div>
     </div>
 
-    <!-- Leave Review Button - Left Aligned -->
-    <div class="mt-16 text-left">
-      <button id="open-review-modal" class="inline-flex items-center gap-x-2 bg-blue-600 text-white px-6 py-3.5 rounded-xl text-base font-semibold hover:bg-blue-700 transition-all duration-200 shadow-sm hover:shadow-md" aria-label="Leave us a review">
-        <i class="fas fa-star" aria-hidden="true"></i>
-        Leave Us a Review
-        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-20">
+      
+      <a href="https://stockmate.shop" target="_blank" class="group block cursor-pointer">
+        <div class="relative aspect-[4/3] overflow-hidden bg-stone-200 mb-6">
+          <div class="absolute inset-0 bg-stone-900/10 group-hover:bg-transparent z-10 transition-colors duration-500"></div>
+          <img 
+            src="images/stockmate-mockup.png" 
+            alt="Stockmate WebApp" 
+            class="h-full w-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-700 ease-out"
+          >
+          <div class="absolute top-4 right-4 h-10 w-10 bg-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 z-20">
+             <i class="fas fa-arrow-right -rotate-45 text-stone-900"></i>
+          </div>
+        </div>
+        
+        <div class="border-t border-stone-200 pt-6 group-hover:border-stone-900 transition-colors duration-300">
+          <div class="flex justify-between items-baseline mb-2">
+            <span class="font-mono text-xs text-stone-400 group-hover:text-blue-600 transition-colors">01</span>
+            <span class="font-mono text-xs text-stone-400">2025</span>
+          </div>
+          <h3 class="text-xl font-bold text-stone-900 mb-2 group-hover:text-blue-600 transition-colors">Stockmate WebApp</h3>
+          <p class="text-sm text-stone-500 line-clamp-2 leading-relaxed">A comprehensive inventory management system designed for high-volume e-commerce businesses.</p>
+        </div>
+      </a>
+
+      <a href="https://tevaecotravel.com" target="_blank" class="group block cursor-pointer">
+        <div class="relative aspect-[4/3] overflow-hidden bg-stone-200 mb-6">
+          <div class="absolute inset-0 bg-stone-900/10 group-hover:bg-transparent z-10 transition-colors duration-500"></div>
+          <img 
+            src="images/teva-mockup.png" 
+            alt="Teva Eco Travel" 
+            class="h-full w-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-700 ease-out"
+          >
+          <div class="absolute top-4 right-4 h-10 w-10 bg-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 z-20">
+             <i class="fas fa-arrow-right -rotate-45 text-stone-900"></i>
+          </div>
+        </div>
+        
+        <div class="border-t border-stone-200 pt-6 group-hover:border-stone-900 transition-colors duration-300">
+          <div class="flex justify-between items-baseline mb-2">
+            <span class="font-mono text-xs text-stone-400 group-hover:text-blue-600 transition-colors">02</span>
+            <span class="font-mono text-xs text-stone-400">2025</span>
+          </div>
+          <h3 class="text-xl font-bold text-stone-900 mb-2 group-hover:text-blue-600 transition-colors">Teva Eco Travel</h3>
+          <p class="text-sm text-stone-500 line-clamp-2 leading-relaxed">Sustainable tourism platform connecting eco-conscious travelers with local Tanzanian guides.</p>
+        </div>
+      </a>
+
+      <a href="https://patriot-tours.com" target="_blank" class="group block cursor-pointer">
+        <div class="relative aspect-[4/3] overflow-hidden bg-stone-200 mb-6">
+          <div class="absolute inset-0 bg-stone-900/10 group-hover:bg-transparent z-10 transition-colors duration-500"></div>
+          <img 
+            src="images/Patriot new web mockup.png" 
+            alt="Patriot Tours" 
+            class="h-full w-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-700 ease-out"
+          >
+          <div class="absolute top-4 right-4 h-10 w-10 bg-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 z-20">
+             <i class="fas fa-arrow-right -rotate-45 text-stone-900"></i>
+          </div>
+        </div>
+        
+        <div class="border-t border-stone-200 pt-6 group-hover:border-stone-900 transition-colors duration-300">
+          <div class="flex justify-between items-baseline mb-2">
+            <span class="font-mono text-xs text-stone-400 group-hover:text-blue-600 transition-colors">03</span>
+            <span class="font-mono text-xs text-stone-400">2025</span>
+          </div>
+          <h3 class="text-xl font-bold text-stone-900 mb-2 group-hover:text-blue-600 transition-colors">Patriot Tours</h3>
+          <p class="text-sm text-stone-500 line-clamp-2 leading-relaxed">Luxury safari booking experience featuring immersive video backgrounds and instant itinerary generation.</p>
+        </div>
+      </a>
+
+      <a href="https://maasaispearsafaris.com" target="_blank" class="group block cursor-pointer">
+        <div class="relative aspect-[4/3] overflow-hidden bg-stone-200 mb-6">
+          <div class="absolute inset-0 bg-stone-900/10 group-hover:bg-transparent z-10 transition-colors duration-500"></div>
+          <img 
+            src="images/maasaispear-mockup.png" 
+            alt="MaasaiSpear Safaris" 
+            class="h-full w-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-700 ease-out"
+          >
+          <div class="absolute top-4 right-4 h-10 w-10 bg-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 z-20">
+             <i class="fas fa-arrow-right -rotate-45 text-stone-900"></i>
+          </div>
+        </div>
+        
+        <div class="border-t border-stone-200 pt-6 group-hover:border-stone-900 transition-colors duration-300">
+          <div class="flex justify-between items-baseline mb-2">
+            <span class="font-mono text-xs text-stone-400 group-hover:text-blue-600 transition-colors">04</span>
+            <span class="font-mono text-xs text-stone-400">2025</span>
+          </div>
+          <h3 class="text-xl font-bold text-stone-900 mb-2 group-hover:text-blue-600 transition-colors">MaasaiSpear Safaris</h3>
+          <p class="text-sm text-stone-500 line-clamp-2 leading-relaxed">Authentic cultural tourism website showcasing the rich heritage of the Maasai people.</p>
+        </div>
+      </a>
+
+      <a href="https://tanzaniasafariadventure.com" target="_blank" class="group block cursor-pointer">
+        <div class="relative aspect-[4/3] overflow-hidden bg-stone-200 mb-6">
+          <div class="absolute inset-0 bg-stone-900/10 group-hover:bg-transparent z-10 transition-colors duration-500"></div>
+          <img 
+            src="images/TSA-mockup.png" 
+            alt="Tanzania Safari Adventure" 
+            class="h-full w-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-700 ease-out"
+          >
+          <div class="absolute top-4 right-4 h-10 w-10 bg-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 z-20">
+             <i class="fas fa-arrow-right -rotate-45 text-stone-900"></i>
+          </div>
+        </div>
+        
+        <div class="border-t border-stone-200 pt-6 group-hover:border-stone-900 transition-colors duration-300">
+          <div class="flex justify-between items-baseline mb-2">
+            <span class="font-mono text-xs text-stone-400 group-hover:text-blue-600 transition-colors">05</span>
+            <span class="font-mono text-xs text-stone-400">2025</span>
+          </div>
+          <h3 class="text-xl font-bold text-stone-900 mb-2 group-hover:text-blue-600 transition-colors">TZ Safari Adventure</h3>
+          <p class="text-sm text-stone-500 line-clamp-2 leading-relaxed">Adventure travel portal focused on Kilimanjaro trekking and Serengeti game drives.</p>
+        </div>
+      </a>
+
+      <a href="https://visittanzaniaa.com" target="_blank" class="group block cursor-pointer">
+        <div class="relative aspect-[4/3] overflow-hidden bg-stone-200 mb-6">
+          <div class="absolute inset-0 bg-stone-900/10 group-hover:bg-transparent z-10 transition-colors duration-500"></div>
+          <img 
+            src="images/visit-tanzania-mockup.png" 
+            alt="Visit Tanzania" 
+            class="h-full w-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-700 ease-out"
+          >
+          <div class="absolute top-4 right-4 h-10 w-10 bg-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 z-20">
+             <i class="fas fa-arrow-right -rotate-45 text-stone-900"></i>
+          </div>
+        </div>
+        
+        <div class="border-t border-stone-200 pt-6 group-hover:border-stone-900 transition-colors duration-300">
+          <div class="flex justify-between items-baseline mb-2">
+            <span class="font-mono text-xs text-stone-400 group-hover:text-blue-600 transition-colors">06</span>
+            <span class="font-mono text-xs text-stone-400">2025</span>
+          </div>
+          <h3 class="text-xl font-bold text-stone-900 mb-2 group-hover:text-blue-600 transition-colors">Visit Tanzania</h3>
+          <p class="text-sm text-stone-500 line-clamp-2 leading-relaxed">The ultimate digital guide for tourists visiting Tanzania, featuring interactive maps and tips.</p>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="mt-16 text-center md:hidden">
+      <a href="#contact" class="inline-flex items-center gap-2 rounded-lg bg-stone-900 px-8 py-3 text-sm font-bold uppercase tracking-widest text-white hover:bg-blue-600 transition-all">
+        Start Project <i class="fas fa-arrow-right text-xs"></i>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<section id="testimonials" class="relative bg-stone-950 py-24 sm:py-32 border-t border-stone-900 overflow-hidden">
+  
+  <div class="absolute inset-0 opacity-[0.02] pointer-events-none" style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 60px 60px;"></div>
+
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
+    
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-10 mb-20 border-b border-stone-800/60 pb-10">
+      <div>
+        <span class="font-mono text-blue-500 text-xs uppercase tracking-[0.2em] mb-4 block">/ Client Ledger</span>
+        <h2 class="text-4xl md:text-5xl font-bold text-white tracking-tight leading-none">The Verdict.</h2>
+      </div>
+      
+      <div class="flex items-center gap-12 font-mono">
+          <div class="flex flex-col">
+             <div class="flex items-baseline gap-2">
+               <span class="text-3xl font-bold text-white">5.0</span>
+               <div class="flex text-blue-500 text-[10px]"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+             </div>
+             <span class="text-[9px] text-stone-500 uppercase tracking-widest mt-1">Average Rating</span>
+          </div>
+          <div class="h-10 w-px bg-stone-800"></div>
+          <div class="flex flex-col">
+             <div class="flex items-baseline gap-2">
+               <span class="text-3xl font-bold text-white">100%</span>
+               <i class="fas fa-shield-check text-blue-500 text-sm"></i>
+             </div>
+             <span class="text-[9px] text-stone-500 uppercase tracking-widest mt-1">Verified Clients</span>
+          </div>
+      </div>
+    </div>
+
+    <div class="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide">
+      
+      <div id="reviews-container" class="contents"></div>
+
+      <button id="open-review-modal" class="min-w-[85vw] sm:min-w-[350px] md:min-w-0 flex-shrink-0 snap-center bg-stone-900/50 border border-stone-800/60 rounded-2xl p-8 flex flex-col items-center justify-center text-center h-full min-h-[280px] hover:bg-stone-900 hover:border-stone-700 transition-all group cursor-pointer">
+         <div class="h-14 w-14 rounded-full bg-stone-950 border border-stone-800 group-hover:border-blue-500/30 flex items-center justify-center mb-6 transition-colors">
+            <i class="fas fa-plus text-stone-500 group-hover:text-blue-400 text-lg transition-colors"></i>
+         </div>
+         <h3 class="text-lg font-bold text-white mb-2">Have we worked together?</h3>
+         <p class="text-xs text-stone-500 mb-6 max-w-[200px] leading-relaxed">Share your experience to help us improve.</p>
+         <span class="text-[10px] font-bold uppercase tracking-widest text-stone-400 border-b border-stone-800 pb-1 group-hover:text-blue-400 group-hover:border-blue-400 transition-all">Write a Review</span>
       </button>
+
     </div>
   </div>
 </section>
 
-<!-- Review Modal -->
-<div id="review-modal" class="fixed inset-0 z-50 hidden overflow-y-auto no-print" aria-labelledby="review-modal-title" role="dialog" aria-modal="true">
-  <div class="flex items-center justify-center min-h-screen p-4 sm:p-6">
-    <div class="fixed inset-0 bg-gray-500/75 transition-opacity backdrop-blur-sm modal-backdrop" aria-hidden="true"></div>
-    
-    <div class="relative bg-white rounded-2xl shadow-xl w-full max-w-4xl overflow-hidden my-8">
-      <div class="flex flex-col lg:flex-row">
-        <!-- Left side - Review Form -->
-        <div class="w-full lg:w-2/3 p-4 md:p-6">
-          <div class="flex items-center justify-between mb-4 md:mb-6">
-            <div>
-              <h3 id="review-modal-title" class="text-lg font-semibold text-gray-900">Share Your Experience</h3>
-              <p class="text-sm text-gray-600 mt-1">Your feedback helps us improve</p>
-            </div>
-            <button type="button" class="close-review-modal rounded-lg bg-gray-100 p-2 text-gray-600 hover:bg-gray-200 transition-colors" aria-label="Close modal">
-              <i class="fas fa-times text-sm" aria-hidden="true"></i>
-            </button>
-          </div>
+<div id="review-modal" class="fixed inset-0 z-[60] hidden overflow-y-auto no-print">
+  <div class="fixed inset-0 bg-stone-950/60 backdrop-blur-sm transition-opacity modal-backdrop"></div>
+  <div class="flex items-center justify-center min-h-full p-4">
+    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg p-8 md:p-10 my-8 transform transition-all ring-1 ring-black/5">
+      
+      <button type="button" class="close-review-modal absolute top-4 right-4 p-2 text-stone-300 hover:text-stone-900 transition-colors">
+        <i class="fas fa-times text-lg"></i>
+      </button>
 
-          <!-- Form Container -->
-          <div class="max-h-[calc(70vh-180px)] md:max-h-[calc(70vh-200px)] overflow-y-auto pr-1 -mr-1">
-            <form id="review-form" class="space-y-6 pb-1">
-              <!-- Honeypot field -->
-              <input type="text" name="website" style="display:none;" tabindex="-1" autocomplete="off" class="hp-field">
-              
-              <!-- Star Rating -->
-              <div class="space-y-3">
-                <label class="block text-sm font-medium text-gray-700">Overall Rating *</label>
-                <div class="flex items-center space-x-1" id="star-rating">
-                  <button type="button" class="star-rating-btn text-2xl text-gray-300 hover:text-yellow-400 transition-colors" data-rating="1" aria-label="1 star">
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                  </button>
-                  <button type="button" class="star-rating-btn text-2xl text-gray-300 hover:text-yellow-400 transition-colors" data-rating="2" aria-label="2 stars">
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                  </button>
-                  <button type="button" class="star-rating-btn text-2xl text-gray-300 hover:text-yellow-400 transition-colors" data-rating="3" aria-label="3 stars">
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                  </button>
-                  <button type="button" class="star-rating-btn text-2xl text-gray-300 hover:text-yellow-400 transition-colors" data-rating="4" aria-label="4 stars">
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                  </button>
-                  <button type="button" class="star-rating-btn text-2xl text-gray-300 hover:text-yellow-400 transition-colors" data-rating="5" aria-label="5 stars">
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                  </button>
-                </div>
-                <input type="hidden" id="rating" name="rating" value="0" required>
-                <div class="error-message text-xs text-red-600 mt-1" id="rating-error"></div>
-              </div>
-              
-              <!-- Contact Information -->
-              <div class="space-y-4 pt-4 border-t border-gray-200">
-                <h4 class="text-sm font-semibold text-gray-700">Your Information</h4>
-                
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  <div>
-                    <label for="review-name" class="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
-                    <input type="text" id="review-name" name="name" class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm px-3 py-2 border" placeholder="John Doe" required>
-                    <div class="error-message text-xs text-red-600 mt-1" id="review-name-error"></div>
-                  </div>
-                  <div>
-                    <label for="review-email" class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
-                    <input type="email" id="review-email" name="email" class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm px-3 py-2 border" placeholder="john@company.com" required>
-                    <div class="error-message text-xs text-red-600 mt-1" id="review-email-error"></div>
-                  </div>
-                </div>
-                
-                <div>
-                  <label for="review-company" class="block text-sm font-medium text-gray-700 mb-1">Company / Role (Optional)</label>
-                  <input type="text" id="review-company" name="company" class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm px-3 py-2 border" placeholder="CEO at Company or Designer">
-                  <div class="error-message text-xs text-red-600 mt-1" id="review-company-error"></div>
-                </div>
-              </div>
-              
-              <!-- Review Content -->
-              <div class="space-y-4 pt-4 border-t border-gray-200">
-                <h4 class="text-sm font-semibold text-gray-700">Your Review</h4>
-                
-                <div>
-                  <label for="review-title" class="block text-sm font-medium text-gray-700 mb-1">Review Title *</label>
-                  <input type="text" id="review-title" name="title" class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm px-3 py-2 border" placeholder="e.g., Excellent Service, Amazing Results" required>
-                  <div class="error-message text-xs text-red-600 mt-1" id="review-title-error"></div>
-                </div>
-                
-                <div>
-                  <label for="review-message" class="block text-sm font-medium text-gray-700 mb-1">Detailed Review *</label>
-                  <textarea id="review-message" name="message" rows="4" class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm px-3 py-2 border" placeholder="Share your experience working with us. What did you like? What could be improved?" required></textarea>
-                  <div class="error-message text-xs text-red-600 mt-1" id="review-message-error"></div>
-                </div>
-                
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  <div>
-                    <label for="review-category" class="block text-sm font-medium text-gray-700 mb-1">Category</label>
-                    <select id="review-category" name="category" class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm px-3 py-2 border">
-                      <option value="" selected>Select category</option>
-                      <option value="web-development">Web Development</option>
-                      <option value="ui-ux-design">UI/UX Design</option>
-                      <option value="branding">Branding</option>
-                      <option value="strategy">Digital Strategy</option>
-                      <option value="motion-media">Motion & Media</option>
-                    </select>
-                  </div>
-                  
-                  <div>
-                    <label for="review-permission" class="block text-sm font-medium text-gray-700 mb-1">Permission to Display</label>
-                    <select id="review-permission" name="permission" class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm px-3 py-2 border">
-                      <option value="yes" selected>Yes, display publicly</option>
-                      <option value="no">No, keep private</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-          
-          <!-- Fixed Footer -->
-          <div class="pt-4 mt-4 border-t border-gray-200 bg-white">
-            <div class="text-xs text-gray-500 mb-3">
-              * Required fields. All submissions are reviewed before publication.
-            </div>
-            <div class="flex flex-col sm:flex-row gap-3">
-              <button type="button" id="submit-review-btn" class="order-1 sm:order-2 flex-1 inline-flex justify-center items-center rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 transition-colors gap-2">
-                <span id="submit-review-text">
-                  <i class="fas fa-paper-plane text-xs" aria-hidden="true"></i>
-                  Submit Review
-                </span>
-                <div id="submit-review-spinner" class="spinner hidden"></div>
-              </button>
-              <button type="button" class="order-2 sm:order-1 flex-1 close-review-modal inline-flex justify-center items-center rounded-lg bg-gray-100 px-4 py-2.5 text-sm font-semibold text-gray-900 hover:bg-gray-200 transition-colors">
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right side - Image with overlay -->
-        <div class="hidden lg:block lg:w-1/3 relative">
-          <!-- Background Image -->
-          <div class="absolute inset-0">
-            <img 
-              src="images/best-friends-support-your-choice-portrait-proud-satisfied-good-looking-african-american-man-woman-show-camera-thumbs-up-smiling-broadly-cheering-liking-awesome-purchase-standing-pin.jpg" 
-              alt="Customer feedback and review concept" 
-              class="w-full h-full object-cover"
-              loading="lazy"
-            >
-            <!-- Dark overlay for better text readability -->
-            <div class="absolute inset-0 bg-blue-900/50"></div>
-          </div>
-          
-          <!-- Content overlay -->
-          <div class="relative h-full flex flex-col items-center justify-center p-6 text-white">
-            <div class="mb-6">
-              <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mx-auto border border-white/30">
-                <i class="fas fa-comment-alt text-white text-xl" aria-hidden="true"></i>
-              </div>
-            </div>
-            <h4 class="text-lg font-semibold text-center mb-3">Your Feedback Matters</h4>
-            <p class="text-sm text-white/90 text-center mb-6">
-              Honest reviews help us serve you better and guide future clients in their decision making.
-            </p>
-            <div class="mt-auto w-full">
-              <div class="flex items-center justify-center gap-2 text-sm text-white/80 mb-2">
-                <i class="fas fa-shield-alt" aria-hidden="true"></i>
-                <span>Your privacy is protected</span>
-              </div>
-              <div class="flex items-center justify-center gap-2 text-sm text-white/80">
-                <i class="fas fa-check-circle" aria-hidden="true"></i>
-                <span>All reviews are verified</span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="text-center mb-8">
+        <h3 class="text-2xl font-bold text-stone-900 tracking-tight mb-2">How did we do?</h3>
+        <p class="text-stone-500 text-xs">Your feedback helps us grow.</p>
       </div>
+
+      <form id="review-form" class="space-y-6">
+        <input type="text" name="website" style="display:none;" tabindex="-1" autocomplete="off">
+
+        <div class="flex flex-col items-center justify-center space-y-2">
+           <div class="flex items-center gap-2" id="star-rating">
+             <button type="button" class="star-rating-btn text-4xl text-stone-200 hover:text-yellow-400 transition-colors focus:outline-none transform hover:scale-110 duration-200" data-rating="1"><i class="fas fa-star"></i></button>
+             <button type="button" class="star-rating-btn text-4xl text-stone-200 hover:text-yellow-400 transition-colors focus:outline-none transform hover:scale-110 duration-200" data-rating="2"><i class="fas fa-star"></i></button>
+             <button type="button" class="star-rating-btn text-4xl text-stone-200 hover:text-yellow-400 transition-colors focus:outline-none transform hover:scale-110 duration-200" data-rating="3"><i class="fas fa-star"></i></button>
+             <button type="button" class="star-rating-btn text-4xl text-stone-200 hover:text-yellow-400 transition-colors focus:outline-none transform hover:scale-110 duration-200" data-rating="4"><i class="fas fa-star"></i></button>
+             <button type="button" class="star-rating-btn text-4xl text-stone-200 hover:text-yellow-400 transition-colors focus:outline-none transform hover:scale-110 duration-200" data-rating="5"><i class="fas fa-star"></i></button>
+           </div>
+           <input type="hidden" id="rating" name="rating" value="0">
+           <div class="error-message text-[10px] text-red-500 font-mono h-4" id="rating-error"></div>
+        </div>
+
+        <div>
+           <textarea id="review-message" name="message" rows="3" class="w-full bg-stone-50 border-0 border-b-2 border-stone-200 focus:border-stone-900 focus:ring-0 px-4 py-3 text-sm placeholder:text-stone-400 resize-none transition-colors" placeholder="What was the highlight of working with us?" required></textarea>
+           <div class="error-message text-xs text-red-500 mt-1" id="review-message-error"></div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+           <div>
+             <input type="text" id="review-name" name="name" class="w-full bg-stone-50 border border-stone-200 focus:border-stone-900 focus:ring-0 px-4 py-3 rounded-lg text-sm placeholder:text-stone-400" placeholder="Your Name" required>
+             <div class="error-message text-xs text-red-500 mt-1" id="review-name-error"></div>
+           </div>
+           <div>
+             <input type="email" id="review-email" name="email" class="w-full bg-stone-50 border border-stone-200 focus:border-stone-900 focus:ring-0 px-4 py-3 rounded-lg text-sm placeholder:text-stone-400" placeholder="Email (Private)" required>
+             <div class="error-message text-xs text-red-500 mt-1" id="review-email-error"></div>
+           </div>
+        </div>
+        
+        <div class="flex items-start gap-3 bg-blue-50/50 p-3 rounded-lg">
+           <div class="flex items-center h-5">
+             <input id="review-permission" name="permission" value="yes" type="checkbox" class="h-4 w-4 rounded border-stone-300 text-stone-900 focus:ring-stone-900" checked>
+           </div>
+           <div class="text-xs">
+             <label for="review-permission" class="font-bold text-stone-700">Okay to publish?</label>
+             <p class="text-stone-500">Uncheck if you want this feedback to remain private.</p>
+           </div>
+        </div>
+
+        <button type="button" id="submit-review-btn" class="w-full bg-stone-900 text-white font-bold uppercase tracking-widest text-xs py-4 rounded-xl hover:bg-blue-600 hover:scale-[1.02] transition-all shadow-lg flex items-center justify-center gap-2">
+           <span id="submit-review-text">Send Review</span>
+           <div id="submit-review-spinner" class="spinner hidden border-white inline-block h-4 w-4 rounded-full border-2 border-t-transparent animate-spin"></div>
+        </button>
+
+      </form>
     </div>
   </div>
 </div>
-
-<style>
-  /* Marquee Animation */
-  @keyframes marqueeScroll {
-    0% {
-      transform: translateX(0%);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-
-  .marquee-inner {
-    animation: marqueeScroll 35s linear infinite;
-  }
-
-  .marquee-reverse {
-    animation-direction: reverse;
-  }
-
-  /* Pause animation on hover */
-  .marquee-row:hover .marquee-inner {
-    animation-play-state: paused;
-  }
-
-  /* Testimonial card styles */
-  .testimonial-card {
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 0.75rem;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-    transition: all 0.2s ease;
-  }
-
-  .testimonial-card:hover {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
-  }
-
-  /* Star rating styles */
-  .star-rating-btn.selected {
-    color: #fbbf24;
-  }
-
-  .star-rating-btn.selected:hover {
-    color: #f59e0b;
-  }
-</style>
 
 <script>
-// Testimonials Data (Updated with real clients)
-const testimonialsData = [
-  {
-    image: 'images/industrial-designer-working-3d-model.jpg',
-    name: 'Raymond Kisasembe',
-    handle: '@patriottours',
-    date: 'April 20, 2025',
-    title: 'Exceptional Tourism Website & Smooth User Flow',
-    text: "Adams+ helped us redesign the entire Patriot Tours website, and the result was beyond what we expected. The modern layout, clear itineraries, and fast performance have significantly improved our client inquiries. This is the best our brand has ever looked."
-  },
-  {
-    image: 'images/tavershima-shande-apDCoFVWNpk-unsplash.jpg',
-    name: 'George Shango',
-    handle: '@tevaecotravels',
-    date: 'May 10, 2025',
-    title: 'A beautiful eco-travel site that truly represents us',
-    text: "Working with Adams+ was a smooth and enjoyable experience. The Teva EcoTravels website they built perfectly reflects our eco-friendly brand identity, with amazing visuals, a clean structure, and a premium feel. Our clients love it!"
-  },
-  {
-    image: 'images/ken-levitan-WJi4wy0mo28-unsplash.jpg',
-    name: 'Christopher',
-    handle: '@maasaispearsafaris',
-    date: 'June 5, 2025',
-    title: 'Luxury safari website with a world-class design',
-    text: "Adams+ delivered a stunning website for Maasai Spear Safaris. The attention to detail, the luxury aesthetic, and the seamless mobile experience made our site stand out instantly. Our customers constantly compliment the new design!"
-  },
-  {
-    image: 'images/nora-hutton-DL8K6CL8fTk-unsplash.jpg',
-    name: 'Brighton Joseph',
-    handle: '@stockmate',
-    date: 'July 15, 2025',
-    title: 'The Stockmate web app changed everything for us',
-    text: "The Stockmate inventory management system built by Adams+ is fast, clean, and incredibly easy to use. It has improved accuracy, saved us hours of manual work, and increased business efficiency. Highly recommended!"
-  },
-  {
-    image: 'images/meizhi-lang-GII4PoOhC7U-unsplash.jpg',
-    name: 'Eric Pizzo',
-    handle: '@beitupa',
-    date: 'August 3, 2025',
-    title: 'Top-tier e-commerce build for BeiTupa',
-    text: "We needed an interactive, professional e-commerce store and Adams+ delivered exactly that. From the product displays to the smooth cart system, everything works flawlessly. Our online credibility has increased massively."
-  },
-  {
-    image: 'images/thisisengineering-sbFmoKBK7jU-unsplash.jpg',
-    name: 'Glory',
-    handle: '@babefacecosmetics',
-    date: 'September 12, 2025',
-    title: 'A stunning cosmetic brand identity & website',
-    text: "Adams+ helped us position BabeFace Cosmetics with a modern, feminine, luxury feel. The branding and website design were so beautiful that our customer engagement doubled. They truly understand brand storytelling."
-  }
-];
+document.addEventListener('DOMContentLoaded', () => {
 
-  // Create testimonial card HTML
-  const createTestimonialCard = (testimonial) => `
-    <div class="testimonial-card p-6 rounded-xl mx-4 shadow-sm hover:shadow-md transition-all duration-200 w-80 shrink-0">
-      <div class="flex items-start gap-3 mb-4">
-        <img class="size-12 rounded-full object-cover" src="${testimonial.image}" alt="${testimonial.name}" loading="lazy">
-        <div class="flex-1">
-          <div class="flex items-center gap-2">
-            <p class="font-semibold text-gray-900">${testimonial.name}</p>
-            <svg class="mt-0.5" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M4.555.72a4 4 0 0 1-.297.24c-.179.12-.38.202-.59.244a4 4 0 0 1-.38.041c-.48.039-.721.058-.922.129a1.63 1.63 0 0 0-.992.992c-.071.2-.09.441-.129.922a4 4 0 0 1-.041.38 1.6 1.6 0 0 1-.245.59 3 3 0 0 1-.239.297c-.313.368-.47.551-.56.743-.213.444-.213.96 0 1.404.09.192.247.375.56.743.125.146.187.219.24.297.12.179.202.38.244.59.018.093.026.189.041.38.039.48.058.721.129.922.163.464.528.829.992.992.2.071.441.09.922.129.191.015.287.023.38.041.21.042.411.125.59.245.078.052.151.114.297.239.368.313.551.47.743.56.444.213.96.213 1.404 0 .192-.09.375-.247.743-.56.146-.125.219-.187.297-.24.179-.12.38-.202.59-.244a4 4 0 0 1 .38-.041c.48-.039.721-.058.922-.129.464-.163.829-.528.992-.992.071-.2.09-.441.129-.922a4 4 0 0 1 .041-.38c.042-.21.125-.411.245-.59.052-.078.114-.151.239-.297.313-.368.47-.551.56-.743.213-.444.213-.96 0-1.404-.09-.192-.247-.375-.56-.743a4 4 0 0 1-.24-.297 1.6 1.6 0 0 1-.244-.59 3 3 0 0 1-.041-.38c-.039-.48-.058-.721-.129-.922a1.63 1.63 0 0 0-.992-.992c-.2-.071-.441-.09-.922-.129a4 4 0 0 1-.38-.041 1.6 1.6 0 0 1-.59-.245A3 3 0 0 1 7.445.72C7.077.407 6.894.25 6.702.16a1.63 1.63 0 0 0-1.404 0c-.192.09-.375.247-.743.56m4.07 3.998a.488.488 0 0 0-.691-.69l-2.91 2.91-.958-.957a.488.488 0 0 0-.69.69l1.302 1.302c.19.191.5.191.69 0z" fill="#3b82f6" />
-            </svg>
-          </div>
-          <span class="text-xs text-gray-500">${testimonial.handle}</span>
-        </div>
-      </div>
-      
-      <h4 class="font-semibold text-gray-900 mb-2 text-sm">${testimonial.title}</h4>
-      <p class="text-sm text-gray-600 mb-4 leading-relaxed">${testimonial.text}</p>
-      
-      <div class="flex items-center justify-between text-gray-500 text-xs pt-3 border-t border-gray-100">
-        <div class="flex items-center gap-1">
-          <span class="text-gray-400">Posted on</span>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600 transition-colors">
-            <svg width="11" height="10" viewBox="0 0 11 10" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="m.027 0 4.247 5.516L0 10h.962l3.742-3.926L7.727 10H11L6.514 4.174 10.492 0H9.53L6.084 3.616 3.3 0zM1.44.688h1.504l6.64 8.624H8.082z"/>
-            </svg>
-          </a>
-        </div>
-        <p class="text-gray-400">${testimonial.date}</p>
-      </div>
-    </div>
-  `;
+    // 1. DATA & INITIALIZATION
+    const staticReviews = [
+        { name: "Teva Eco Travel", category: "Client", rating: 5, message: "Adams+ understood our vision from the start. The website reflects our brand perfectly." },
+        { name: "Patriot Tours", category: "Client", rating: 5, message: "We needed a fast, visually strong tourism website. Adams+ delivered exactly that." },
+        { name: "BeiTupa Electronics", category: "Client", rating: 4, message: "Adams+ helped us establish a strong online presence. The design is modern." },
+        { name: "International Client", category: "Partner", rating: 5, message: "Professional from start to finish. The logo design process was smooth." },
+        { name: "Babeface Cosmetics", category: "Client", rating: 5, message: "Adams+ delivered a clean and elegant website that matches our brand identity." },
+        { name: "Maasai Spear Safaris", category: "Client", rating: 5, message: "The site is fast, responsive, and visually strong. Highly recommended." }
+    ];
 
-  // Initialize testimonials
-  function initializeTestimonials() {
-    const row1 = document.getElementById('row1');
-    const row2 = document.getElementById('row2');
-    
-    // Double the data for seamless scrolling
-    const doubledData = [...testimonialsData, ...testimonialsData];
-    
-    // Clear existing content
-    row1.innerHTML = '';
-    row2.innerHTML = '';
-    
-    // Distribute testimonials between two rows
-    doubledData.forEach((testimonial, index) => {
-      const cardHTML = createTestimonialCard(testimonial);
-      if (index % 2 === 0) {
-        row1.insertAdjacentHTML('beforeend', cardHTML);
-      } else {
-        row2.insertAdjacentHTML('beforeend', cardHTML);
-      }
-    });
-  }
+    function renderReviews(reviews) {
+        const container = document.getElementById('reviews-container');
+        if(!container) return;
+        
+        container.innerHTML = ''; // Clear current
+        
+        reviews.forEach(review => {
+            let starsHTML = '';
+            for(let i=0; i<5; i++) {
+                starsHTML += i < review.rating ? '<i class="fas fa-star"></i>' : '<i class="far fa-star text-stone-700"></i>';
+            }
 
-  // Review Modal Functions
-  function openReviewModal() {
+            const html = `
+            <div class="min-w-[85vw] sm:min-w-[350px] md:min-w-0 flex-shrink-0 snap-center bg-stone-900/80 border border-stone-800/60 p-8 rounded-2xl hover:bg-stone-900 hover:border-stone-700 transition-all group h-full flex flex-col justify-between backdrop-blur-sm">
+                <div>
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="font-mono text-[9px] text-blue-400 uppercase tracking-widest border border-blue-900/30 bg-blue-900/10 px-3 py-1 rounded-full">${review.category || 'Client'}</span>
+                        <div class="flex text-blue-500 text-[10px] opacity-70 group-hover:opacity-100 transition-opacity">${starsHTML}</div>
+                    </div>
+                    <h3 class="text-base font-medium text-stone-200 leading-relaxed mb-6 whitespace-normal">"${review.message}"</h3>
+                </div>
+                <div class="flex items-center gap-3 pt-6 mt-auto border-t border-stone-800/50">
+                    <div class="h-8 w-8 rounded-full bg-stone-950 border border-stone-800 flex items-center justify-center text-xs font-bold text-stone-300">${review.name.charAt(0)}</div>
+                    <div>
+                        <div class="text-xs font-bold text-white">${review.name}</div>
+                        <div class="text-[10px] text-stone-500 font-mono uppercase">Verified</div>
+                    </div>
+                </div>
+            </div>`;
+            container.insertAdjacentHTML('beforeend', html);
+        });
+    }
+
+    // Load initial reviews (Static + Dynamic if available)
+    renderReviews(staticReviews); 
+
+    // 2. MODAL LOGIC
     const modal = document.getElementById('review-modal');
-    modal.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-    
-    // Reset form
-    document.getElementById('review-form').reset();
-    resetStarRating();
-    
-    // Set focus to first input
-    setTimeout(() => {
-      document.getElementById('review-name').focus();
-    }, 100);
-  }
+    const openBtn = document.getElementById('open-review-modal');
+    const closeBtns = document.querySelectorAll('.close-review-modal');
 
-  function closeReviewModal() {
-    const modal = document.getElementById('review-modal');
-    modal.classList.add('hidden');
-    document.body.style.overflow = 'auto';
-    
-    // Reset form and errors
-    document.getElementById('review-form').reset();
-    resetStarRating();
-    
-    document.querySelectorAll('.error-message').forEach(el => {
-      el.classList.remove('show');
-      el.textContent = '';
-    });
-    
-    document.querySelectorAll('.form-input').forEach(el => {
-      el.classList.remove('error', 'success');
-    });
-  }
+    if(openBtn) {
+        openBtn.addEventListener('click', () => {
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            resetForm();
+        });
+    }
 
-  // Star Rating Functionality
-  function setupStarRating() {
-    const starButtons = document.querySelectorAll('.star-rating-btn');
+    closeBtns.forEach(btn => btn.addEventListener('click', closeModal));
+    modal.addEventListener('click', (e) => {
+        if(e.target.classList.contains('modal-backdrop')) closeModal();
+    });
+
+    function closeModal() {
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+
+    // 3. STAR RATING LOGIC
+    const starBtns = document.querySelectorAll('.star-rating-btn');
     const ratingInput = document.getElementById('rating');
-    
-    starButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        const rating = parseInt(this.getAttribute('data-rating'));
-        ratingInput.value = rating;
-        
-        // Update star display
-        starButtons.forEach((star, index) => {
-          if (index < rating) {
-            star.classList.add('selected');
-            star.innerHTML = '<i class="fas fa-star" aria-hidden="true"></i>';
-          } else {
-            star.classList.remove('selected');
-            star.innerHTML = '<i class="far fa-star" aria-hidden="true"></i>';
-          }
-        });
-        
-        // Clear error
-        document.getElementById('rating-error').classList.remove('show');
-      });
-      
-      // Hover effect
-      button.addEventListener('mouseenter', function() {
-        const hoverRating = parseInt(this.getAttribute('data-rating'));
-        starButtons.forEach((star, index) => {
-          if (index < hoverRating) {
-            star.classList.add('selected');
-          }
-        });
-      });
-      
-      button.addEventListener('mouseleave', function() {
-        const currentRating = parseInt(ratingInput.value);
-        starButtons.forEach((star, index) => {
-          if (index >= currentRating) {
-            star.classList.remove('selected');
-          }
-        });
-      });
-    });
-  }
 
-  function resetStarRating() {
-    const starButtons = document.querySelectorAll('.star-rating-btn');
-    const ratingInput = document.getElementById('rating');
-    
-    ratingInput.value = '0';
-    starButtons.forEach(star => {
-      star.classList.remove('selected');
-      star.innerHTML = '<i class="far fa-star" aria-hidden="true"></i>';
+    starBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const val = btn.dataset.rating;
+            ratingInput.value = val;
+            starBtns.forEach(star => {
+                if (star.dataset.rating <= val) {
+                    star.classList.remove('text-stone-200');
+                    star.classList.add('text-yellow-400');
+                } else {
+                    star.classList.add('text-stone-200');
+                    star.classList.remove('text-yellow-400');
+                }
+            });
+            document.getElementById('rating-error').textContent = '';
+        });
     });
-  }
 
-  // Validate Review Form
-  function validateReviewForm() {
-    let isValid = true;
-    const form = document.getElementById('review-form');
-    const requiredInputs = form.querySelectorAll('input[required], textarea[required], #rating');
-    
-    // Clear previous errors
-    document.querySelectorAll('.error-message').forEach(el => {
-      el.classList.remove('show');
-      el.textContent = '';
-    });
-    
-    document.querySelectorAll('.form-input').forEach(el => {
-      el.classList.remove('error', 'success');
-    });
-    
-    // Validate each required field
-    requiredInputs.forEach(input => {
-      const errorId = `${input.id}-error`;
-      const errorElement = document.getElementById(errorId);
-      
-      if (!input.value.trim() || (input.id === 'rating' && input.value === '0')) {
-        isValid = false;
-        if (input.id !== 'rating') {
-          input.classList.add('error');
-        }
-        if (errorElement) {
-          errorElement.textContent = 'This field is required';
-          errorElement.classList.add('show');
-        }
-      } else {
-        if (input.id !== 'rating') {
-          input.classList.add('success');
-        }
-        
-        // Email validation
-        if (input.type === 'email' && !isValidEmail(input.value)) {
-          isValid = false;
-          input.classList.remove('success');
-          input.classList.add('error');
-          if (errorElement) {
-            errorElement.textContent = 'Please enter a valid email address';
-            errorElement.classList.add('show');
-          }
-        }
-      }
-    });
-    
-    return isValid;
-  }
+    function resetForm() {
+        document.getElementById('review-form').reset();
+        ratingInput.value = 0;
+        starBtns.forEach(s => {
+            s.classList.add('text-stone-200');
+            s.classList.remove('text-yellow-400');
+        });
+        const btn = document.getElementById('submit-review-btn');
+        btn.disabled = false;
+        btn.classList.add('bg-stone-900');
+        btn.classList.remove('bg-green-600', 'bg-red-600');
+        document.getElementById('submit-review-text').textContent = "Send Review";
+    }
 
-  // Submit Review Form
-  async function submitReviewForm() {
+    // 4. AJAX SUBMISSION
     const submitBtn = document.getElementById('submit-review-btn');
     const submitText = document.getElementById('submit-review-text');
-    const submitSpinner = document.getElementById('submit-review-spinner');
-    
-    // Validate form
-    if (!validateReviewForm()) {
-      Toast.show('Please fill in all required fields correctly.', 'error', 4000);
-      return;
-    }
-    
-    // Check honeypot
-    const honeypot = document.querySelector('#review-form .hp-field');
-    if (honeypot && honeypot.value.trim() !== '') {
-      console.log('Spam detected via honeypot');
-      Toast.show('Submission rejected. Please try again.', 'error', 4000);
-      return;
-    }
-    
-    // Prepare form data
-    const formData = {
-      form_type: "review_submission",
-      name: document.getElementById('review-name').value.trim(),
-      email: document.getElementById('review-email').value.trim(),
-      company: document.getElementById('review-company').value.trim(),
-      rating: document.getElementById('rating').value,
-      title: document.getElementById('review-title').value.trim(),
-      message: document.getElementById('review-message').value.trim(),
-      category: document.getElementById('review-category').value,
-      permission: document.getElementById('review-permission').value,
-      page_url: window.location.href,
-      submission_time: new Date().toISOString()
-    };
-    
-    // Show loading state
-    submitBtn.disabled = true;
-    submitText.style.display = 'none';
-    submitSpinner.classList.remove('hidden');
-    
-    try {
-      // Send to your PHP backend
-      const response = await makeRequest('send_review.php', formData);
-      
-      if (response.success) {
-        Toast.show('Thank you for your review! We will review it before publishing.', 'success', 5000);
-        
-        // Reset and close modal
-        document.getElementById('review-form').reset();
-        resetStarRating();
-        
-        setTimeout(() => {
-          closeReviewModal();
-        }, 1500);
-        
-        console.log('Review submitted successfully:', response.data);
-        
-      } else {
-        Toast.show(response.message || 'Failed to submit review. Please try again.', 'error', 5000);
-        console.error('Server error:', response);
-      }
-      
-    } catch (error) {
-      Toast.show('Network error. Please check your connection and try again.', 'error', 5000);
-      console.error('Review submission error:', error);
-      
-    } finally {
-      // Reset button state
-      submitBtn.disabled = false;
-      submitText.style.display = 'inline-flex';
-      submitSpinner.classList.add('hidden');
-    }
-  }
+    const spinner = document.getElementById('submit-review-spinner');
 
-  // Initialize when DOM is loaded
-  document.addEventListener('DOMContentLoaded', function() {
-    // Initialize testimonials
-    initializeTestimonials();
-    
-    // Setup star rating
-    setupStarRating();
-    
-    // Event listeners
-    document.getElementById('open-review-modal').addEventListener('click', openReviewModal);
-    
-    document.querySelectorAll('.close-review-modal').forEach(button => {
-      button.addEventListener('click', closeReviewModal);
-    });
-    
-    document.getElementById('submit-review-btn').addEventListener('click', submitReviewForm);
-    
-    // Modal backdrop click
-    document.getElementById('review-modal').addEventListener('click', function(e) {
-      if (e.target === this || e.target.classList.contains('modal-backdrop')) {
-        closeReviewModal();
-      }
-    });
-    
-    // Close modal on Escape key
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && !document.getElementById('review-modal').classList.contains('hidden')) {
-        closeReviewModal();
-      }
-    });
-    
-    // Real-time form validation
-    document.querySelectorAll('#review-form .form-input').forEach(input => {
-      input.addEventListener('blur', function() {
-        if (this.required && !this.value.trim()) {
-          this.classList.add('error');
-          const errorId = `${this.id}-error`;
-          const errorElement = document.getElementById(errorId);
-          if (errorElement) {
-            errorElement.textContent = 'This field is required';
-            errorElement.classList.add('show');
-          }
-        } else if (this.type === 'email' && this.value.trim() && !isValidEmail(this.value)) {
-          this.classList.add('error');
-          const errorId = `${this.id}-error`;
-          const errorElement = document.getElementById(errorId);
-          if (errorElement) {
-            errorElement.textContent = 'Please enter a valid email address';
-            errorElement.classList.add('show');
-          }
-        } else if (this.value.trim()) {
-          this.classList.remove('error');
-          this.classList.add('success');
-          const errorId = `${this.id}-error`;
-          const errorElement = document.getElementById(errorId);
-          if (errorElement) {
-            errorElement.classList.remove('show');
-          }
-        }
-      });
-      
-      input.addEventListener('input', function() {
-        this.classList.remove('error', 'success');
-        const errorId = `${this.id}-error`;
-        const errorElement = document.getElementById(errorId);
-        if (errorElement) {
-          errorElement.classList.remove('show');
-        }
-      });
-    });
-  });
+    if(submitBtn) {
+        submitBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Validation
+            const rating = ratingInput.value;
+            const message = document.getElementById('review-message').value.trim();
+            const name = document.getElementById('review-name').value.trim();
+            const email = document.getElementById('review-email').value.trim();
+            const permission = document.getElementById('review-permission').checked ? 'yes' : 'no';
+            
+            let valid = true;
+            document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+
+            if(rating === "0") { document.getElementById('rating-error').textContent = "Required"; valid = false; }
+            if(!message) { document.getElementById('review-message-error').textContent = "Required"; valid = false; }
+            if(!name) { document.getElementById('review-name-error').textContent = "Required"; valid = false; }
+            if(!email || !email.includes('@')) { document.getElementById('review-email-error').textContent = "Valid Email Required"; valid = false; }
+
+            if(!valid) return;
+
+            // Prepare Data
+            const formData = new FormData();
+            formData.append('rating', rating);
+            formData.append('message', message);
+            formData.append('name', name);
+            formData.append('email', email);
+            formData.append('permission', permission);
+            formData.append('title', 'Client Review'); 
+            formData.append('company', 'Client'); 
+            formData.append('category', 'General'); 
+            formData.append('source', 'website_form');
+
+            // UI Sending State
+            submitBtn.disabled = true;
+            submitText.textContent = "Sending...";
+            spinner.classList.remove('hidden');
+
+            // Send
+            fetch('submit_review.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.success || data.status === 'success' || data.status === 'warning') {
+                    // Success
+                    submitBtn.classList.remove('bg-stone-900');
+                    submitBtn.classList.add('bg-green-600');
+                    submitText.textContent = "Review Sent!";
+                    spinner.classList.add('hidden');
+                    
+                    // Add new review to grid immediately (if public)
+                    if(permission === 'yes') {
+                        const newReview = { name, category: 'Just Now', rating, message };
+                        staticReviews.unshift(newReview);
+                        renderReviews(staticReviews);
+                    }
+
+                    setTimeout(() => { closeModal(); }, 2000);
+                } else {
+                    throw new Error(data.message);
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                submitText.textContent = "Error. Try again.";
+                submitBtn.classList.add('bg-red-600');
+                spinner.classList.add('hidden');
+                setTimeout(() => { 
+                    submitBtn.disabled = false; 
+                    submitText.textContent = "Send Review";
+                    submitBtn.classList.remove('bg-red-600');
+                }, 3000);
+            });
+        });
+    }
+});
 </script>
 
-<!-- Pricing Section -->
-<section id="pricing" class="bg-white py-24 sm:py-32">
+<section id="pricing" class="relative isolate overflow-hidden bg-white py-24 sm:py-32 border-t border-gray-100">
+  
+  <div class="absolute inset-0 -z-10 opacity-[0.03]" style="background-image: linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px); background-size: 40px 40px;"></div>
+
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
-    <div class="mx-auto max-w-4xl text-center">
-      <h2 class="text-base/7 font-semibold text-blue-600">Pricing</h2>
-      <p class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-950 sm:text-5xl">Affordable Web Development</p>
-      <p class="mt-6 text-lg/8 text-gray-600">Professional websites that deliver ROI. One-time payment, lifetime value.</p>
-    </div>
-
-    <!-- Trust Indicators -->
-    <div class="mt-8 flex flex-wrap items-center justify-center gap-6">
-      <div class="flex items-center gap-2">
-        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-          <i class="fas fa-check-circle text-green-600"></i>
-        </div>
-        <span class="text-sm font-medium text-gray-700">No Hidden Fees</span>
-      </div>
-      <div class="flex items-center gap-2">
-        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-          <i class="fas fa-shield-alt text-blue-600"></i>
-        </div>
-        <span class="text-sm font-medium text-gray-700">30-Day Support</span>
-      </div>
-      <div class="flex items-center gap-2">
-        <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
-          <i class="fas fa-rocket text-purple-600"></i>
-        </div>
-        <span class="text-sm font-medium text-gray-700">Fast Delivery</span>
-      </div>
-    </div>
-
-    <!-- Location & Currency Switcher -->
-    <div class="mt-16 flex flex-col items-center justify-center">
-      <div class="flex items-center gap-4 bg-blue-50 px-6 py-3 rounded-xl">
-        <i class="fas fa-globe-americas text-blue-600" aria-hidden="true"></i>
-        <span class="text-sm font-medium text-blue-600" id="location-display">Detecting your location...</span>
-        <select id="currency-selector" class="bg-transparent border-none text-sm font-medium text-blue-600 focus:outline-none focus:ring-0" aria-label="Select currency">
-          <option value="USD">USD</option>
-          <option value="EUR">EUR</option>
-          <option value="GBP">GBP</option>
-          <option value="JPY">JPY</option>
-          <option value="CAD">CAD</option>
-          <option value="AUD">AUD</option>
-          <option value="CHF">CHF</option>
-          <option value="CNY">CNY</option>
-          <option value="INR">INR</option>
-          <option value="TZS">TZS</option>
-          <option value="KES">KES</option>
-          <option value="NGN">NGN</option>
-          <option value="ZAR">ZAR</option>
-          <option value="AED">AED</option>
-          <option value="SAR">SAR</option>
-          <option value="BRL">BRL</option>
-          <option value="MXN">MXN</option>
-        </select>
-      </div>
-      <p class="mt-4 text-sm text-gray-500" id="hosting-note">Hosting starts at $50/year after development</p>
-      <div id="exchange-rate-info" class="mt-2 text-xs text-gray-400 hidden">
-        Rates updated: <span id="rate-update-time"></span>
-      </div>
-    </div>
-
-    <!-- Pricing Cards -->
-    <div class="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-6">
-
-      <!-- Starter Website -->
-      <div class="flex flex-col justify-between rounded-2xl bg-white p-8 ring-1 ring-gray-200 shadow-sm hover:shadow-md transition-shadow">
-        <div>
-          <h3 class="text-lg font-semibold leading-8 text-gray-900">Starter Website</h3>
-          <p class="mt-4 text-sm/6 text-gray-600">Ideal for small businesses or personal brands</p>
-          <div class="mt-6 flex items-baseline gap-x-1">
-            <span class="text-4xl font-bold tracking-tight text-gray-900" id="basic-price">$399</span>
-            <span class="text-sm font-semibold leading-6 text-gray-600">one-time</span>
-          </div>
-          <ul role="list" class="mt-8 space-y-3 text-sm/6 text-gray-600">
-            <li class="flex gap-x-3"><i class="fas fa-check text-blue-600 mt-1" aria-hidden="true"></i> Up to 5 Pages</li>
-            <li class="flex gap-x-3"><i class="fas fa-check text-blue-600 mt-1" aria-hidden="true"></i> Mobile Responsive Design</li>
-            <li class="flex gap-x-3"><i class="fas fa-check text-blue-600 mt-1" aria-hidden="true"></i> Contact Form & Social Links</li>
-            <li class="flex gap-x-3"><i class="fas fa-check text-blue-600 mt-1" aria-hidden="true"></i> Basic SEO Setup</li>
-            <li class="flex gap-x-3"><i class="fas fa-check text-blue-600 mt-1" aria-hidden="true"></i> 2-Week Delivery</li>
-          </ul>
-        </div>
-        <button class="choose-plan-btn mt-8 block w-full rounded-xl bg-gray-100 px-3 py-3 text-center text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-200 transition-all duration-200 group" data-plan="Starter Website" aria-label="Choose Starter Website plan">
-          Start Project
-          <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true"></i>
-        </button>
-      </div>
-
-      <!-- Business Website (Featured) -->
-      <div class="flex flex-col justify-between rounded-2xl bg-gradient-to-br from-blue-600 to-blue-700 p-8 ring-1 ring-blue-600 shadow-lg relative transform scale-105">
-        <div class="absolute -top-4 left-1/2 -translate-x-1/2">
-          <span class="inline-flex items-center rounded-full bg-blue-500 px-4 py-1.5 text-xs font-semibold text-white shadow-sm">Most Popular</span>
-        </div>
-        <div>
-          <h3 class="text-lg font-semibold leading-8 text-white">Business Website</h3>
-          <p class="mt-4 text-sm/6 text-blue-100">For startups and businesses needing advanced features</p>
-          <div class="mt-6 flex items-baseline gap-x-1">
-            <span class="text-4xl font-bold tracking-tight text-white" id="professional-price">$799</span>
-            <span class="text-sm font-semibold leading-6 text-blue-100">one-time</span>
-          </div>
-          <ul role="list" class="mt-8 space-y-3 text-sm/6 text-blue-100">
-            <li class="flex gap-x-3"><i class="fas fa-check text-white mt-1" aria-hidden="true"></i> 6-10 Pages</li>
-            <li class="flex gap-x-3"><i class="fas fa-check text-white mt-1" aria-hidden="true"></i> Custom UI/UX Design</li>
-            <li class="flex gap-x-3"><i class="fas fa-check text-white mt-1" aria-hidden="true"></i> CMS or Blog Integration</li>
-            <li class="flex gap-x-3"><i class="fas fa-check text-white mt-1" aria-hidden="true"></i> E-commerce or Booking-Ready</li>
-            <li class="flex gap-x-3"><i class="fas fa-check text-white mt-1" aria-hidden="true"></i> SEO Optimization & Analytics</li>
-            <li class="flex gap-x-3"><i class="fas fa-check text-white mt-1" aria-hidden="true"></i> 3-5 Week Delivery</li>
-          </ul>
-        </div>
-        <button class="choose-plan-btn mt-8 block w-full rounded-xl bg-white px-3 py-3 text-center text-sm font-semibold leading-6 text-blue-600 hover:bg-blue-50 transition-all duration-200 shadow-sm group" data-plan="Business Website" aria-label="Choose Business Website plan">
-          Start Project
-          <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true"></i>
-        </button>
-      </div>
-
-      <!-- Premium Solution -->
-      <div class="flex flex-col justify-between rounded-2xl bg-white p-8 ring-1 ring-gray-200 shadow-sm hover:shadow-md transition-shadow">
-        <div>
-          <h3 class="text-lg font-semibold leading-8 text-gray-900">Premium Solution</h3>
-          <p class="mt-4 text-sm/6 text-gray-600">Advanced systems, integrations, and support</p>
-          <div class="mt-6 flex items-baseline gap-x-1">
-            <span class="text-4xl font-bold tracking-tight text-gray-900" id="enterprise-price">$1299</span>
-            <span class="text-sm font-semibold leading-6 text-gray-600">one-time</span>
-          </div>
-          <ul role="list" class="mt-8 space-y-3 text-sm/6 text-gray-600">
-            <li class="flex gap-x-3"><i class="fas fa-check text-blue-600 mt-1" aria-hidden="true"></i> 10-15 Pages or Dynamic Web App</li>
-            <li class="flex gap-x-3"><i class="fas fa-check text-blue-600 mt-1" aria-hidden="true"></i> Custom Backend or API Integration</li>
-            <li class="flex gap-x-3"><i class="fas fa-check text-blue-600 mt-1" aria-hidden="true"></i> Database + User Management System</li>
-            <li class="flex gap-x-3"><i class="fas fa-check text-blue-600 mt-1" aria-hidden="true"></i> Admin Dashboard & Automation</li>
-            <li class="flex gap-x-3"><i class="fas fa-check text-blue-600 mt-1" aria-hidden="true"></i> Dedicated Maintenance & Priority Support</li>
-            <li class="flex gap-x-3"><i class="fas fa-check text-blue-600 mt-1" aria-hidden="true"></i> 6-8 Week Delivery</li>
-          </ul>
-        </div>
-        <button class="choose-plan-btn mt-8 block w-full rounded-xl bg-gray-100 px-3 py-3 text-center text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-200 transition-all duration-200 group" data-plan="Premium Solution" aria-label="Choose Premium Solution plan">
-          Start Project
-          <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Project Inquiry Modal -->
-<div id="project-modal" class="fixed inset-0 z-50 hidden overflow-y-auto no-print" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-  <div class="flex items-center justify-center min-h-screen p-4 sm:p-6">
-    <div class="fixed inset-0 bg-gray-500/75 transition-opacity backdrop-blur-sm modal-backdrop" aria-hidden="true"></div>
     
-    <div class="relative bg-white rounded-2xl shadow-xl w-full max-w-2xl overflow-hidden my-8">
-      <div class="flex flex-col md:flex-row">
-        <!-- Left side - Form content -->
-        <div class="w-full md:w-2/3 p-4 md:p-6">
-          <div class="flex items-center justify-between mb-4 md:mb-6">
-            <div>
-              <h3 id="modal-title" class="text-lg font-semibold text-gray-900">Start Your Project</h3>
-              <p class="text-sm text-gray-600 mt-1">Get started with <span id="selected-plan" class="font-semibold text-blue-600">Business Website</span></p>
-            </div>
-            <button type="button" class="close-modal rounded-lg bg-gray-100 p-2 text-gray-600 hover:bg-gray-200 transition-colors" aria-label="Close modal">
-              <i class="fas fa-times text-sm" aria-hidden="true"></i>
-            </button>
-          </div>
-
-          <!-- Form Container with Scrollable Content -->
-          <div class="max-h-[calc(70vh-180px)] md:max-h-[calc(70vh-200px)] overflow-y-auto pr-1 -mr-1">
-            <form id="project-form" class="space-y-4 pb-1">
-              <!-- Honeypot field for spam protection -->
-              <input type="text" name="website" style="display:none;" tabindex="-1" autocomplete="off" class="hp-field">
-              
-              <!-- Contact Information -->
-              <div class="space-y-4">
-                <h4 class="text-sm font-semibold text-gray-700">Contact Information</h4>
-                
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  <div>
-                    <label for="first-name" class="block text-sm font-medium text-gray-700 mb-1">First name *</label>
-                    <input type="text" id="first-name" name="first-name" class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm px-3 py-2 border" placeholder="John" required>
-                    <div class="error-message text-xs text-red-600 mt-1" id="first-name-error"></div>
-                  </div>
-                  <div>
-                    <label for="last-name" class="block text-sm font-medium text-gray-700 mb-1">Last name *</label>
-                    <input type="text" id="last-name" name="last-name" class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm px-3 py-2 border" placeholder="Doe" required>
-                    <div class="error-message text-xs text-red-600 mt-1" id="last-name-error"></div>
-                  </div>
-                </div>
-                
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
-                    <input type="email" id="email" name="email" class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm px-3 py-2 border" placeholder="john@company.com" required>
-                    <div class="error-message text-xs text-red-600 mt-1" id="email-error"></div>
-                  </div>
-                  <div>
-                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-                    <input type="tel" id="phone" name="phone" class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm px-3 py-2 border" placeholder="+255 xxx xxx xxx">
-                    <div class="error-message text-xs text-red-600 mt-1" id="phone-error"></div>
-                  </div>
-                </div>
-                
-                <div>
-                  <label for="company" class="block text-sm font-medium text-gray-700 mb-1">Company / Organization</label>
-                  <input type="text" id="company" name="company" class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm px-3 py-2 border" placeholder="Your company name">
-                  <div class="error-message text-xs text-red-600 mt-1" id="company-error"></div>
-                </div>
-              </div>
-              
-              <!-- Project Details -->
-              <div class="space-y-4 pt-4 border-t border-gray-200">
-                <h4 class="text-sm font-semibold text-gray-700">Project Details</h4>
-                
-                <div>
-                  <label for="plan" class="block text-sm font-medium text-gray-700 mb-1">Selected Package *</label>
-                  <div class="relative">
-                    <input type="text" id="plan" name="plan" class="form-input block w-full rounded-lg border-gray-300 bg-blue-50 shadow-sm text-sm px-3 py-2 border border-blue-200 text-blue-700 font-medium" readonly required>
-                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                      <i class="fas fa-tag text-blue-400 text-xs" aria-hidden="true"></i>
-                    </div>
-                  </div>
-                  <div class="error-message text-xs text-red-600 mt-1" id="plan-error"></div>
-                </div>
-                
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  <div>
-                    <label for="budget" class="block text-sm font-medium text-gray-700 mb-1">Budget Range</label>
-                    <select id="budget" name="budget" class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm px-3 py-2 border">
-                      <option value="" selected>Select budget range</option>
-                      <option value="basic-plan" data-usd="399">Starter Plan ($399)</option>
-                      <option value="professional-plan" data-usd="799">Business Plan ($799)</option>
-                      <option value="enterprise-plan" data-usd="1299">Premium Plan ($1299)</option>
-                      <option value="under-500" data-usd="500">Under $500</option>
-                      <option value="500-1000" data-usd="750">$500 - $1,000</option>
-                      <option value="1000-2500" data-usd="1750">$1,000 - $2,500</option>
-                      <option value="2500-5000" data-usd="3750">$2,500 - $5,000</option>
-                      <option value="5000-10000" data-usd="7500">$5,000 - $10,000</option>
-                      <option value="over-10000" data-usd="10000">$10,000+</option>
-                      <option value="to-be-discussed">To be discussed</option>
-                    </select>
-                    <div class="error-message text-xs text-red-600 mt-1" id="budget-error"></div>
-                  </div>
-                  
-                  <div>
-                    <label for="timeline" class="block text-sm font-medium text-gray-700 mb-1">Timeline</label>
-                    <select id="timeline" name="timeline" class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm px-3 py-2 border">
-                      <option value="" selected>Select timeline</option>
-                      <option value="ASAP (1-2 weeks)">ASAP (1-2 weeks)</option>
-                      <option value="1 month">Within 1 month</option>
-                      <option value="1-3 months">1-3 months</option>
-                      <option value="3-6 months">3-6 months</option>
-                      <option value="Flexible">Flexible</option>
-                      <option value="To be discussed">To be discussed</option>
-                    </select>
-                    <div class="error-message text-xs text-red-600 mt-1" id="timeline-error"></div>
-                  </div>
-                </div>
-                
-                <div>
-                  <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Project Description *</label>
-                  <textarea id="message" name="message" rows="3" class="form-input block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm px-3 py-2 border" placeholder="Tell us about your project, goals, and any specific requirements..." required></textarea>
-                  <div class="error-message text-xs text-red-600 mt-1" id="message-error"></div>
-                </div>
-              </div>
-            </form>
-          </div>
-          
-          <!-- Fixed Footer with Buttons -->
-          <div class="pt-4 mt-4 border-t border-gray-200 bg-white">
-            <div class="text-xs text-gray-500 mb-3">
-              * Required fields
-            </div>
-            <div class="flex flex-col sm:flex-row gap-3">
-              <button type="button" id="submit-form-btn" class="order-1 sm:order-2 flex-1 inline-flex justify-center items-center rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 transition-colors gap-2">
-                <span id="submit-text">
-                  <i class="fas fa-paper-plane text-xs" aria-hidden="true"></i>
-                  Send Inquiry
-                </span>
-                <div id="submit-spinner" class="spinner hidden"></div>
-              </button>
-              <button type="button" class="order-2 sm:order-1 flex-1 close-modal inline-flex justify-center items-center rounded-lg bg-gray-100 px-4 py-2.5 text-sm font-semibold text-gray-900 hover:bg-gray-200 transition-colors">
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right side - Image with overlay -->
-        <div class="hidden md:block md:w-1/3 relative">
-          <!-- Background Image -->
-          <div class="absolute inset-0">
-            <img 
-              src="images/High five teamwork and working together with a team or group of colleagues standing together in their corporate office motivation success and achievement through unity solidarity a.jpeg" 
-              alt="Team collaboration and project planning" 
-              class="w-full h-full object-cover"
-            >
-            <!-- Dark overlay for better text readability -->
-            <div class="absolute inset-0 bg-blue-900/40"></div>
-          </div>
-          
-          <!-- Content overlay on image -->
-          <div class="relative h-full flex flex-col items-center justify-center p-6 text-white">
-            <div class="mb-4">
-              <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mx-auto border border-white/30">
-                <i class="fas fa-rocket text-white text-xl" aria-hidden="true"></i>
-              </div>
-            </div>
-            <h4 class="text-lg font-semibold text-center mb-2">Let's Build Together</h4>
-            <p class="text-sm text-white/90 text-center mb-6">Share your vision and we'll bring it to life with expert craftsmanship.</p>
-            <div class="mt-auto w-full">
-              <div class="flex items-center justify-center gap-2 text-sm text-white/80">
-                <i class="fas fa-shield-alt" aria-hidden="true"></i>
-                <span>Secure & Confidential</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Contact Section -->
-<section id="contact" class="bg-white py-16 sm:py-24">
-  <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-    <div class="relative isolate flex flex-col gap-10 overflow-hidden bg-gray-900 px-6 py-24 shadow-2xl sm:rounded-3xl sm:px-24 xl:flex-row xl:items-center xl:py-32">
-      <h2 class="max-w-xl text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl xl:flex-auto">Ready to elevate your brand with premium web solutions?</h2>
-      <form id="newsletter-form" class="w-full max-w-md">
-        <div class="flex gap-x-4">
-          <label for="newsletter-email" class="sr-only">Email address</label>
-          <input id="newsletter-email" type="email" name="email" required placeholder="Enter your email" autocomplete="email" class="min-w-0 flex-auto rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" />
-          <button type="submit" id="newsletter-submit" class="flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-xs hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
-            <span id="newsletter-text">Get Started</span>
-            <div id="newsletter-spinner" class="spinner hidden" style="border: 2px solid rgba(0,0,0,0.3); border-top-color: #000; width: 16px; height: 16px;"></div>
-          </button>
-        </div>
-        <p class="mt-4 text-sm/6 text-gray-300" id="newsletter-message">We care about your data. Read our <a href="privacy-policy.html" class="font-semibold whitespace-nowrap text-white hover:text-gray-100">privacy policy</a>.</p>
-      </form>
-      <svg viewBox="0 0 1024 1024" aria-hidden="true" class="absolute top-1/2 left-1/2 -z-10 size-256 -translate-x-1/2">
-        <circle r="512" cx="512" cy="512" fill="url(#759c1415-0410-454c-8f7c-9a820de03641)" fill-opacity="0.7" />
-        <defs>
-          <radialGradient id="759c1415-0410-454c-8f7c-9a820de03641" r="1" cx="0" cy="0" gradientUnits="userSpaceOnUse" gradientTransform="translate(512 512) rotate(90) scale(512)">
-            <stop stop-color="#7775D6" />
-            <stop offset="1" stop-color="#E935C1" stop-opacity="0" />
-          </radialGradient>
-        </defs>
-      </svg>
-    </div>
-  </div>
-</section>
-
-<footer class="bg-white border-t border-gray-100 py-8">
-  <div class="mx-auto max-w-7xl px-6 lg:px-8">
-    <!-- Top Row: Contact Info - More Prominent -->
-    <div class="mb-8 border-b border-gray-200 pb-6">
-      <div class="flex flex-col items-center justify-center space-y-4 md:flex-row md:space-y-0 md:space-x-12">
-        <!-- Email -->
-        <div class="flex items-center space-x-3 group">
-          <div class="bg-blue-50 p-2 rounded-lg group-hover:bg-blue-100 transition-colors">
-            <i class="fas fa-envelope text-blue-600 text-base" aria-hidden="true"></i>
-          </div>
-          <div>
-            <p class="text-xs text-gray-500 mb-1">Email us</p>
-            <a href="mailto:hello@adamsplusx.com" 
-               class="text-gray-800 font-medium hover:text-blue-700 transition-colors text-sm md:text-base">
-              hello@adamsplusx.com
-            </a>
-          </div>
-        </div>
-
-        <!-- Phone -->
-        <div class="flex items-center space-x-3 group">
-          <div class="bg-blue-50 p-2 rounded-lg group-hover:bg-blue-100 transition-colors">
-            <i class="fas fa-phone text-blue-600 text-base" aria-hidden="true"></i>
-          </div>
-          <div>
-            <p class="text-xs text-gray-500 mb-1">Call us</p>
-            <a href="tel:+255746692640" 
-               class="text-gray-800 font-medium hover:text-blue-700 transition-colors text-sm md:text-base">
-              +255 746 692 640
-            </a>
-            <span class="text-gray-400 mx-2">|</span>
-            <a href="tel:+255744726945" 
-               class="text-gray-800 font-medium hover:text-blue-700 transition-colors text-sm md:text-base">
-              +255 744 726 945
-            </a>
-          </div>
-        </div>
-
-        <!-- Location -->
-        <div class="flex items-center space-x-3 group">
-          <div class="bg-blue-50 p-2 rounded-lg group-hover:bg-blue-100 transition-colors">
-            <i class="fas fa-map-marker-alt text-blue-600 text-base" aria-hidden="true"></i>
-          </div>
-          <div>
-            <p class="text-xs text-gray-500 mb-1">Location</p>
-            <span class="text-gray-800 font-medium text-sm md:text-base">Arusha, Tanzania</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Bottom Row: Copyright, Links, Social -->
-    <div class="flex flex-col items-center justify-between space-y-6 md:flex-row md:space-y-0">
-      <!-- Left: Copyright -->
-      <div class="text-center md:text-left">
-        <p class="text-sm text-gray-600">
-          &copy; <span id="current-year">2025</span> Adams+ Digital Solutions. 
-          All rights reserved. 
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mb-20 border-b border-gray-200 pb-10">
+      <div class="max-w-xl">
+        <h2 class="text-blue-600 font-mono text-xs tracking-[0.2em] uppercase mb-6">/ Investment</h2>
+        <h3 class="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight leading-none">
+          Transparent Value.
+        </h3>
+        <p class="mt-4 text-gray-500 leading-relaxed">
+          One-time investment. Lifetime value. No hidden monthly fees or proprietary lock-ins.
         </p>
       </div>
 
-      <!-- Center: Links -->
-      <div class="flex flex-col items-center space-y-2 sm:flex-row sm:space-y-0 sm:space-x-8">
-        <a href="privacy-policy.html" class="text-sm text-gray-600 hover:text-blue-600 transition-colors">
-          Privacy Policy
-        </a>
-        <a href="terms.html" class="text-sm text-gray-600 hover:text-blue-600 transition-colors">
-          Terms of Service
-        </a>
-        <a href="cookies.html" class="text-sm text-gray-600 hover:text-blue-600 transition-colors">
-          Cookie Policy
-        </a>
+      <div class="flex flex-col items-end gap-3">
+        <div class="flex items-center gap-3 bg-white border border-gray-200 rounded-lg p-1.5 pr-4 shadow-sm">
+          <div class="bg-gray-100 h-8 w-8 flex items-center justify-center rounded text-blue-600">
+             <i class="fas fa-globe-americas"></i>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-[10px] text-gray-400 font-mono uppercase leading-none mb-0.5">Region</span>
+            <span class="text-xs font-bold text-gray-900" id="location-display">Detecting...</span>
+          </div>
+          <div class="h-6 w-px bg-gray-200 mx-2"></div>
+          <select id="currency-selector" class="bg-transparent border-none text-sm font-bold text-blue-600 focus:outline-none focus:ring-0 p-0 cursor-pointer hover:text-blue-500" aria-label="Select currency">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+            <option value="JPY">JPY</option>
+            <option value="CAD">CAD</option>
+            <option value="AUD">AUD</option>
+            <option value="CHF">CHF</option>
+            <option value="CNY">CNY</option>
+            <option value="INR">INR</option>
+            <option value="TZS">TZS</option>
+            <option value="KES">KES</option>
+            <option value="NGN">NGN</option>
+            <option value="ZAR">ZAR</option>
+            <option value="AED">AED</option>
+            <option value="SAR">SAR</option>
+            <option value="BRL">BRL</option>
+            <option value="MXN">MXN</option>
+          </select>
+        </div>
+        
+        <div class="flex items-center gap-4 text-[10px] font-mono text-gray-400">
+           <span id="hosting-note">HOSTING FROM $50/YR</span>
+           <span class="text-gray-300">|</span>
+           <span id="exchange-rate-info" class="hidden">UPDATED: <span id="rate-update-time"></span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-0">
+      
+      <div class="group relative flex flex-col justify-between p-8 bg-white border border-gray-200 hover:border-gray-400 transition-all duration-300 rounded-2xl lg:rounded-r-none lg:border-r-0 z-0 hover:z-10 hover:shadow-xl hover:shadow-gray-200/50">
+        <div>
+          <div class="flex justify-between items-start mb-6">
+             <h3 class="text-lg font-bold text-gray-900">Starter</h3>
+             <span class="font-mono text-xs text-gray-400">01</span>
+          </div>
+          <div class="mb-8">
+             <div class="flex items-baseline gap-1">
+               <span class="text-4xl font-bold tracking-tight text-gray-900" id="basic-price">$399</span>
+             </div>
+             <span class="text-xs font-mono text-gray-500 uppercase tracking-wide">One-time payment</span>
+          </div>
+          
+          <ul role="list" class="space-y-4 text-sm text-gray-600 mb-8">
+            <li class="flex gap-3 items-start"><i class="fas fa-check text-blue-600 mt-1"></i> <span>Up to 5 Pages</span></li>
+            <li class="flex gap-3 items-start"><i class="fas fa-check text-blue-600 mt-1"></i> Mobile Responsive</li>
+            <li class="flex gap-3 items-start"><i class="fas fa-check text-blue-600 mt-1"></i> Contact Form</li>
+            <li class="flex gap-3 items-start"><i class="fas fa-check text-blue-600 mt-1"></i> Basic SEO Setup</li>
+            <li class="flex gap-3 items-start"><i class="fas fa-check text-blue-600 mt-1"></i> 2-Week Delivery</li>
+          </ul>
+        </div>
+        <button class="choose-plan-btn w-full py-4 border border-gray-200 text-gray-600 font-bold text-xs uppercase tracking-widest hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all rounded-lg" data-plan="Starter Website">
+          Select Plan
+        </button>
       </div>
 
-      <!-- Right: Social Media -->
-      <div class="flex items-center space-x-4">
-        <a href="#" class="text-gray-400 hover:text-blue-600 transition-colors" aria-label="Visit our Instagram">
-          <i class="fab fa-instagram text-lg" aria-hidden="true"></i>
-        </a>
-        <a href="#" class="text-gray-400 hover:text-blue-600 transition-colors" aria-label="Visit our Twitter">
-          <i class="fab fa-twitter text-lg" aria-hidden="true"></i>
-        </a>
-        <a href="#" class="text-gray-400 hover:text-blue-600 transition-colors" aria-label="Visit our GitHub">
-          <i class="fab fa-github text-lg" aria-hidden="true"></i>
-        </a>
+      <div class="relative flex flex-col justify-between p-10 bg-gray-900 text-white shadow-2xl shadow-gray-200 rounded-2xl z-20 transform scale-[1.02]">
+        
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue-600 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-lg">
+          Most Popular
+        </div>
+
+        <div>
+          <div class="flex justify-between items-start mb-6">
+             <h3 class="text-lg font-bold text-white">Business</h3>
+             <span class="font-mono text-xs text-blue-400">02</span>
+          </div>
+          <div class="mb-8 pb-8 border-b border-gray-800">
+             <div class="flex items-baseline gap-1">
+               <span class="text-5xl font-bold tracking-tight text-white" id="professional-price">$799</span>
+             </div>
+             <span class="text-xs font-mono text-gray-500 uppercase tracking-wide">One-time payment</span>
+          </div>
+          
+          <ul role="list" class="space-y-4 text-sm text-gray-300 mb-8">
+            <li class="flex gap-3 items-start"><i class="fas fa-check text-blue-500 mt-1"></i> <span class="text-white font-medium">6-10 Pages</span></li>
+            <li class="flex gap-3 items-start"><i class="fas fa-check text-blue-500 mt-1"></i> Custom UI/UX Design</li>
+            <li class="flex gap-3 items-start"><i class="fas fa-check text-blue-500 mt-1"></i> CMS Integration</li>
+            <li class="flex gap-3 items-start"><i class="fas fa-check text-blue-500 mt-1"></i> E-commerce Ready</li>
+            <li class="flex gap-3 items-start"><i class="fas fa-check text-blue-500 mt-1"></i> SEO & Analytics</li>
+            <li class="flex gap-3 items-start"><i class="fas fa-check text-blue-500 mt-1"></i> 3-5 Week Delivery</li>
+          </ul>
+        </div>
+        <button class="choose-plan-btn w-full py-4 bg-white text-gray-900 font-bold text-xs uppercase tracking-widest hover:bg-blue-50 hover:text-blue-700 transition-all rounded-lg" data-plan="Business Website">
+          Select Plan
+        </button>
+      </div>
+
+      <div class="group relative flex flex-col justify-between p-8 bg-white border border-gray-200 hover:border-gray-400 transition-all duration-300 rounded-2xl lg:rounded-l-none lg:border-l-0 z-0 hover:z-10 hover:shadow-xl hover:shadow-gray-200/50">
+        <div>
+          <div class="flex justify-between items-start mb-6">
+             <h3 class="text-lg font-bold text-gray-900">Premium</h3>
+             <span class="font-mono text-xs text-gray-400">03</span>
+          </div>
+          <div class="mb-8">
+             <div class="flex items-baseline gap-1">
+               <span class="text-4xl font-bold tracking-tight text-gray-900" id="enterprise-price">$1299</span>
+             </div>
+             <span class="text-xs font-mono text-gray-500 uppercase tracking-wide">One-time payment</span>
+          </div>
+          
+          <ul role="list" class="space-y-4 text-sm text-gray-600 mb-8">
+            <li class="flex gap-3 items-start"><i class="fas fa-check text-blue-600 mt-1"></i> <span>10-15 Pages / Web App</span></li>
+            <li class="flex gap-3 items-start"><i class="fas fa-check text-blue-600 mt-1"></i> Custom Backend / API</li>
+            <li class="flex gap-3 items-start"><i class="fas fa-check text-blue-600 mt-1"></i> User Management</li>
+            <li class="flex gap-3 items-start"><i class="fas fa-check text-blue-600 mt-1"></i> Admin Dashboard</li>
+            <li class="flex gap-3 items-start"><i class="fas fa-check text-blue-600 mt-1"></i> Priority Support</li>
+            <li class="flex gap-3 items-start"><i class="fas fa-check text-blue-600 mt-1"></i> 6-8 Week Delivery</li>
+          </ul>
+        </div>
+        <button class="choose-plan-btn w-full py-4 border border-gray-200 text-gray-600 font-bold text-xs uppercase tracking-widest hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all rounded-lg" data-plan="Premium Solution">
+          Select Plan
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div id="project-modal" class="fixed inset-0 z-[60] hidden overflow-y-auto no-print" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+  
+  <div class="fixed inset-0 bg-stone-950/80 backdrop-blur-sm transition-opacity modal-backdrop" aria-hidden="true"></div>
+
+  <div class="flex items-center justify-center min-h-screen p-4 sm:p-6">
+    
+    <div class="relative bg-white rounded-none sm:rounded-2xl shadow-2xl w-full max-w-5xl max-h-[95vh] my-auto ring-1 ring-white/10 overflow-auto">
+      <div class="flex flex-col lg:flex-row min-h-0">
+        
+        <div class="w-full lg:w-3/5 p-8 md:p-10 flex flex-col bg-white relative">
+          
+          <button type="button" class="close-modal absolute top-4 right-4 p-2 text-stone-400 hover:text-stone-900 transition-colors lg:hidden" aria-label="Close modal">
+            <i class="fas fa-times text-xl"></i>
+          </button>
+
+          <div class="mb-8 flex-shrink-0">
+            <span class="text-blue-600 font-mono text-xs font-bold uppercase tracking-widest mb-2 block">/ Start Project</span>
+            <h3 id="modal-title" class="text-3xl font-bold text-stone-900 tracking-tight">Let's build something iconic.</h3>
+            <p class="text-stone-500 mt-2 text-sm flex items-center gap-2">
+              Selected Package: 
+              <span id="selected-plan" class="font-bold text-stone-900 bg-stone-100 px-2 py-0.5 rounded text-xs uppercase tracking-wide">Business Website</span>
+            </p>
+          </div>
+
+          <div class="flex-1 overflow-y-auto pr-2 -mr-2">
+            <form id="project-form" class="space-y-8">
+              
+              <input type="text" name="website" style="display:none;" tabindex="-1" autocomplete="off" class="hp-field">
+              
+              <div>
+                <h4 class="text-xs font-bold text-stone-400 uppercase tracking-widest mb-4 border-b border-stone-100 pb-2">01. Contact Details</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  
+                  <div class="space-y-2">
+                    <label for="first-name" class="block text-xs font-bold text-stone-900 uppercase tracking-wide">First Name *</label>
+                    <input type="text" id="first-name" name="first-name" class="form-input block w-full rounded-lg border-stone-200 bg-white px-4 py-3 text-stone-900 focus:border-stone-900 focus:ring-stone-900 sm:text-sm" placeholder="Jane" required>
+                    <div class="error-message text-xs text-red-600" id="first-name-error"></div>
+                  </div>
+
+                  <div class="space-y-2">
+                    <label for="last-name" class="block text-xs font-bold text-stone-900 uppercase tracking-wide">Last Name *</label>
+                    <input type="text" id="last-name" name="last-name" class="form-input block w-full rounded-lg border-stone-200 bg-white px-4 py-3 text-stone-900 focus:border-stone-900 focus:ring-stone-900 sm:text-sm" placeholder="Doe" required>
+                    <div class="error-message text-xs text-red-600" id="last-name-error"></div>
+                  </div>
+
+                  <div class="space-y-2">
+                    <label for="email" class="block text-xs font-bold text-stone-900 uppercase tracking-wide">Email Address *</label>
+                    <input type="email" id="email" name="email" class="form-input block w-full rounded-lg border-stone-200 bg-white px-4 py-3 text-stone-900 focus:border-stone-900 focus:ring-stone-900 sm:text-sm" placeholder="jane@company.com" required>
+                    <div class="error-message text-xs text-red-600" id="email-error"></div>
+                  </div>
+
+                  <div class="space-y-2">
+                    <label for="phone" class="block text-xs font-bold text-stone-900 uppercase tracking-wide">Phone (Optional)</label>
+                    <input type="tel" id="phone" name="phone" class="form-input block w-full rounded-lg border-stone-200 bg-white px-4 py-3 text-stone-900 focus:border-stone-900 focus:ring-stone-900 sm:text-sm" placeholder="+1 (555) 000-0000">
+                    <div class="error-message text-xs text-red-600" id="phone-error"></div>
+                  </div>
+
+                  <div class="space-y-2 md:col-span-2">
+                    <label for="company" class="block text-xs font-bold text-stone-900 uppercase tracking-wide">Company / Organization</label>
+                    <input type="text" id="company" name="company" class="form-input block w-full rounded-lg border-stone-200 bg-white px-4 py-3 text-stone-900 focus:border-stone-900 focus:ring-stone-900 sm:text-sm" placeholder="Acme Corp.">
+                    <div class="error-message text-xs text-red-600" id="company-error"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h4 class="text-xs font-bold text-stone-400 uppercase tracking-widest mb-4 border-b border-stone-100 pb-2">02. Project Scope</h4>
+                
+                <input type="hidden" id="plan" name="plan" required>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div class="space-y-2">
+                    <label for="budget" class="block text-xs font-bold text-stone-900 uppercase tracking-wide">Budget Range</label>
+                    <div class="relative">
+                      <select id="budget" name="budget" class="form-input block w-full rounded-lg border-stone-200 bg-white px-4 py-3 text-stone-900 focus:border-stone-900 focus:ring-stone-900 sm:text-sm appearance-none cursor-pointer">
+                        <option value="" selected>Select Range</option>
+                        <option value="basic-plan" data-usd="399">Starter Plan ($399)</option>
+                        <option value="professional-plan" data-usd="799">Business Plan ($799)</option>
+                        <option value="enterprise-plan" data-usd="1299">Premium Plan ($1299)</option>
+                        <option value="under-500" data-usd="500">Under $500</option>
+                        <option value="500-1000" data-usd="750">$500 - $1,000</option>
+                        <option value="1000-2500" data-usd="1750">$1,000 - $2,500</option>
+                        <option value="2500-5000" data-usd="3750">$2,500 - $5,000</option>
+                        <option value="5000-10000" data-usd="7500">$5,000 - $10,000</option>
+                        <option value="over-10000" data-usd="10000">$10,000+</option>
+                        <option value="custom">Custom Quote</option>
+                      </select>
+                      <i class="fas fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-stone-400 text-xs pointer-events-none"></i>
+                    </div>
+                    <div class="error-message text-xs text-red-600" id="budget-error"></div>
+                  </div>
+
+                  <div class="space-y-2">
+                    <label for="timeline" class="block text-xs font-bold text-stone-900 uppercase tracking-wide">Timeline</label>
+                    <div class="relative">
+                      <select id="timeline" name="timeline" class="form-input block w-full rounded-lg border-stone-200 bg-white px-4 py-3 text-stone-900 focus:border-stone-900 focus:ring-stone-900 sm:text-sm appearance-none cursor-pointer">
+                        <option value="" selected>Select Timeline</option>
+                        <option value="ASAP">ASAP (1-2 weeks)</option>
+                        <option value="1 month">Within 1 month</option>
+                        <option value="1-3 months">1-3 months</option>
+                        <option value="Flexible">Flexible</option>
+                      </select>
+                      <i class="fas fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-stone-400 text-xs pointer-events-none"></i>
+                    </div>
+                    <div class="error-message text-xs text-red-600" id="timeline-error"></div>
+                  </div>
+                </div>
+
+                <div class="space-y-2 pb-4">
+                  <label for="message" class="block text-xs font-bold text-stone-900 uppercase tracking-wide">Project Vision *</label>
+                  <textarea id="message" name="message" rows="4" class="form-input block w-full rounded-lg border-stone-200 bg-stone-50 px-4 py-3 text-stone-900 focus:border-stone-900 focus:ring-stone-900 sm:text-sm leading-relaxed placeholder:text-stone-400" placeholder="Tell us about your goals, specific features you need, or examples of sites you like..." required></textarea>
+                  <div class="error-message text-xs text-red-600" id="message-error"></div>
+                </div>
+              </div>
+
+            </form>
+          </div>
+
+          <div class="pt-6 mt-6 border-t border-stone-100 flex flex-col sm:flex-row gap-4 flex-shrink-0">
+             <button type="button" id="submit-form-btn" class="flex-1 inline-flex justify-center items-center rounded-lg bg-stone-900 px-6 py-3.5 text-sm font-bold text-white shadow-lg hover:bg-stone-800 transition-all uppercase tracking-widest">
+                <span id="submit-text">Submit Request</span>
+                <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                <div id="submit-spinner" class="spinner hidden ml-2 border-white"></div>
+             </button>
+             <button type="button" class="close-modal flex-none inline-flex justify-center items-center rounded-lg border border-stone-200 bg-white px-6 py-3.5 text-sm font-bold text-stone-600 hover:bg-stone-50 transition-colors uppercase tracking-widest">
+                Cancel
+             </button>
+          </div>
+
+        </div>
+
+        <div class="hidden lg:flex lg:w-2/5 bg-stone-950 relative flex-col justify-between p-12 text-white border-l border-stone-800">
+          
+          <div class="absolute inset-0 opacity-[0.05]" style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 20px 20px;"></div>
+          
+          <div class="relative z-10 flex justify-between items-start">
+             <div class="h-10 w-10 border border-stone-700 flex items-center justify-center text-stone-500 rounded-lg">
+               <i class="fas fa-rocket"></i>
+             </div>
+             <button type="button" class="close-modal text-stone-500 hover:text-white transition-colors" aria-label="Close modal">
+               <i class="fas fa-times text-xl"></i>
+             </button>
+          </div>
+
+          <div class="relative z-10">
+            <h4 class="text-2xl font-bold tracking-tight leading-snug mb-4">
+              "Design is intelligence made visible."
+            </h4>
+            <div class="space-y-4 mt-8">
+              <div class="flex items-center gap-3 text-sm text-stone-400">
+                <i class="fas fa-check text-blue-500"></i>
+                <span>Custom tailored solutions</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm text-stone-400">
+                <i class="fas fa-check text-blue-500"></i>
+                <span>SEO-optimized architecture</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm text-stone-400">
+                <i class="fas fa-check text-blue-500"></i>
+                <span>Scalable performance</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative z-10 pt-8 border-t border-stone-800">
+            <div class="flex items-center gap-3">
+              <i class="fas fa-lock text-blue-600"></i>
+              <p class="text-xs text-stone-400 font-medium font-mono uppercase">100% Confidential</p>
+            </div>
+          </div>
+
+        </div>
+
       </div>
     </div>
   </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- 1. MODAL OPENING LOGIC (Pricing Cards) ---
+    const projectModal = document.getElementById('project-modal');
+    const planButtons = document.querySelectorAll('.choose-plan-btn');
+    const selectedPlanLabel = document.getElementById('selected-plan');
+    const hiddenPlanInput = document.getElementById('plan');
+    const closeButtons = document.querySelectorAll('.close-modal');
+
+    // Open Modal when "Select Plan" is clicked
+    planButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const planName = btn.getAttribute('data-plan');
+            
+            // 1. Update UI
+            selectedPlanLabel.textContent = planName;
+            
+            // 2. Set Hidden Input Value
+            hiddenPlanInput.value = planName;
+            
+            // 3. Show Modal
+            projectModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+    });
+
+    // Close Modal Logic
+    function closeProjectModal() {
+        projectModal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+
+    closeButtons.forEach(btn => btn.addEventListener('click', closeProjectModal));
+    
+    // Close on backdrop click
+    projectModal.addEventListener('click', (e) => {
+        if (e.target.classList.contains('modal-backdrop')) {
+            closeProjectModal();
+        }
+    });
+
+
+    // --- 2. AJAX FORM SUBMISSION ---
+    const submitBtn = document.getElementById('submit-form-btn');
+    const submitText = document.getElementById('submit-text');
+    const spinner = document.getElementById('submit-spinner');
+    const form = document.getElementById('project-form');
+
+    if(submitBtn) {
+        submitBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            // A. Clear Previous Errors
+            document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+
+            // B. Get Values
+            const firstName = document.getElementById('first-name').value.trim();
+            const lastName = document.getElementById('last-name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const company = document.getElementById('company').value.trim();
+            const budget = document.getElementById('budget').value;
+            const timeline = document.getElementById('timeline').value;
+            const plan = document.getElementById('plan').value;
+
+            // C. Validation
+            let isValid = true;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if(!firstName) { document.getElementById('first-name-error').textContent = "Required"; isValid = false; }
+            if(!lastName) { document.getElementById('last-name-error').textContent = "Required"; isValid = false; }
+            if(!email) { document.getElementById('email-error').textContent = "Required"; isValid = false; }
+            else if(!emailRegex.test(email)) { document.getElementById('email-error').textContent = "Invalid Email"; isValid = false; }
+            if(!message) { document.getElementById('message-error').textContent = "Please describe your project"; isValid = false; }
+
+            if(!isValid) return;
+
+            // D. Prepare Data
+            const formData = new FormData();
+            formData.append('first-name', firstName);
+            formData.append('last-name', lastName);
+            formData.append('email', email);
+            formData.append('phone', phone);
+            formData.append('company', company);
+            formData.append('budget', budget);
+            formData.append('timeline', timeline);
+            formData.append('message', message);
+            formData.append('plan', plan);
+
+            // E. UI Loading State
+            submitBtn.disabled = true;
+            submitText.textContent = "Processing...";
+            spinner.classList.remove('hidden');
+
+            // F. Send Request
+            fetch('submit_project.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.success) {
+                    // Success!
+                    submitBtn.classList.remove('bg-stone-900');
+                    submitBtn.classList.add('bg-green-600');
+                    submitText.textContent = "Request Sent!";
+                    spinner.classList.add('hidden');
+
+                    // Close modal after 2 seconds
+                    setTimeout(() => {
+                        closeProjectModal();
+                        form.reset();
+                        // Reset button
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('bg-green-600');
+                        submitBtn.classList.add('bg-stone-900');
+                        submitText.textContent = "Submit Request";
+                    }, 2000);
+                } else {
+                    throw new Error(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                submitText.textContent = "Error. Try again.";
+                submitBtn.classList.add('bg-red-600');
+                spinner.classList.add('hidden');
+                
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitText.textContent = "Submit Request";
+                    submitBtn.classList.remove('bg-red-600');
+                }, 3000);
+            });
+        });
+    }
+});
+</script>
+
+<section id="contact" class="relative isolate overflow-hidden bg-stone-950 py-24 sm:py-32 border-t border-stone-900">
+  
+  <div class="absolute inset-0 -z-10 opacity-[0.05]" style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 40px 40px;"></div>
+  
+  <div class="absolute top-1/2 left-1/2 -z-10 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/20 blur-[120px] rounded-full pointer-events-none"></div>
+
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-16 gap-y-16 lg:max-w-none lg:grid-cols-2 lg:items-center">
+      
+      <div class="max-w-xl lg:max-w-lg">
+        <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-6">
+          Ready to elevate your brand? <br>
+          <span class="text-stone-500">Let's build something iconic.</span>
+        </h2>
+        <p class="mt-4 text-lg leading-8 text-stone-400">
+          Join the forward-thinking companies transforming their digital presence with Adams+. Enter your email to start the conversation.
+        </p>
+        
+        <div class="mt-8 flex gap-6 text-stone-500 font-mono text-xs uppercase tracking-widest">
+          <div class="flex items-center gap-2">
+            <i class="fas fa-check text-blue-500"></i> No Spam
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fas fa-check text-blue-500"></i> Secure Data
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full max-w-md lg:ml-auto">
+        <form id="newsletter-form" class="relative group">
+          <input type="text" name="website_check" style="display:none !important;" tabindex="-1" autocomplete="off">
+          
+          <div class="relative flex flex-col gap-4 p-2 bg-stone-900/50 rounded-2xl border border-stone-800 backdrop-blur-sm transition-all duration-300 group-hover:border-stone-700 group-hover:bg-stone-900">
+            
+            <label for="newsletter-email" class="sr-only">Email address</label>
+            
+            <div class="relative flex-grow">
+              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+                <i class="fas fa-envelope text-stone-500"></i>
+              </div>
+              <input 
+                id="newsletter-email" 
+                name="email" 
+                type="email" 
+                autocomplete="email" 
+                required 
+                class="block w-full rounded-xl border-0 bg-transparent py-4 pl-11 pr-4 text-white placeholder:text-stone-600 focus:ring-0 sm:text-sm sm:leading-6" 
+                placeholder="Enter your email address"
+              >
+            </div>
+
+            <button 
+              type="submit" 
+              id="newsletter-submit" 
+              class="flex w-full items-center justify-center gap-2 rounded-xl bg-white px-4 py-3 text-sm font-bold text-stone-950 shadow-sm hover:bg-blue-50 transition-all duration-200"
+            >
+              <span id="newsletter-text">Get Started</span>
+              <div id="newsletter-spinner" class="hidden h-4 w-4 animate-spin rounded-full border-2 border-stone-900 border-t-transparent"></div>
+            </button>
+            
+          </div>
+          
+          <p class="mt-4 text-xs leading-5 text-stone-500 text-center" id="newsletter-message">
+            By subscribing, you agree to our <a href="privacy-policy.html" class="text-stone-400 hover:text-white underline decoration-stone-700 underline-offset-2 transition-colors">Privacy Policy</a>.
+          </p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- NEWSLETTER / CONTACT FORM LOGIC ---
+    const newsletterForm = document.getElementById('newsletter-form');
+    const newsletterSubmitBtn = document.getElementById('newsletter-submit');
+    const newsletterText = document.getElementById('newsletter-text');
+    const newsletterSpinner = document.getElementById('newsletter-spinner');
+    const newsletterMessage = document.getElementById('newsletter-message');
+    const newsletterInput = document.getElementById('newsletter-email');
+
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const email = newsletterInput.value.trim();
+            const originalMessageContent = newsletterMessage.innerHTML; // Save original footer text
+
+            // 1. Basic Validation
+            if (!email || !email.includes('@')) {
+                showNewsletterStatus('Please enter a valid email address.', 'text-red-500');
+                return;
+            }
+
+            // 2. UI Loading State
+            newsletterSubmitBtn.disabled = true;
+            newsletterText.textContent = "Processing...";
+            newsletterSpinner.classList.remove('hidden');
+            newsletterSubmitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+
+            // 3. Prepare Data
+            const formData = new FormData();
+            formData.append('email', email);
+            
+            // 4. Send Request
+            fetch('submit_newsletter.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Success UI
+                    newsletterInput.value = ''; // Clear input
+                    newsletterSubmitBtn.classList.remove('bg-white', 'text-stone-950');
+                    newsletterSubmitBtn.classList.add('bg-green-600', 'text-white', 'border-transparent');
+                    newsletterText.textContent = "Welcome Aboard!";
+                    
+                    showNewsletterStatus("Thanks! We've sent a confirmation to your inbox.", 'text-green-500');
+
+                    // Reset button style after 3 seconds
+                    setTimeout(() => {
+                        newsletterSubmitBtn.disabled = false;
+                        newsletterSubmitBtn.classList.remove('opacity-75', 'cursor-not-allowed', 'bg-green-600', 'text-white');
+                        newsletterSubmitBtn.classList.add('bg-white', 'text-stone-950');
+                        newsletterText.textContent = "Get Started";
+                        newsletterSpinner.classList.add('hidden');
+                        // Restore original footer text
+                        newsletterMessage.innerHTML = originalMessageContent;
+                        newsletterMessage.className = "mt-4 text-xs leading-5 text-stone-500 text-center";
+                    }, 4000);
+
+                } else {
+                    throw new Error(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                newsletterText.textContent = "Try Again";
+                newsletterSpinner.classList.add('hidden');
+                newsletterSubmitBtn.disabled = false;
+                newsletterSubmitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                showNewsletterStatus("Something went wrong. Please try again.", 'text-red-500');
+            });
+        });
+    }
+
+    // Helper to change the text below the form
+    function showNewsletterStatus(msg, colorClass) {
+        newsletterMessage.innerHTML = msg;
+        newsletterMessage.className = `mt-4 text-xs leading-5 text-center font-bold ${colorClass}`;
+    }
+});
+</script>
+
+<div id="side-banner" class="fixed top-1/2 right-4 z-[60] -translate-y-1/2 group no-print">
+  
+  <div class="relative flex overflow-hidden rounded-xl bg-stone-900/95 backdrop-blur-md border border-stone-800 shadow-2xl shadow-stone-900/40 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] translate-x-[calc(100%-46px)] hover:translate-x-0 w-[300px] h-[160px]">
+    
+    <div class="w-[46px] border-r border-white/10 flex flex-col items-center justify-between py-5 cursor-pointer hover:bg-white/5 transition-colors absolute left-0 top-0 bottom-0 z-20">
+      
+      <i class="fas fa-fingerprint text-stone-500"></i>
+      
+      <div class="flex flex-col items-center gap-2">
+         <span class="text-[7px] font-mono font-bold tracking-[0.2em] text-white uppercase [writing-mode:vertical-lr] rotate-180 whitespace-nowrap opacity-80">
+           Priority Access
+         </span>
+      </div>
+
+      <div class="relative flex items-center justify-center w-3 h-3">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500"></span>
+      </div>
+    </div>
+
+    <div class="pl-[46px] w-full p-6 flex flex-col justify-between relative">
+       
+       <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 20px 20px;"></div>
+
+       <button onclick="document.getElementById('side-banner').remove()" class="absolute top-2 right-2 p-2 text-stone-600 hover:text-white transition-colors z-30">
+         <i class="fas fa-times text-[10px]"></i>
+       </button>
+
+       <div class="relative z-10">
+         <div class="flex items-center gap-2 mb-1">
+            <span class="text-[9px] font-mono text-blue-400 uppercase">● Status: Active</span>
+         </div>
+         <h3 class="text-3xl font-bold text-white tracking-tight">
+           -20% OFF
+         </h3>
+         <p class="text-[10px] text-stone-400 uppercase tracking-widest mt-1">Q1 Development Cycle</p>
+       </div>
+       
+       <div class="h-px w-full bg-white/10 my-1 relative z-10"></div>
+
+       <div class="flex items-center justify-between relative z-10 pt-1">
+          <div class="flex flex-col">
+             <span class="text-[8px] text-stone-500 uppercase font-mono">Code</span>
+             <span class="text-[10px] text-white font-mono bg-white/10 px-1 rounded">ADAMS-2025</span>
+          </div>
+          <a href="#contact" class="bg-white text-stone-950 px-4 py-2 rounded text-[10px] font-bold uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-colors">
+            Apply
+          </a>
+       </div>
+
+    </div>
+
+  </div>
+</div>
+
+<footer class="relative bg-white pt-24 pb-12 border-t border-stone-100 overflow-hidden">
+  
+  <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
+    
+    <div class="grid lg:grid-cols-2 gap-12 mb-20">
+      <div>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="h-8 w-8 bg-stone-900 rounded-full flex items-center justify-center text-white font-bold text-xs">A+</div>
+          <span class="text-xl font-bold text-stone-900 tracking-tight">Adams+</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-stone-900 tracking-tight leading-none max-w-lg">
+          Building the digital <br> <span class="text-stone-400">future of ambitious brands.</span>
+        </h2>
+      </div>
+      <div class="flex items-end lg:justify-end">
+        <a href="#contact" class="group inline-flex items-center gap-4 px-8 py-4 border border-stone-200 rounded-full hover:bg-stone-900 hover:border-stone-900 transition-all duration-300">
+          <span class="text-sm font-bold text-stone-900 uppercase tracking-widest group-hover:text-white">Start a Project</span>
+          <i class="fas fa-arrow-right text-stone-400 group-hover:text-white -rotate-45 group-hover:rotate-0 transition-transform duration-300"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-y border-stone-100">
+      
+      <div class="p-8 border-b md:border-b-0 md:border-r border-stone-100 hover:bg-stone-50 transition-colors group">
+        <div class="mb-4">
+          <i class="fas fa-envelope text-stone-400 text-xl group-hover:text-blue-600 transition-colors"></i>
+        </div>
+        <span class="font-mono text-xs text-stone-400 uppercase tracking-widest block mb-2">/ Email</span>
+        <a href="mailto:hello@adamsplusx.com" class="text-sm font-bold text-stone-900 hover:text-blue-600 transition-colors break-all">
+          hello@adamsplusx.com
+        </a>
+      </div>
+
+      <div class="p-8 border-b md:border-b-0 lg:border-r border-stone-100 hover:bg-stone-50 transition-colors group">
+        <div class="mb-4">
+          <i class="fas fa-phone text-stone-400 text-xl group-hover:text-blue-600 transition-colors"></i>
+        </div>
+        <span class="font-mono text-xs text-stone-400 uppercase tracking-widest block mb-2">/ Phone</span>
+        <div class="flex flex-col gap-1">
+          <a href="tel:+255746692640" class="text-sm font-bold text-stone-900 hover:text-blue-600 transition-colors">
+            +255 746 692 640
+          </a>
+          <a href="tel:+255744726945" class="text-sm font-bold text-stone-500 hover:text-blue-600 transition-colors">
+            +255 744 726 945
+          </a>
+        </div>
+      </div>
+
+      <div class="p-8 border-b md:border-b-0 md:border-r border-stone-100 hover:bg-stone-50 transition-colors group">
+        <div class="mb-4">
+          <i class="fas fa-globe text-stone-400 text-xl group-hover:text-blue-600 transition-colors"></i>
+        </div>
+        <span class="font-mono text-xs text-stone-400 uppercase tracking-widest block mb-2">/ Global HQ</span>
+        <p class="text-sm font-bold text-stone-900">
+          Arusha • Worldwide
+        </p>
+      </div>
+
+      <div class="p-8 hover:bg-stone-50 transition-colors group">
+        <div class="mb-4">
+          <i class="fas fa-share-alt text-stone-400 text-xl group-hover:text-blue-600 transition-colors"></i>
+        </div>
+        <span class="font-mono text-xs text-stone-400 uppercase tracking-widest block mb-2">/ Connect</span>
+        <div class="flex gap-4">
+          <a href="#" class="h-8 w-8 rounded-full bg-stone-100 flex items-center justify-center text-stone-500 hover:bg-stone-900 hover:text-white transition-all">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="h-8 w-8 rounded-full bg-stone-100 flex items-center justify-center text-stone-500 hover:bg-stone-900 hover:text-white transition-all">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="h-8 w-8 rounded-full bg-stone-100 flex items-center justify-center text-stone-500 hover:bg-stone-900 hover:text-white transition-all">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="pt-12 flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-stone-500 font-mono">
+      
+      <div class="order-2 md:order-1">
+        &copy; 2024 - <span id="current-year"></span> Adams+ Digital Solutions.
+      </div>
+
+      <div class="flex gap-8 order-1 md:order-2">
+        <a href="privacy-policy.html" class="hover:text-stone-900 transition-colors uppercase tracking-wider">Privacy</a>
+        <a href="terms.html" class="hover:text-stone-900 transition-colors uppercase tracking-wider">Terms</a>
+        <a href="cookies.html" class="hover:text-stone-900 transition-colors uppercase tracking-wider">Cookies</a>
+      </div>
+
+    </div>
+
+  </div>
 </footer>
+
+<script>
+  // Automatically sets the current year (e.g., 2025)
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>
 
 <script>
 // Base prices in USD
@@ -2362,54 +2315,108 @@ function updatePrices() {
   updateBudgetOptions();
 }
 
-// Modal functionality
-function openModal(plan) {
-  const modal = document.getElementById('project-modal');
-  const selectedPlan = document.getElementById('selected-plan');
-  const planInput = document.getElementById('plan');
-  
-  selectedPlan.textContent = plan;
-  planInput.value = plan;
-  modal.classList.remove('hidden');
-  document.body.style.overflow = 'hidden';
-  
-  // Pre-select budget option based on plan
-  const budgetSelect = document.getElementById('budget');
-  if (plan === 'Starter Website') {
-    budgetSelect.value = 'basic-plan';
-  } else if (plan === 'Business Website') {
-    budgetSelect.value = 'professional-plan';
-  } else if (plan === 'Premium Solution') {
-    budgetSelect.value = 'enterprise-plan';
-  }
-  
-  // Set focus to first input
-  setTimeout(() => {
-    document.getElementById('first-name').focus();
-  }, 100);
-  
-  // Track modal open event
-  console.log(`Modal opened for plan: ${plan}`);
-}
+/* =========================================
+   PROJECT MODAL & SMART PRICING LOGIC
+   ========================================= */
 
-function closeModal() {
-  const modal = document.getElementById('project-modal');
-  modal.classList.add('hidden');
-  document.body.style.overflow = 'auto';
-  
-  // Reset form
-  document.getElementById('project-form').reset();
-  
-  // Clear errors
-  document.querySelectorAll('.error-message').forEach(el => {
-    el.classList.remove('show');
-    el.textContent = '';
-  });
-  
-  document.querySelectorAll('.form-input').forEach(el => {
-    el.classList.remove('error', 'success');
-  });
-}
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // 1. DEFINITIONS
+    const modal = document.getElementById('project-modal');
+    const form = document.getElementById('project-form');
+    const planInput = document.getElementById('plan');
+    const planDisplay = document.getElementById('selected-plan');
+    const budgetSelect = document.getElementById('budget');
+    
+    // Map Plans to their Base Prices (USD)
+    const planPrices = {
+        'Starter Website': 399,
+        'Business Website': 799,
+        'Premium Solution': 1299
+    };
+
+    // 2. OPEN MODAL & FILTER BUDGETS
+    document.querySelectorAll('.choose-plan-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const selectedPlan = btn.getAttribute('data-plan');
+            const basePrice = planPrices[selectedPlan] || 0;
+
+            // A. Update Visuals
+            planInput.value = selectedPlan;
+            planDisplay.textContent = selectedPlan;
+            
+            // B. Filter Budget Options (The Logic You Requested)
+            const options = budgetSelect.querySelectorAll('option');
+            let firstValidOption = null;
+
+            options.forEach(option => {
+                // Reset visibility first
+                option.style.display = 'block';
+                option.disabled = false;
+
+                const optionPrice = parseInt(option.getAttribute('data-usd') || 0);
+
+                // Check if this option is cheaper than the selected plan
+                // We also keep "Custom" or "To be discussed" (value=0 or NaN) visible
+                if (optionPrice > 0 && optionPrice < basePrice) {
+                    option.style.display = 'none'; // Hide lower prices
+                    option.disabled = true;        // Prevent selection via keyboard
+                } else if (!firstValidOption && option.value !== '') {
+                    // Track the first valid option to auto-select it
+                    firstValidOption = option;
+                }
+            });
+
+            // C. Auto-select the specific plan option if it exists in the list
+            // (e.g., if they clicked Business, select "Business Plan ($799)" in dropdown)
+            const exactMatch = Array.from(options).find(opt => opt.getAttribute('data-usd') == basePrice);
+            if (exactMatch) {
+                budgetSelect.value = exactMatch.value;
+            } else if (firstValidOption) {
+                budgetSelect.value = firstValidOption.value;
+            }
+
+            // D. Show Modal
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.querySelector('.modal-backdrop').classList.remove('opacity-0');
+                modal.querySelector('.relative').classList.remove('opacity-0', 'scale-95');
+                modal.querySelector('.relative').classList.add('opacity-100', 'scale-100');
+            }, 10);
+        });
+    });
+
+    // 3. CLOSE MODAL LOGIC
+    const closeModal = () => {
+        const backdrop = modal.querySelector('.modal-backdrop');
+        const panel = modal.querySelector('.relative');
+        
+        // Animate Out
+        backdrop.classList.add('opacity-0');
+        panel.classList.remove('opacity-100', 'scale-100');
+        panel.classList.add('opacity-0', 'scale-95');
+        
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            // Optional: Reset form on close
+            // form.reset(); 
+        }, 300);
+    };
+
+    modal.querySelectorAll('.close-modal').forEach(btn => btn.addEventListener('click', closeModal));
+    
+    // Close on click outside
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+            closeModal();
+        }
+    });
+});
 
 // Smooth scroll functionality with polyfill detection
 function smoothScrollTo(targetId) {
@@ -2799,6 +2806,60 @@ document.addEventListener('keydown', function(e) {
     e.preventDefault();
     submitProjectForm();
   }
+});
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    // Mobile Menu Logic
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const header = document.getElementById('main-header');
+    let isMenuOpen = false;
+
+    // Toggle Menu Function
+    function toggleMenu() {
+        isMenuOpen = !isMenuOpen;
+        if (isMenuOpen) {
+            // Open
+            menuBtn.classList.add('menu-open');
+            mobileMenu.classList.remove('invisible', 'opacity-0', 'scale-95');
+            mobileMenu.classList.add('opacity-100', 'scale-100');
+        } else {
+            // Close
+            menuBtn.classList.remove('menu-open');
+            mobileMenu.classList.add('invisible', 'opacity-0', 'scale-95');
+            mobileMenu.classList.remove('opacity-100', 'scale-100');
+        }
+    }
+
+    menuBtn.addEventListener('click', toggleMenu);
+
+    // Close menu when clicking a link
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (isMenuOpen) toggleMenu();
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (isMenuOpen && !menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+            toggleMenu();
+        }
+    });
+
+    // Scroll Effect (Optional refinement)
+    // Makes the header a bit wider/narrower on scroll for a dynamic feel
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+            header.classList.add('pt-4');
+            header.classList.remove('pt-6');
+        } else {
+            header.classList.add('pt-6');
+            header.classList.remove('pt-4');
+        }
+    });
 });
 </script>
 

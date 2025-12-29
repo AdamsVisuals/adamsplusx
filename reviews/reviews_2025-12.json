@@ -1,19 +1,69 @@
 [
     {
-        "id": "REV_693c7c4eaa21d",
-        "timestamp": "2025-12-12 21:34:22",
+        "id": "REV_6951CC43EF2A7",
+        "timestamp": "2025-12-29 01:33:07",
+        "name": "Adams Visuals",
+        "email": "adamsvisualsllc@gmail.com",
+        "rating": 4,
+        "message": "This young man is full enthusiasm for his profession and I see a bright future for him",
+        "permission": "yes"
+    },
+    {
+        "id": "6951cac27d7fb",
+        "date": "2025-12-29 01:26:42",
+        "name": "Colleen Fulton",
+        "rating": 4,
+        "message": "Ipsum corporis eos i"
+    },
+    {
+        "id": "REV_693ca53d2f507",
+        "timestamp": "2025-12-12 23:29:01",
         "data": {
             "form_type": "review_submission",
-            "name": "Micheal Kamau",
-            "email": "adamsvisualsllc@gmail.com",
-            "company": "Founder, Kamau Brands",
+            "name": "David Chacha",
+            "email": "davidc@example.com",
+            "company": "CEO, Nova Solutions",
             "rating": "5",
-            "title": "Amazing Website & Excellent Communication",
-            "message": "Working with Adams+ was a smooth and professional experience. The team perfectly understood my vision and delivered a clean, modern, and fast website. The communication was great, and every revision was handled quickly. I highly recommend their services!",
-            "category": "web-development",
+            "title": "Top-Notch Branding Work!",
+            "message": "Adams+ delivered a stunning brand identity for our new startup. The colors, typography, and overall style were perfect. Highly impressed!",
+            "category": "branding",
             "permission": "yes",
-            "page_url": "http:\/\/localhost\/adams+\/",
-            "submission_time": "2025-12-12T20:34:18.044Z"
+            "page_url": "https:\/\/adamsplusx.com\/",
+            "submission_time": "2025-12-12T23:28:59.043Z"
+        }
+    },
+    {
+        "id": "REV_694f2a36d5aaf",
+        "timestamp": "2025-12-27 00:37:10",
+        "data": {
+            "form_type": "review_submission",
+            "name": "Ira Stafford",
+            "email": "adamsplusevo@gmail.com",
+            "company": "Steele Robles Plc",
+            "rating": "5",
+            "title": "Consectetur consequ",
+            "message": "Qui esse excepturi",
+            "category": "strategy",
+            "permission": "no",
+            "page_url": "https:\/\/adamsplusx.com\/",
+            "submission_time": "2025-12-27T00:37:10.026Z"
+        }
+    },
+    {
+        "id": "REV_694face65b9a1",
+        "timestamp": "2025-12-27 09:54:46",
+        "data": {
+            "form_type": "review_submission",
+            "name": "Abdurrahim",
+            "email": "abdurrahimabdulkadir79@gmail.com",
+            "company": "Regional operator",
+            "rating": "4",
+            "title": "Good service",
+            "message": "This young man is full enthusiasm for his profession and I see a bright future for him",
+            "category": "strategy",
+            "permission": "yes",
+            "page_url": "https:\/\/adamsplusx.com\/",
+            "submission_time": "2025-12-27T09:54:40.269Z"
         }
     }
 ]
