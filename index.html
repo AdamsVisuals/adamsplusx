@@ -804,11 +804,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
-    <div class="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-8 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       
       <div id="reviews-container" class="contents"></div>
 
-      <button id="open-review-modal" class="min-w-[85vw] sm:min-w-[350px] md:min-w-0 flex-shrink-0 snap-center bg-stone-900/50 border border-stone-800/60 rounded-2xl p-8 flex flex-col items-center justify-center text-center h-full min-h-[280px] hover:bg-stone-900 hover:border-stone-700 transition-all group cursor-pointer">
+      <button id="open-review-modal" class="bg-stone-900/50 border border-stone-800/60 rounded-2xl p-8 flex flex-col items-center justify-center text-center h-full min-h-[280px] hover:bg-stone-900 hover:border-stone-700 transition-all group cursor-pointer w-full">
          <div class="h-14 w-14 rounded-full bg-stone-950 border border-stone-800 group-hover:border-blue-500/30 flex items-center justify-center mb-6 transition-colors">
             <i class="fas fa-plus text-stone-500 group-hover:text-blue-400 text-lg transition-colors"></i>
          </div>
@@ -816,6 +816,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          <p class="text-xs text-stone-500 mb-6 max-w-[200px] leading-relaxed">Share your experience to help us improve.</p>
          <span class="text-[10px] font-bold uppercase tracking-widest text-stone-400 border-b border-stone-800 pb-1 group-hover:text-blue-400 group-hover:border-blue-400 transition-all">Write a Review</span>
       </button>
+
+      <div class="mt-8 text-center md:hidden">
+  <button id="load-more-reviews" class="text-xs font-bold uppercase tracking-widest text-stone-500 hover:text-white border-b border-stone-800 hover:border-white pb-1 transition-all">
+    View All Reviews
+  </button>
+</div>
 
     </div>
   </div>
@@ -899,38 +905,42 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "Maasai Spear Safaris", category: "Client", rating: 5, message: "The site is fast, responsive, and visually strong. Highly recommended." }
     ];
 
-    function renderReviews(reviews) {
-        const container = document.getElementById('reviews-container');
-        if(!container) return;
-        
-        container.innerHTML = ''; // Clear current
-        
-        reviews.forEach(review => {
-            let starsHTML = '';
-            for(let i=0; i<5; i++) {
-                starsHTML += i < review.rating ? '<i class="fas fa-star"></i>' : '<i class="far fa-star text-stone-700"></i>';
-            }
+function renderReviews(reviews) {
+    const container = document.getElementById('reviews-container');
+    if(!container) return;
+    
+    container.innerHTML = ''; // Clear current
+    
+    reviews.forEach(review => {
+        let starsHTML = '';
+        for(let i=0; i<5; i++) {
+            starsHTML += i < review.rating ? '<i class="fas fa-star"></i>' : '<i class="far fa-star text-stone-700"></i>';
+        }
 
-            const html = `
-            <div class="min-w-[85vw] sm:min-w-[350px] md:min-w-0 flex-shrink-0 snap-center bg-stone-900/80 border border-stone-800/60 p-8 rounded-2xl hover:bg-stone-900 hover:border-stone-700 transition-all group h-full flex flex-col justify-between backdrop-blur-sm">
+        // UPDATED CLASS LIST:
+        // Removed: min-w-[85vw] sm:min-w-[350px] md:min-w-0 flex-shrink-0 snap-center
+        // Added: w-full (Ensures it fills the grid column)
+        const html = `
+        <div class="w-full bg-stone-900/80 border border-stone-800/60 p-8 rounded-2xl hover:bg-stone-900 hover:border-stone-700 transition-all group h-full flex flex-col justify-between backdrop-blur-sm">
+            <div>
+                <div class="flex justify-between items-center mb-6">
+                    <span class="font-mono text-[9px] text-blue-400 uppercase tracking-widest border border-blue-900/30 bg-blue-900/10 px-3 py-1 rounded-full">${review.category || 'Client'}</span>
+                    <div class="flex text-blue-500 text-[10px] opacity-70 group-hover:opacity-100 transition-opacity">${starsHTML}</div>
+                </div>
+                <h3 class="text-base font-medium text-stone-200 leading-relaxed mb-6 whitespace-normal">"${review.message}"</h3>
+            </div>
+            <div class="flex items-center gap-3 pt-6 mt-auto border-t border-stone-800/50">
+                <div class="h-8 w-8 rounded-full bg-stone-950 border border-stone-800 flex items-center justify-center text-xs font-bold text-stone-300">${review.name.charAt(0)}</div>
                 <div>
-                    <div class="flex justify-between items-center mb-6">
-                        <span class="font-mono text-[9px] text-blue-400 uppercase tracking-widest border border-blue-900/30 bg-blue-900/10 px-3 py-1 rounded-full">${review.category || 'Client'}</span>
-                        <div class="flex text-blue-500 text-[10px] opacity-70 group-hover:opacity-100 transition-opacity">${starsHTML}</div>
-                    </div>
-                    <h3 class="text-base font-medium text-stone-200 leading-relaxed mb-6 whitespace-normal">"${review.message}"</h3>
+                    <div class="text-xs font-bold text-white">${review.name}</div>
+                    <div class="text-[10px] text-stone-500 font-mono uppercase">Verified</div>
                 </div>
-                <div class="flex items-center gap-3 pt-6 mt-auto border-t border-stone-800/50">
-                    <div class="h-8 w-8 rounded-full bg-stone-950 border border-stone-800 flex items-center justify-center text-xs font-bold text-stone-300">${review.name.charAt(0)}</div>
-                    <div>
-                        <div class="text-xs font-bold text-white">${review.name}</div>
-                        <div class="text-[10px] text-stone-500 font-mono uppercase">Verified</div>
-                    </div>
-                </div>
-            </div>`;
-            container.insertAdjacentHTML('beforeend', html);
-        });
-    }
+            </div>
+        </div>`;
+        
+        container.insertAdjacentHTML('beforeend', html);
+    });
+}
 
     // Load initial reviews (Static + Dynamic if available)
     renderReviews(staticReviews); 
@@ -1701,20 +1711,16 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
-<div id="side-banner" class="fixed top-1/2 right-4 z-[60] -translate-y-1/2 group no-print">
-  
-  <div class="relative flex overflow-hidden rounded-xl bg-stone-900/95 backdrop-blur-md border border-stone-800 shadow-2xl shadow-stone-900/40 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] translate-x-[calc(100%-46px)] hover:translate-x-0 w-[300px] h-[160px]">
+<div id="side-banner" class="fixed top-1/2 right-4 z-[60] -translate-y-1/2 group no-print hidden">
+  <div class="relative flex overflow-hidden rounded-xl bg-stone-900/95 backdrop-blur-md border border-stone-800 shadow-2xl shadow-stone-900/40 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] translate-x-[calc(100%-46px)] hover:translate-x-0 w-[300px] h-[170px]">
     
     <div class="w-[46px] border-r border-white/10 flex flex-col items-center justify-between py-5 cursor-pointer hover:bg-white/5 transition-colors absolute left-0 top-0 bottom-0 z-20">
-      
       <i class="fas fa-fingerprint text-stone-500"></i>
-      
       <div class="flex flex-col items-center gap-2">
          <span class="text-[7px] font-mono font-bold tracking-[0.2em] text-white uppercase [writing-mode:vertical-lr] rotate-180 whitespace-nowrap opacity-80">
            Priority Access
          </span>
       </div>
-
       <div class="relative flex items-center justify-center w-3 h-3">
         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
         <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500"></span>
@@ -1731,30 +1737,265 @@ document.addEventListener('DOMContentLoaded', () => {
 
        <div class="relative z-10">
          <div class="flex items-center gap-2 mb-1">
-            <span class="text-[9px] font-mono text-blue-400 uppercase">● Status: Active</span>
+            <span class="text-[9px] font-mono text-blue-400 uppercase">● Offer Expiring</span>
          </div>
-         <h3 class="text-3xl font-bold text-white tracking-tight">
+         <h3 class="text-3xl font-bold text-white tracking-tight mb-1">
            -20% OFF
          </h3>
-         <p class="text-[10px] text-stone-400 uppercase tracking-widest mt-1">Q1 Development Cycle</p>
+         
+         <div class="flex gap-2 font-mono text-xs text-stone-300 tracking-wider" id="countdown-timer">
+            <div><span id="days" class="text-white font-bold">00</span>d</div> :
+            <div><span id="hours" class="text-white font-bold">00</span>h</div> :
+            <div><span id="minutes" class="text-white font-bold">00</span>m</div> :
+            <div><span id="seconds" class="text-white font-bold text-blue-400">00</span>s</div>
+         </div>
        </div>
        
-       <div class="h-px w-full bg-white/10 my-1 relative z-10"></div>
+       <div class="h-px w-full bg-white/10 my-2 relative z-10"></div>
 
-       <div class="flex items-center justify-between relative z-10 pt-1">
+       <div class="flex items-center justify-between relative z-10">
           <div class="flex flex-col">
              <span class="text-[8px] text-stone-500 uppercase font-mono">Code</span>
              <span class="text-[10px] text-white font-mono bg-white/10 px-1 rounded">ADAMS-2025</span>
           </div>
-          <a href="#contact" class="bg-white text-stone-950 px-4 py-2 rounded text-[10px] font-bold uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-colors">
-            Apply
-          </a>
+          <button onclick="openPromoModal()" class="bg-white text-stone-950 px-4 py-2 rounded text-[10px] font-bold uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-colors cursor-pointer">
+            Claim Now
+          </button>
        </div>
 
     </div>
+  </div>
+</div>
+
+<div id="promo-modal" class="fixed inset-0 z-[70] hidden items-center justify-center p-4 sm:p-6" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+  
+  <div class="fixed inset-0 bg-stone-950/90 backdrop-blur-sm transition-opacity" onclick="closePromoModal()"></div>
+
+  <div class="relative w-full max-w-md md:max-w-3xl transform overflow-hidden rounded-2xl bg-stone-900 border border-stone-800 shadow-2xl transition-all flex flex-col md:flex-row">
+      
+      <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-green-400 z-20"></div>
+      
+      <div class="w-full md:w-3/5 p-8 relative z-10">
+          
+        <button onclick="closePromoModal()" class="absolute top-5 right-5 text-stone-500 hover:text-white transition-colors z-50">
+            <i class="fas fa-times"></i>
+        </button>
+
+        <div class="mb-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 mb-4">
+            <span class="animate-pulse w-1.5 h-1.5 rounded-full bg-green-500"></span>
+            <span class="text-[10px] font-mono uppercase tracking-widest text-green-400">Offer Active</span>
+          </div>
+          <h3 class="text-2xl font-bold text-white tracking-tight">Claim Priority Access</h3>
+          <p class="text-sm text-stone-400 mt-2">Secure your spot for the Q1 Development Cycle.</p>
+        </div>
+
+        <form id="promo-form" class="space-y-4">
+          <input type="hidden" name="website" value=""> 
+
+          <div class="relative group">
+            <label class="block text-[10px] font-mono uppercase tracking-widest text-stone-500 mb-1">Applied Code</label>
+            <div class="flex items-center justify-between w-full rounded-lg border border-stone-700 bg-stone-800/50 px-3 py-2.5 text-white font-mono text-sm opacity-70 cursor-not-allowed">
+              <span>ADAMS-2025</span>
+              <i class="fas fa-check-circle text-green-500"></i>
+            </div>
+          </div>
+
+          <div>
+            <label for="promo-name" class="sr-only">Full Name</label>
+            <input type="text" id="promo-name" name="first-name" class="block w-full rounded-lg border-stone-700 bg-stone-950 px-4 py-2.5 text-white placeholder:text-stone-500 focus:border-blue-500 focus:ring-blue-500 text-sm" placeholder="Full Name" required>
+          </div>
+
+          <div>
+            <label for="promo-email" class="sr-only">Email Address</label>
+            <input type="email" id="promo-email" name="email" class="block w-full rounded-lg border-stone-700 bg-stone-950 px-4 py-2.5 text-white placeholder:text-stone-500 focus:border-blue-500 focus:ring-blue-500 text-sm" placeholder="Email Address" required>
+          </div>
+
+          <div>
+            <label for="promo-phone" class="sr-only">Phone Number</label>
+            <input type="tel" id="promo-phone" name="phone" class="block w-full rounded-lg border-stone-700 bg-stone-950 px-4 py-2.5 text-white placeholder:text-stone-500 focus:border-blue-500 focus:ring-blue-500 text-sm" placeholder="Phone Number" required>
+          </div>
+
+          <button type="submit" id="promo-submit" class="w-full flex justify-center items-center gap-2 rounded-lg bg-white px-4 py-3 text-sm font-bold text-stone-950 hover:bg-blue-500 hover:text-white transition-all uppercase tracking-widest mt-2">
+            <span id="promo-btn-text">Confirm & Claim</span>
+            <div id="promo-spinner" class="hidden h-4 w-4 animate-spin rounded-full border-2 border-stone-950 border-t-transparent"></div>
+          </button>
+          
+          <p class="text-center text-[10px] text-stone-500 mt-3">Limited availability. Valid until Jan 1, 2026.</p>
+        </form>
+      </div>
+
+      <div class="hidden md:block md:w-2/5 relative min-h-full">
+          <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Digital Abstract" class="absolute inset-0 w-full h-full object-cover brightness-75 grayscale-[30%]">
+          <div class="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/20 to-transparent"></div>
+          <div class="absolute bottom-8 left-8 right-8">
+              <h4 class="text-white font-bold text-xl tracking-tight">Unlock Future-Proof Digital Assets.</h4>
+          </div>
+      </div>
 
   </div>
 </div>
+
+<script>
+  // ==========================================
+// 1. GLOBAL HELPER FUNCTIONS
+// (These must be outside DOMContentLoaded so HTML buttons can find them)
+// ==========================================
+
+function openPromoModal() {
+    const modal = document.getElementById('promo-modal');
+    if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex'); // Forces flexbox centering
+    }
+}
+
+function closePromoModal() {
+    const modal = document.getElementById('promo-modal');
+    if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    }
+}
+
+// ==========================================
+// 2. PAGE LOGIC (Runs when site loads)
+// ==========================================
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    // --- A. COUNTDOWN & EXPIRY LOGIC ---
+    (function() {
+        // Set Expiry: January 1, 2026 at Midnight
+        const expiryDate = new Date("Jan 1, 2026 00:00:00").getTime();
+        const banner = document.getElementById('side-banner');
+        
+        // 1. Immediate Check on Load
+        const now = new Date().getTime();
+        if (now > expiryDate) {
+            // If expired, kill banner instantly
+            if(banner) banner.remove();
+            return; 
+        } else {
+            // If valid, make it visible (removes style="display:none")
+            if(banner) banner.classList.remove('hidden');
+            if(banner) banner.style.display = 'block'; 
+        }
+
+        // 2. The Ticking Timer
+        const timerInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = expiryDate - now;
+
+            // If time runs out while user is looking at the page
+            if (distance < 0) {
+                clearInterval(timerInterval);
+                if(banner) banner.remove();
+                return;
+            }
+
+            // Math Calculations
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Update HTML Elements safely
+            const dEl = document.getElementById("days");
+            const hEl = document.getElementById("hours");
+            const mEl = document.getElementById("minutes");
+            const sEl = document.getElementById("seconds");
+
+            if(dEl) dEl.innerText = days < 10 ? "0" + days : days;
+            if(hEl) hEl.innerText = hours < 10 ? "0" + hours : hours;
+            if(mEl) mEl.innerText = minutes < 10 ? "0" + minutes : minutes;
+            if(sEl) sEl.innerText = seconds < 10 ? "0" + seconds : seconds;
+        }, 1000);
+    })();
+
+
+    // --- B. PROMO MODAL SUBMISSION LOGIC ---
+    const promoForm = document.getElementById('promo-form');
+    
+    if(promoForm) {
+        promoForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // UI References
+            const btn = document.getElementById('promo-submit');
+            const btnText = document.getElementById('promo-btn-text');
+            const spinner = document.getElementById('promo-spinner');
+            
+            // 1. Set Loading State
+            btn.disabled = true;
+            btnText.textContent = "Verifying...";
+            spinner.classList.remove('hidden');
+            
+            // 2. Prepare Data (Mapped to submit_project.php fields)
+            const formData = new FormData();
+            
+            // We map the promo form ID to the PHP 'first-name' expectation
+            formData.append('first-name', document.getElementById('promo-name').value);
+            // We add a marker to 'last-name' so you know it's a promo user in the database/email
+            formData.append('last-name', ' (Promo Claim)'); 
+            formData.append('email', document.getElementById('promo-email').value);
+            formData.append('phone', document.getElementById('promo-phone').value);
+            
+            // IMPORTANT: 'plan' must contain "PROMO" to trigger the special email subject in PHP
+            formData.append('plan', '🔥 PROMO CLAIM: ADAMS-2025'); 
+            formData.append('budget', 'Discount Applied');
+            formData.append('timeline', 'Immediate');
+            formData.append('message', 'Client claimed the Q1 20% Off Side Banner Offer.');
+
+            // 3. Send Data to Backend
+            fetch('submit_project.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.success) {
+                    // Success UI Animation
+                    btn.classList.remove('bg-white', 'text-stone-950');
+                    btn.classList.add('bg-green-500', 'text-white');
+                    btnText.textContent = "Code Activated!";
+                    spinner.classList.add('hidden');
+                    
+                    setTimeout(() => {
+                        // Close the modal
+                        closePromoModal();
+                        promoForm.reset();
+                        
+                        // Permanently remove the side banner (since they claimed it)
+                        const banner = document.getElementById('side-banner');
+                        if(banner) banner.remove();
+                        
+                        // Reset button state for future use
+                        btn.disabled = false;
+                        btn.classList.remove('bg-green-500', 'text-white');
+                        btn.classList.add('bg-white', 'text-stone-950');
+                        btnText.textContent = "Confirm & Claim";
+                    }, 2000); // Wait 2 seconds so user sees "Code Activated"
+                } else {
+                    throw new Error(data.message);
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                btnText.textContent = "Error. Try Again.";
+                btn.classList.add('bg-red-500', 'text-white');
+                btn.disabled = false;
+                spinner.classList.add('hidden');
+                
+                setTimeout(() => {
+                   btn.classList.remove('bg-red-500', 'text-white');
+                   btnText.textContent = "Confirm & Claim";
+                }, 3000);
+            });
+        });
+    }
+});
+</script>
 
 <footer class="relative bg-white pt-24 pb-12 border-t border-stone-100 overflow-hidden">
   

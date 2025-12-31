@@ -1,32 +1,29 @@
 <?php
 /**
- * Project Submission Handler
+ * Project & Promo Submission Handler
  * Backend: Adams+ Digital Solutions
+ * Handles: Main Project Form AND Side Banner Promo
  */
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Strict Error Handling for Debugging (Turn off in production if needed)
+// 1. SETUP
 ini_set('display_errors', 0);
 error_reporting(E_ALL);
 ob_start();
 
-// API Headers
 header('Content-Type: application/json; charset=utf-8');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST');
 
-// Default Response
 $response = ['success' => false, 'message' => 'An unexpected error occurred.'];
 
 try {
-    // --- CONFIGURATION & STYLES ---
-    // A developer would define these once to maintain consistency easily.
+    // --- CONFIGURATION ---
     $brandColor = '#2563eb'; // Electric Blue
     $darkColor  = '#09090b'; // Zinc 950
     $bodyBg     = '#f4f4f5'; // Zinc 100
-    
     $fonts      = "font-family: 'Inter', system-ui, -apple-system, sans-serif;";
     
     // SMTP Credentials
@@ -41,7 +38,6 @@ try {
     if (!file_exists(__DIR__ . '/PHPMailer-master/src/PHPMailer.php')) {
         throw new Exception("Server Configuration Error: Mailer library missing.");
     }
-
     require __DIR__ . '/PHPMailer-master/src/Exception.php';
     require __DIR__ . '/PHPMailer-master/src/PHPMailer.php';
     require __DIR__ . '/PHPMailer-master/src/SMTP.php';
@@ -57,25 +53,34 @@ try {
         exit(json_encode(['success' => true, 'message' => 'Sent']));
     }
 
-    // --- DATA SANITIZATION ---
+    // --- DATA SANITIZATION & LOGIC INTEGRATION ---
     $d = array_map('trim', $_POST);
     
+    // 1. Basic Fields
     $firstName = htmlspecialchars($d['first-name'] ?? '');
     $lastName  = htmlspecialchars($d['last-name'] ?? '');
-    $fullName  = $firstName . ' ' . $lastName;
     $email     = filter_var($d['email'] ?? '', FILTER_SANITIZE_EMAIL);
     $phone     = htmlspecialchars($d['phone'] ?? 'N/A');
+    
+    // 2. Logic: Handle "Promo" specific defaults
+    // If the Promo Form sends data, 'company' might be missing, so we default to 'Personal/Promo'
     $company   = htmlspecialchars($d['company'] ?? 'N/A');
+    
     $budget    = htmlspecialchars($d['budget'] ?? 'Not specified');
     $timeline  = htmlspecialchars($d['timeline'] ?? 'Flexible');
     $plan      = htmlspecialchars($d['plan'] ?? 'General Inquiry');
     $message   = htmlspecialchars($d['message'] ?? 'No additional details.');
     
-    $refID     = strtoupper(uniqid('PROJ-'));
+    // 3. Metadata
+    $refID     = strtoupper(uniqid('REF-'));
     $date      = date('M j, Y \a\t g:i A');
 
+    // 4. Smart Name Formatting
+    // If it's a Promo Claim, the JS sends "(Promo Claim)" as last name. 
+    // We clean this up for the display name.
+    $fullName = $firstName . ' ' . $lastName;
+
     // --- COMPONENT: LOGO (Reused) ---
-    // A table-based layout ensures the circle aligns perfectly in Outlook/Gmail
     $logoHTML = <<<HTML
     <table cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto;">
         <tr>
@@ -102,7 +107,6 @@ try {
 HTML;
 
     // --- EMAIL 1: INTERNAL BRIEF (To Your Team) ---
-    // Designed for quick scanning of data.
     $adminEmailBody = <<<HTML
     <!DOCTYPE html>
     <html>
@@ -111,13 +115,13 @@ HTML;
             
             <div style="background: {$darkColor}; padding: 30px; text-align: center;">
                 {$logoHTML}
-                <div style="margin-top: 15px; color: #a1a1aa; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">New Lead Generated</div>
+                <div style="margin-top: 15px; color: #a1a1aa; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">Action Required</div>
             </div>
 
             <div style="padding: 40px;">
                 
                 <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 20px; margin-bottom: 30px;">
-                    <span style="display: block; font-size: 10px; color: {$brandColor}; text-transform: uppercase; font-weight: 800; margin-bottom: 5px;">Interested In</span>
+                    <span style="display: block; font-size: 10px; color: {$brandColor}; text-transform: uppercase; font-weight: 800; margin-bottom: 5px;">Category</span>
                     <strong style="font-size: 18px; color: #1e3a8a;">{$plan}</strong>
                 </div>
 
@@ -148,7 +152,7 @@ HTML;
                         </tr>
                     </table>
 
-                    <span style="display: block; font-size: 11px; color: #71717a; text-transform: uppercase; font-weight: 700; margin-bottom: 8px;">Vision Note</span>
+                    <span style="display: block; font-size: 11px; color: #71717a; text-transform: uppercase; font-weight: 700; margin-bottom: 8px;">Notes</span>
                     <div style="background: #f4f4f5; padding: 16px; border-radius: 6px; font-size: 14px; line-height: 1.6; color: #3f3f46;">
                         "{$message}"
                     </div>
@@ -164,8 +168,7 @@ HTML;
     </html>
 HTML;
 
-    // --- EMAIL 2: CUSTOMER RECEIPT (Warm & Trust Building) ---
-    // Designed to reassure them that the request was successful.
+    // --- EMAIL 2: CUSTOMER RECEIPT ---
     $clientEmailBody = <<<HTML
     <!DOCTYPE html>
     <html>
@@ -180,16 +183,17 @@ HTML;
             <div style="padding: 40px; text-align: center;">
                 <p style="font-size: 16px; color: #3f3f46; line-height: 1.6; margin-bottom: 30px;">
                     Hi <strong>{$firstName}</strong>, thanks for choosing Adams+. <br>
-                    We've received your inquiry for the <strong style="color: {$brandColor};">{$plan}</strong>.
+                    We have successfully received your submission for: <br>
+                    <strong style="color: {$brandColor};">{$plan}</strong>.
                     <br><br>
-                    Our team is currently reviewing your project scope. You can expect to hear from us within <strong>24 hours</strong> to schedule a discovery session.
+                    Our team is currently reviewing your details. We will be in touch within <strong>24 hours</strong>.
                 </p>
 
                 <div style="text-align: left; background: #fafafa; border: 1px solid #e4e4e7; border-radius: 8px; padding: 20px; margin-bottom: 30px;">
                     <div style="font-size: 11px; text-transform: uppercase; color: #a1a1aa; font-weight: 700; border-bottom: 1px solid #e4e4e7; padding-bottom: 10px; margin-bottom: 10px;">Submission Summary</div>
                     <div style="font-size: 14px; color: #52525b; margin-bottom: 6px;"><strong>Budget:</strong> {$budget}</div>
                     <div style="font-size: 14px; color: #52525b; margin-bottom: 6px;"><strong>Timeline:</strong> {$timeline}</div>
-                    <div style="font-size: 14px; color: #52525b;"><strong>Reference ID:</strong> {$refID}</div>
+                    <div style="font-size: 14px; color: #52525b;"><strong>Ref ID:</strong> {$refID}</div>
                 </div>
 
                 <a href="https://adamsplusx.com" style="display: inline-block; background: {$darkColor}; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 6px; font-weight: 600; font-size: 14px;">Return to Website</a>
@@ -207,54 +211,97 @@ HTML;
 
     // --- MAILER EXECUTION ---
     
-    $mail = new PHPMailer(true);
+    // FIRST: Send admin email
+    $mail1 = new PHPMailer(true);
     
     // Server Settings
-    $mail->isSMTP();
-    $mail->Host       = $smtpConf['host'];
-    $mail->SMTPAuth   = true;
-    $mail->Username   = $smtpConf['user'];
-    $mail->Password   = $smtpConf['pass'];
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port       = $smtpConf['port'];
-    $mail->Timeout    = 20;
+    $mail1->isSMTP();
+    $mail1->Host       = $smtpConf['host'];
+    $mail1->SMTPAuth   = true;
+    $mail1->Username   = $smtpConf['user'];
+    $mail1->Password   = $smtpConf['pass'];
+    $mail1->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail1->Port       = $smtpConf['port'];
+    $mail1->Timeout    = 20;
+    
+    // Anti-spam settings
+    $mail1->CharSet = 'UTF-8';
+    $mail1->addCustomHeader('X-Priority', '1');
+    $mail1->addCustomHeader('X-Mailer', 'Adams+ Mailer');
+    $mail1->Priority = 1;
+
+    // SMART SUBJECT LINE
+    if (strpos($plan, 'PROMO') !== false || strpos($lastName, '(Promo') !== false) {
+        $subjectLine = "🎁 PROMO CLAIM: $firstName ($plan)";
+    } else {
+        $subjectLine = "🚀 New Lead: $plan ($firstName $lastName)";
+    }
 
     // Send Admin Email
-    $mail->setFrom($smtpConf['user'], 'Adams+ Website');
-    $mail->addAddress('sales@adamsplusx.com'); // Admin
-    $mail->addReplyTo($email, $fullName);
+    $mail1->setFrom($smtpConf['user'], 'Adams+ Website');
+    $mail1->addAddress('sales@adamsplusx.com'); // Admin
+    $mail1->addReplyTo($email, $fullName);
     
-    $mail->isHTML(true);
-    $mail->Subject = "🚀 New Lead: $plan ($fullName)";
-    $mail->Body    = $adminEmailBody;
-    $mail->AltBody = "New Project Inquiry from $fullName regarding $plan.";
+    $mail1->isHTML(true);
+    $mail1->Subject = $subjectLine;
+    $mail1->Body    = $adminEmailBody;
+    $mail1->AltBody = "New Inquiry: $plan from $fullName\nEmail: $email\nPhone: $phone\nBudget: $budget\nTimeline: $timeline\nMessage: $message";
     
-    $mail->send();
+    $adminSent = $mail1->send();
+
+    // SECOND: Send client email (separate instance)
+    $mail2 = new PHPMailer(true);
+    
+    // Server Settings for client email
+    $mail2->isSMTP();
+    $mail2->Host       = $smtpConf['host'];
+    $mail2->SMTPAuth   = true;
+    $mail2->Username   = $smtpConf['user'];
+    $mail2->Password   = $smtpConf['pass'];
+    $mail2->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail2->Port       = $smtpConf['port'];
+    $mail2->Timeout    = 20;
+    
+    // Anti-spam settings for client email
+    $mail2->CharSet = 'UTF-8';
+    $mail2->addCustomHeader('X-Priority', '3');
+    $mail2->addCustomHeader('X-Mailer', 'Adams+ Auto-Responder');
+    $mail2->Priority = 3;
 
     // Send Client Email
-    $mail->clearAddresses();
-    $mail->clearReplyTos();
+    $mail2->setFrom($smtpConf['user'], 'Adams+ Digital Solutions');
+    $mail2->addAddress($email);
+    $mail2->addReplyTo('sales@adamsplusx.com', 'Adams+ Support');
     
-    $mail->addAddress($email);
-    $mail->setFrom($smtpConf['user'], 'Adams+ Digital Solutions');
-    $mail->addReplyTo('sales@adamsplusx.com', 'Adams+ Support');
+    $mail2->isHTML(true);
+    $mail2->Subject = "We received your request ($refID)";
+    $mail2->Body    = $clientEmailBody;
+    $mail2->AltBody = "Hi $firstName,\n\nThank you for your request about $plan.\n\nWe have received your submission and our team will contact you within 24 hours.\n\nReference ID: $refID\n\nBest regards,\nAdams+ Digital Solutions";
     
-    $mail->Subject = "We received your request ($refID)";
-    $mail->Body    = $clientEmailBody;
-    
-    $mail->send();
+    $clientSent = $mail2->send();
 
-    // Final Success Output
-    $response['success'] = true;
-    $response['message'] = 'Inquiry sent successfully.';
+    // Check if at least one email was sent successfully
+    if ($adminSent || $clientSent) {
+        $response['success'] = true;
+        if (!$adminSent) {
+            $response['message'] = 'Confirmation sent to your email. Our team will contact you soon.';
+            error_log("Admin email failed but client email sent to: $email");
+        } elseif (!$clientSent) {
+            $response['message'] = 'Inquiry received by our team. You will be contacted shortly.';
+            error_log("Client email failed but admin email sent to: sales@adamsplusx.com");
+        } else {
+            $response['message'] = 'Inquiry sent successfully.';
+        }
+    } else {
+        throw new Exception("Failed to send emails.");
+    }
 
 } catch (Exception $e) {
-    // Log internal error but return a generic message to user if basic mail failed
     error_log("Mail Error: " . $e->getMessage());
-    $response['message'] = 'Mailer Error: ' . $e->getMessage();
+    $response['message'] = 'Unable to send email. Please try again or contact us directly.';
 } catch (\Throwable $t) {
     error_log("System Error: " . $t->getMessage());
-    $response['message'] = 'System Error: ' . $t->getMessage();
+    $response['message'] = 'System error. Please try again later.';
 }
 
 // Flush buffer and output
